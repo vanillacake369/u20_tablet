@@ -1,3 +1,36 @@
+/* Global */
+:root {
+  /* color */
+  --color-white: #ffffff;
+  --color-light-white: #dee2e6;
+  --color-dark-white: #bdbdbd;
+  --color-grey: #616161;
+  --color-light-grey: #7c7979;
+  --color-dark-grey: #444444;
+  --color-black: #495057;
+  --color-black-a: rgba(0, 0, 0, 0.5);
+  --color-blue: #25a0e2;
+  --color-sky: #79cdfc;
+  --color-light-blue: #f6f8fa;
+
+  /* Font size */
+  --font-big: 48px;
+  --font-large: 32px;
+  --font-medium: 24px;
+  --font-regular: 20px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+  --weight-thin: 100;
+
+  /* border Size */
+  --size-border-radius: 4px;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
@@ -106,7 +139,6 @@ iframe {
 }
 
 header {
-  position: fixed;
   width: 100%;
   height: 60px;
   background-color: var(--color-white);
@@ -153,18 +185,25 @@ header > div ul.navbar > li {
 }
 
 .wrap-table100 table {
-  table-layout: fixed;
+  border-collapse: collapse;
+  margin-top: 10px;
+  padding: 0;
   width: 100%;
+  table-layout: fixed;
+  border-top: 2px solid #024274;
   text-align: center;
 }
 .wrap-table100 th {
-  background: #fff;
+  background: #f3f6f9;
   border: 0;
-  border-bottom: 0.14rem solid #15a93c;
+  border-bottom: 0.14rem solid #ddd;
+  /* border-bottom: 0.14rem solid #15a93c; */
   padding: 1.0714285714rem 0 1rem;
   vertical-align: middle;
   text-align: center;
-  font-weight: 100;
+  font-size: 1em;
+  font-weight: bold;
+  white-space: nowrap;
 }
 .wrap-table100 td {
   padding: 20px 0;
@@ -188,12 +227,12 @@ header > div ul.navbar > li {
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-  background: #dbdcdf;
+  /* background: #dbdcdf; */
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;

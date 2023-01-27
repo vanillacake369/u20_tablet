@@ -8,6 +8,12 @@
                 " alt="Logo" class="logo_img" /></a>
             </li>
         </ul>
+        <ul class="navbar middle">
+            <li class="logo">
+                <a href="judge_view_schedule.php"><img src="./img/logo.png
+                " alt="Logo" class="logo_img" /></a>
+            </li>
+        </ul>
         <ul class="navbar right">
             <li><a href="judge_mypage.php">마이페이지</a></li>
             <li>
