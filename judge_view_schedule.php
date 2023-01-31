@@ -5,22 +5,14 @@
   <title>Table V02</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css" />
-
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-
   <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
-
   <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css" />
-
   <link rel="stylesheet" type="text/css" href="css/util.css" />
   <link rel="stylesheet" type="text/css" href="css/main.css" />
-
   <meta name="robots" content="noindex, follow" />
   <script nonce="295bfded-e0fa-4114-ba24-95f5f1dad738">
     (function(w, d) {
@@ -104,56 +96,16 @@
   <div class="limiter">
     <div class="container-table100">
       <div class="wrap-table100">
-        <!-- 경기 관련 내용 View 테이블 -->
-        <div class="table-wrap">
-          <table>
-            <colgroup>
-              <col style="width: auto" />
-            </colgroup>
-            <thead>
-              <tr>
-                <th>종목명</th>
-                <th>경기명</th>
-                <th>경기 성별</th>
-                <th>날짜</th>
-                <th>시작시간</th>
-                <th>라운드</th>
-                <th>심판명</th>
-                <th>역할</th>
-                <th>비고</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>트랙경기</td>
-                <td>400m 달리기</td>
-                <td>혼성</td>
-                <td>MM.DD</td>
-                <td>hh:mm:ss</td>
-                <td>결승</td>
-                <td>ITO</td>
-                <td>국제기술임원</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- 결과 기록 Input 테이블 -->
-        <!-- 
-            <div class="table">
-              <div class="row header">
-                <div class="cell">순위</div>
-                <div class="cell">선수명</div>
-                <div class="cell">성별</div>
-                <div class="cell">레인번호</div>
-                <div class="cell">국가</div>
-                <div class="cell">기록</div>
-                <div class="cell">통과</div>
-                <div class="cell">상태</div>
-                <div class="cell">입력</div>
-                <div class="cell">비고</div>
+        <!-- <div class="table">
+            <div class="row header">
+              <div class="cell">날짜</div>
+              <div class="cell">경기명</div>
+              <div class="cell">참가 성별</div>
+              <div class="cell">시작시간</div>
+              <div class="cell">라운드</div>
+              <div class="cell">상태</div>
+              <div class="cell">경기보기</div>
             </div>
-            </div> 
             <div class="row">
               <div class="cell">2023-06-05</div>
               <div class="cell">100m 단거리</div>
@@ -163,8 +115,8 @@
               <div class="cell">공식 결과(or 실시간)</div>
               <div class="cell">버튼</div>
             </div>
-        
-        -->
+          </div> -->
+
         <div class="table-wrap">
           <table>
             <colgroup>
@@ -185,114 +137,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jinho KIM</td>
-                <td>Male</td>
-                <td>3</td>
-                <td>Korea</td>
-                <td>00:01:23</td>
-                <td>O</td>
-                <td>Live</td>
-                <td>Button</td>
-                <td></td>
-              </tr>
               <tr>
                 <td>3</td>
                 <td>Jinho KIM</td>
