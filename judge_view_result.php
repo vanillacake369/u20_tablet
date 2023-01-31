@@ -5,22 +5,14 @@
   <title>Table V02</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-
   <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css" />
-
   <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-
   <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
-
   <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css" />
-
   <link rel="stylesheet" type="text/css" href="css/util.css" />
   <link rel="stylesheet" type="text/css" href="css/main.css" />
-
   <meta name="robots" content="noindex, follow" />
   <script nonce="295bfded-e0fa-4114-ba24-95f5f1dad738">
     (function(w, d) {
