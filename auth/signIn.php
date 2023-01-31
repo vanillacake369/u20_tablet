@@ -1,5 +1,5 @@
 <?php
-require_once "../backheader.php";
+require_once "./authCheck.php";
 
 
 
@@ -33,7 +33,7 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
         $stmt = $db->prepare($sql);
         $stmt->bind_param("ssss", $currentDate, $ip_add, $session, $id);
         $stmt->execute();
-        
+
         mysqli_close($db);
         $_SESSION['Id'] = $id;
         $_SESSION['Session'] = $session;
