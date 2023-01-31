@@ -1,4 +1,5 @@
 <?php
+include_once "../database/dbconnect.php";
 function authCheck($db, $schedule)
 {
 

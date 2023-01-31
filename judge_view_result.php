@@ -1,8 +1,18 @@
 <?php
-if ($_SERVER['HTTP_REFERER'] == '') exit("<script>
-        alert('잘못된 접근입니다.');
-        history.back();
-    </script>");
+// URL 입력 접근 제어
+if ($_SERVER['HTTP_REFERER'] == '') {
+  exit("<script>alert('잘못된 접근입니다.');window.close();</script>");
+  ini_set('display_errors', '0');
+}
+// DB
+include_once "./database/dbconnect.php";
+// 구현 요망
+// Auth Check
+// Get Schedules of Judge By Session
+// Check Schedules of Judge Of DB
+// Compare Schedules
+
+
 ?>
 
 <!DOCTYPE html>
@@ -95,6 +105,10 @@ if ($_SERVER['HTTP_REFERER'] == '') exit("<script>
     })(window, document);
   </script>
 </head>
+
+<?php
+
+?>
 
 <body>
   <!-- header -->

@@ -1,9 +1,9 @@
 <!-- url 접근제어 -->
 <?php
-if ($_SERVER['HTTP_REFERER'] == '') exit("<script>
-        alert('잘못된 접근입니다.');
-        history.back();
-    </script>");
+// if ($_SERVER['HTTP_REFERER'] == '') exit("<script>
+//         alert('잘못된 접근입니다.');
+//         history.back();
+//     </script>");
 ?>
 
 <!DOCTYPE html>
