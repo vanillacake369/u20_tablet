@@ -34,26 +34,26 @@ function getResultByState($id)
         $row["athlete_country"] = $row["athlete_country"];
         $row["athlete_division"] = $row["athlete_division"];
         $row["record_status"] = $row["record_status"];
+        $row["record_pass"] = $row["record_pass"];
         $status = $row["record_status"];
         // official state
         if ($status == 'o') {
             $row["record_record"] = $row["record_official_record"];
             $row["record_result"] = $row["record_official_result"];
+            $row["schedule_id"] = "";
         }
         // live state
         else if ($status == 'l') {
             $row["record_record"] = $row["record_live_record"];
             $row["record_result"] = $row["record_live_result"];
+            $row["schedule_id"] = $row["schedule_id"];
         }
         // not started state
         else {
             $row["record_record"] = "";
             $row["record_result"] = "";
+            $row["schedule_id"] = "";
         }
-        $row["record_record"] = $row["record_live_record"];
-        $row["record_result"] = $row["record_live_result"];
-        $row["record_pass"] = $row["record_pass"];
-        $row["schedule_id"] = $row["schedule_id"];
         $rows[] = $row;
     }
     return $rows;

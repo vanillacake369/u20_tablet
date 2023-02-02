@@ -89,11 +89,12 @@ $result_array = getResultByState($id);
               echo "<td>" . $result["record_pass"] . "</td>";
               // 경기 상태(Official, Result..)
               echo "<td>" . $result["record_status"] . "</td>";
-              // 경기 결과 입력
-              echo "<td><a href='/../controller_input_result.php?id=" . trim($result["schedule_id"]) . "'>결과 입력</a></td>";
-              // 경기 비고
-              echo "<td><a href='/../controller_input_remark.php?remark_category=result&id=" . trim($result["schedule_id"]) . "'>비고 입력</a></td>";
-
+              if (trim($result["schedule_id"]) != "") {
+                // 경기 결과 입력
+                echo "<td><a href='/../controller_input_result.php?id=" . trim($result["schedule_id"]) . "'>결과 입력</a></td>";
+                // 경기 비고
+                echo "<td><a href='/../controller_input_remark.php?remark_category=result&id=" . trim($result["schedule_id"]) . "'>비고 입력</a></td>";
+              }
               echo "</tr>";
             }
 
