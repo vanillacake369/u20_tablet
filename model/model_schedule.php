@@ -23,8 +23,10 @@ include_once(__DIR__ . "/../database/dbconnect.php");
 //             judge_id,
 //             n.digit
 //         )";
-$judge_account = trim($_SESSION["Id"]);
-$sql = "SELECT *
+function getSchedule($id)
+{
+    global $db;
+    $sql = "SELECT *
         FROM list_schedule
         WHERE schedule_sports IN (
             SELECT
@@ -35,5 +37,7 @@ $sql = "SELECT *
             (SELECT 0 digit UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) n
             ON LENGTH(REPLACE(judge_attendance, ',' , '')) <= LENGTH(judge_attendance)-n.digit
             WHERE 
-                judge_account ='" . $judge_account . "'" .  "ORDER BY judge_account, n.digit)";
-$result = $db->query($sql);
+                judge_account ='" . $id . "'" .  "ORDER BY judge_account, n.digit)";
+    $result = $db->query($sql);
+    return $result;
+}

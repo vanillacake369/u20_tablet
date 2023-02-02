@@ -27,7 +27,6 @@ function getResultByState($id)
     $result = getResult($id);
     // change value by state
     $rows = [];
-    $num = 0;
     while ($row = mysqli_fetch_array($result)) {
         $row["record_order"] = $row["record_order"];
         $row["athlete_name"] = $row["athlete_name"];

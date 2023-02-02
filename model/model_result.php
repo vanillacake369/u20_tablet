@@ -1,8 +1,9 @@
 <?php
+// DB
+include_once(__DIR__ . "/../database/dbconnect.php");
 function getResult($id)
 {
-        // DB
-        require_once(__DIR__ . "/../database/dbconnect.php");
+        global $db;
         // $id : 스케줄 id(<= view_result의 GET[id])
         $sql = "SELECT *
         FROM list_record AS r
