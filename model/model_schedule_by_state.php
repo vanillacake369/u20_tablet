@@ -1,5 +1,5 @@
 <?php
-
+include_once(__DIR__ . "/model_schedule.php");
 /**
  * @uses model_schedule::function getSchedule
  * 원하는 상태에 따라 결과값을 변경하는 함수
@@ -14,13 +14,12 @@ function getScheduleByState($id)
     $schedule = getSchedule($id);
     // change value by state
     $rows = [];
-    while ($row = mysqli_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($schedule)) {
         $row["schedule_name"] = $row["schedule_name"];
         $row["schedule_gender"] = $row["schedule_gender"];
         $row["schedule_round"] = $row["schedule_round"];
         $row["schedule_group"] = $row["schedule_group"];
         $row["schedule_division"] = $row["schedule_division"];
-
         $row["schedule_location"] = $row["schedule_location"];
         $row["schedule_date"] = $row["schedule_date"];
         $row["schedule_start"] = $row["schedule_start"];
