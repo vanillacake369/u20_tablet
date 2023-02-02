@@ -1,6 +1,7 @@
 <?php
 // header
-include_once(__DIR__ .  '/header.php');
+include_once(__DIR__ .  '/view_header.php');
+
 // 경기 스케줄 가져오기
 include_once(__DIR__ . "/../model/model_schedule_by_state.php");
 

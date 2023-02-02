@@ -1,6 +1,7 @@
 <?php
 // header
-include_once 'header.php';
+include_once(__DIR__ . "/view_header.php");
+
 include_once(__DIR__ . "/../model/model_result_by_state.php");
 
 // model_result_by_state에서 결과 가져오기
