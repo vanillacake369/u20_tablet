@@ -1,14 +1,3 @@
-<!-- url 접근제어 -->
-<?php
-// if ($_SERVER['HTTP_REFERER'] == '') exit("<script>
-//         alert('잘못된 접근입니다.');
-//         history.back();
-//     </script>");
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <title>Table V02</title>
     <meta charset="UTF-8" />
@@ -96,41 +85,3 @@
         })(window, document);
     </script>
 </head>
-
-<body>
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100" style="padding-bottom: 10rem;">
-                <div class="login">
-                    <a href=""><img src="img/logo.png" alt="Logo" class="logo_img_login" /></a>
-                    <form method="post" action="auth/signIn.php">
-                        <div class="login_pannel">
-                            <div class="login_pannel_inner">
-                                <div class="id_pw_wrap">
-                                    <div class="input_row">
-                                        <input type="text" id="id" class="input_text" name="id" placeholder="아이디" required />
-                                    </div>
-                                    <div class="input_row">
-                                        <input type="password" id="pw" class="input_text" name="pw" placeholder="비밀번호" required />
-                                    </div>
-                                </div>
-                                <div class="keep"></div>
-                                <button type="submit" class="btn_login" name="login">
-                                    <span class="btn_text">로그인</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
-
-</html>

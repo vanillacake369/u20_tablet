@@ -1,8 +1,6 @@
 <?php
 require_once "./authCheck.php";
 
-
-
 if (!isset($_POST['id']) || $_POST['id'] == "") {
     mysqli_close($db);
     echo '<script>alert("아이디를 입력하세요");history.back();</script>';
@@ -34,7 +32,7 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
         $_SESSION['Id'] = $id;
         $_SESSION['Session'] = $session;
 
-        echo "<script>alert('로그인되었습니다.'); location.href='../judge_view_result.php';</script>";
+        echo "<script>alert('로그인되었습니다.'); location.href='../controller_schedule.php';</script>";
         exit;
     } else {
         mysqli_close($db);
