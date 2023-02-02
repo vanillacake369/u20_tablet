@@ -1,5 +1,3 @@
-<!-- header -->
-<input type="checkbox" id="sidebar_icon" />
 <header>
     <div>
         <ul class="navbar">

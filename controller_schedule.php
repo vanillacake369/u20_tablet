@@ -11,10 +11,16 @@
 
 // 아래는 구현해야할 기능들!
 // Auth Check :: isLogedIn?
+
+// 세션
+if (session_id() == '') {
+    session_start();
+}
 ?>
 
 <head>
     <?php
+    print_r($_SESSION);
     // <head>
     include_once "./view/head.php";
     ?>
