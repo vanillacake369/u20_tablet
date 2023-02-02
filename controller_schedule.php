@@ -9,9 +9,6 @@
 //   </script>");
 // }
 
-// 경기 스케줄 가져오기
-include_once "./view/schedule.php";
-
 // 아래는 구현해야할 기능들!
 // Auth Check :: isLogedIn?
 ?>

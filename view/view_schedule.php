@@ -1,6 +1,10 @@
 <body>
-    <!-- header -->
-    <?php include 'header.php' ?>
+    <?php
+    // header
+    include_once 'header.php';
+    // 경기 스케줄 가져오기
+    require_once(__DIR__ . "/../model/model_schedule.php");
+    ?>
 
     <div class="limiter">
         <div class="container-table100">

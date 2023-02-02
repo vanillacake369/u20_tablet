@@ -2,4 +2,4 @@
 
 
 // DB
-include_once "./database/dbconnect.php";
+require_once(__DIR__ . "/../database/dbconnect.php");

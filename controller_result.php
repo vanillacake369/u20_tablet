@@ -8,8 +8,6 @@
 //     open(location, '_self').close();
 //   </script>");
 // }
-// 경기 일정 가져오기
-include_once "./view/result.php";
 // 아래는 구현해야할 기능들!
 // Auth Check :: isLogedIn?
 ?>

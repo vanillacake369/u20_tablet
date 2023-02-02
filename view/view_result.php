@@ -1,9 +1,11 @@
 <body>
-  <!-- header -->
-  <?php include_once './header.php' ?>
+  <?php
+  // header
+  include_once 'header.php';
 
-  <!-- model_result에서 결과 가져오기 -->
-  <?php include_once '../model/model_result.php' ?>
+  // model_result에서 결과 가져오기
+  require_once(__DIR__ . "/../model/model_result.php");
+  ?>
 
   <div class="limiter">
     <div class="container-table100">
