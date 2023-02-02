@@ -14,11 +14,19 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<?php
-// <head>
-include_once "./view/head.php";
-// <body>
-include_once "./view/view_result.php";
-?>
+
+<head>
+    <?php
+    // <head>
+    include_once "./view/head.php";
+    ?>
+</head>
+
+<body>
+    <?php
+    // <body>
+    include_once "./view/view_result.php";
+    ?>
+</body>
 
 </html>

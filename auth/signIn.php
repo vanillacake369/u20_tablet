@@ -20,8 +20,8 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
     $judgesql = " SELECT * FROM list_judge WHERE judge_account = '" . $id . "';";
     $judgerow = $db->query($judgesql);
 
-    // if (($judgedata = mysqli_fetch_array($judgerow)) && (hash('sha256', $pw) == $judgedata['judge_password'])) {
-    if (($judgedata = mysqli_fetch_array($judgerow)) && ($pw == $judgedata['judge_password'])) {
+    if (($judgedata = mysqli_fetch_array($judgerow)) && (hash('sha256', $pw) == $judgedata['judge_password'])) {
+        // if (($judgedata = mysqli_fetch_array($judgerow)) && ($pw == $judgedata['judge_password'])) {
 
         $sql = "UPDATE list_judge SET judge_latest_datetime = ?, judge_latest_ip= ?, judge_latest_session = ? WHERE judge_account = ?";
         $stmt = $db->prepare($sql);
