@@ -1,10 +1,11 @@
 <?php
 // header
 include_once 'header.php';
+include_once(__DIR__ . "/../model/model_result_by_state.php");
 
-// model_result에서 결과 가져오기
+// model_result_by_state에서 결과 가져오기
 $id = trim($_GET["id"]);
-require_once(__DIR__ . "/../model/model_result.php");
+$result_array = getResultByState($id);
 ?>
 
 <div class="limiter">
@@ -67,149 +68,35 @@ require_once(__DIR__ . "/../model/model_result.php");
           <tbody>
             <?php
             $num = 0;
-            while ($row = mysqli_fetch_array($result)) {
+            foreach ($result_array as $result) {
               echo "<tr>";
               // 레인번호
-              echo "<td>" . $row["record_order"] . "</td>";
+              echo "<td>" . $result["record_order"] . "</td>";
               // 선수명(팀명)
-              echo "<td>" . $row["athlete_name"] . "</td>";
+              echo "<td>" . $result["athlete_name"] . "</td>";
               // 선수 성별
-              echo "<td>" . $row["schedule_gender"] . "</td>";
+              echo "<td>" . $result["schedule_gender"] . "</td>";
               // 국가
-              echo "<td>" . $row["athlete_country"] . "</td>";
+              echo "<td>" . $result["athlete_country"] . "</td>";
               // 소속
-              echo "<td>" . $row["athlete_division"] . "</td>";
+              echo "<td>" . $result["athlete_division"] . "</td>";
               // 기록
-              echo "<td>" . $row["record_live_record"] . "</td>";
-              // IF(OFFICIAL STATE){
-              //    echo "<td>" . $row["record_official_record"] . "</td>";
-              // }
+              echo "<td>" . $result["record_live_record"] . "</td>";
               // 순위
-              echo "<td>" . $row["record_live_result"] . "</td>";
-              // IF(OFFICIAL STATE){
-              //    echo "<td>" . $row["record_official_result"] . "</td>";
-              // }
+              echo "<td>" . $result["record_live_result"] . "</td>";
               // 통과
-              echo "<td>" . $row["record_pass"] . "</td>";
+              echo "<td>" . $result["record_pass"] . "</td>";
               // 경기 상태(Official, Result..)
-              echo "<td>" . $row["record_status"] . "</td>";
+              echo "<td>" . $result["record_status"] . "</td>";
               // 경기 결과 입력
-              echo "<td><a href='/../controller_input_result.php?id=" . trim($row["schedule_id"]) . "'>결과 입력</a></td>";
+              echo "<td><a href='/../controller_input_result.php?id=" . trim($result["schedule_id"]) . "'>결과 입력</a></td>";
               // 경기 비고
-              echo "<td><a href='/../controller_input_remark.php?remark_category=result&id=" . trim($row["schedule_id"]) . "'>비고 입력</a></td>";
+              echo "<td><a href='/../controller_input_remark.php?remark_category=result&id=" . trim($result["schedule_id"]) . "'>비고 입력</a></td>";
 
               echo "</tr>";
             }
 
             ?>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jinho KIM</td>
-              <td>Male</td>
-              <td>3</td>
-              <td>Korea</td>
-              <td>00:01:23</td>
-              <td>O</td>
-              <td>Live</td>
-              <td>Button</td>
-              <td></td>
-            </tr>
           </tbody>
         </table>
       </div>
