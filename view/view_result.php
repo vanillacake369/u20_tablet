@@ -3,10 +3,12 @@
 include_once(__DIR__ . "/view_header.php");
 
 include_once(__DIR__ . "/../model/model_result_by_state.php");
+include_once(__DIR__ . "/../model/model_match_info_by_state.php");
 
-// model_result_by_state에서 결과 가져오기
+// $id : 스케줄 id
 $id = trim($_GET["id"]);
 $result_array = getResultByState($id);
+$match_info_array = getMatchInfoByState($id);
 ?>
 
 <div class="limiter">
@@ -28,21 +30,23 @@ $result_array = getResultByState($id);
               <th>라운드</th>
               <th>심판명</th>
               <th>역할</th>
-              <th>비고</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>트랙경기</td>
-              <td>400m 달리기</td>
-              <td>혼성</td>
-              <td>MM.DD</td>
-              <td>hh:mm:ss</td>
-              <td>결승</td>
-              <td>ITO</td>
-              <td>국제기술임원</td>
-              <td></td>
-            </tr>
+            <?php
+            foreach ($match_info_array as $match_info) {
+              echo "<tr>";
+              echo "<td>" . $match_info["sports_category"] . "</td>";
+              echo "<td>" . $match_info["sports_name_kr"] . "</td>";
+              echo "<td>" . $match_info["schedule_gender"] . "</td>";
+              echo "<td>" . $match_info["schedule_date"] . "</td>";
+              echo "<td>" . $match_info["schedule_start"] . "</td>";
+              echo "<td>" . $match_info["schedule_round"] . "</td>";
+              echo "<td>" . $match_info["judge_name"] . "</td>";
+              echo "<td>" . $match_info["judge_duty"] . "</td>";
+              echo "</tr>";
+            }
+            ?>
           </tbody>
         </table>
       </div>
@@ -68,7 +72,6 @@ $result_array = getResultByState($id);
           </thead>
           <tbody>
             <?php
-            $num = 0;
             foreach ($result_array as $result) {
               echo "<tr>";
               // 레인번호

@@ -30,26 +30,48 @@ function getResultByState($id)
     while ($row = mysqli_fetch_array($result)) {
         $row["record_order"] = $row["record_order"];
         $row["athlete_name"] = $row["athlete_name"];
-        $row["schedule_gender"] = $row["schedule_gender"];
         $row["athlete_country"] = $row["athlete_country"];
         $row["athlete_division"] = $row["athlete_division"];
         $row["record_status"] = $row["record_status"];
         $row["record_pass"] = $row["record_pass"];
+        $pass = $row["record_pass"];
+        if ($pass == 'p') {
+            $row["record_pass"] = "통과";
+        } else if ($pass == 'l') {
+            $row["record_pass"] = "탈락";
+        } else if ($pass == 'd') {
+            $row["record_pass"] = "실격";
+        } else if ($pass == 'w') {
+            $row["record_pass"] = "기권";
+        } else {
+            $row["record_pass"] = "시작안함";
+        }
+        $gender = $row["schedule_gender"];
+        if ($gender == 'm') {
+            $row["schedule_gender"] = "남성";
+        } else if ($gender == 'f') {
+            $row["schedule_gender"] = "여성";
+        } else {
+            $row["schedule_gender"] = "혼성";
+        }
         $status = $row["record_status"];
         // official state
         if ($status == 'o') {
+            $row["record_status"] = "공식 결과";
             $row["record_record"] = $row["record_official_record"];
             $row["record_result"] = $row["record_official_result"];
             $row["schedule_id"] = "";
         }
         // live state
         else if ($status == 'l') {
+            $row["record_status"] = "실시간 결과";
             $row["record_record"] = $row["record_live_record"];
             $row["record_result"] = $row["record_live_result"];
             $row["schedule_id"] = $row["schedule_id"];
         }
         // not started state
         else {
+            $row["record_status"] = "시작안함";
             $row["record_record"] = "";
             $row["record_result"] = "";
             $row["schedule_id"] = "";
