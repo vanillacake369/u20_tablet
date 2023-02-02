@@ -1,12 +1,12 @@
-<?
+<?php
 // DB
-require_once(__DIR__ . "/../database/dbconnect.php");
-// 페이징
-require_once(__DIR__ . "pagination.php");
-// 외부 공격 방지 기능
-require_once(__DIR__ . "input_filtering.php");
-// 로그 기능
-require_once(__DIR__ . "log.php");
+include_once(__DIR__ . "/../database/dbconnect.php");
+// // 페이징
+// require_once(__DIR__ . "pagination.php");
+// // 외부 공격 방지 기능
+// require_once(__DIR__ . "input_filtering.php");
+// // 로그 기능
+// require_once(__DIR__ . "log.php");
 
 $sql = "SELECT *
         FROM list_schedule

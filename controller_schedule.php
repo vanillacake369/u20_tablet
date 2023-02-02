@@ -13,13 +13,18 @@
 // Auth Check :: isLogedIn?
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<?php
-// <head>
-include_once "./view/head.php";
-// <body>
-include_once "./view/view_schedule.php";
-?>
+<head>
+    <?php
+    // <head>
+    include_once "./view/head.php";
+    ?>
+</head>
+
+<body>
+    <?php
+    // <body>
+    include_once "./view/view_schedule.php";
+    ?>
+</body>
 
 </html>
