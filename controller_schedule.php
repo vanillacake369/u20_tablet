@@ -20,7 +20,6 @@ if (session_id() == '') {
 
 <head>
     <?php
-    print_r($_SESSION);
     // <head>
     include_once "./view/head.php";
     ?>

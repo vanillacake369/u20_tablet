@@ -1,3 +1,8 @@
+<?php
+// 본인 경기 불러오기
+require_once(__DIR__ . "/../model/model_result.php");
+?>
+
 <header>
     <div>
         <ul class="navbar">
@@ -10,6 +15,13 @@
             <li class="logo">
                 <a href="../controller_schedule.php">경기 스케줄</a>
             </li>
+            <?php
+            /**
+             * for loop(result_id in result_id_array){
+             *      result_id에 따른 a href 출력
+             * }
+             */
+            ?>
             <li class="logo">
                 <a href="../controller_result.php">본인 경기 결과 입력</a>
             </li>
