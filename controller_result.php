@@ -8,8 +8,14 @@
 //     open(location, '_self').close();
 //   </script>");
 // }
+
 // 아래는 구현해야할 기능들!
 // Auth Check :: isLogedIn?
+
+// 세션
+if (session_id() == '') {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>

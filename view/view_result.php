@@ -1,8 +1,9 @@
 <?php
 // header
 include_once 'header.php';
-$id = trim($_GET["id"]);
+
 // model_result에서 결과 가져오기
+$id = trim($_GET["id"]);
 require_once(__DIR__ . "/../model/model_result.php");
 ?>
 
