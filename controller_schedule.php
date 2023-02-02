@@ -7,7 +7,6 @@ include_once(__DIR__ .  "/controller_block.php");
 
 <head>
     <?php
-    // <head>
     include_once(__DIR__ .  "/view/head.php");
     ?>
 </head>
@@ -16,7 +15,6 @@ include_once(__DIR__ .  "/controller_block.php");
 
 <body>
     <?php
-    // <body>
     include_once(__DIR__ .  "/view/view_schedule.php");
     ?>
 </body>
