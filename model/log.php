@@ -1,5 +1,5 @@
 <?php
-include_once "database/dbconnect.php";
+include_once(__DIR__ .  "/database/dbconnect.php");
 
 global $db;
 

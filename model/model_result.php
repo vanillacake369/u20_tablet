@@ -1,8 +1,11 @@
 <?php
 // DB
-require_once(__DIR__ . "/../database/dbconnect.php");
-// $id : 스케줄 id(<= view_result의 GET[id])
-$sql = "SELECT *
+include_once(__DIR__ . "/../database/dbconnect.php");
+function getResult($id)
+{
+        global $db;
+        // $id : 스케줄 id(<= view_result의 GET[id])
+        $sql = "SELECT *
         FROM list_record AS r
         INNER JOIN list_schedule AS s
         ON
@@ -10,4 +13,6 @@ $sql = "SELECT *
         LEFT JOIN list_athlete AS a
         ON
         r.record_athlete_id = a.athlete_id;";
-$result = $db->query($sql);
+        $result = $db->query($sql);
+        return $result;
+}

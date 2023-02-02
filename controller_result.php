@@ -1,21 +1,6 @@
 <?php
-// // 에러 메세지 출력 제한
-// ini_set('display_errors', '0');
-// // URL 입력 접근 제어
-// if ($_SERVER['HTTP_REFERER'] == '') {
-//   exit("<script>
-//     alert('잘못된 접근입니다.');
-//     open(location, '_self').close();
-//   </script>");
-// }
-
-// 아래는 구현해야할 기능들!
-// Auth Check :: isLogedIn?
-
-// 세션
-if (session_id() == '') {
-    session_start();
-}
+// 접근 제한 컨트롤러 :: 공통
+include_once(__DIR__ .  "/controller_block.php");
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +8,13 @@ if (session_id() == '') {
 
 <head>
     <?php
-    // <head>
-    include_once "./view/head.php";
+    include_once(__DIR__ .  "/view/head.php");
     ?>
 </head>
 
 <body>
     <?php
-    // <body>
-    include_once "./view/view_result.php";
+    include_once(__DIR__ .  "/view/view_result.php");
     ?>
 </body>
 

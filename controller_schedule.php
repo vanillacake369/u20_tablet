@@ -1,34 +1,21 @@
 <?php
-// // 에러 메세지 출력 제한
-// ini_set('display_errors', '0');
-// // URL 입력 접근 제어
-// if ($_SERVER['HTTP_REFERER'] == '') {
-//   exit("<script>
-//     alert('잘못된 접근입니다.');
-//     open(location, '_self').close();
-//   </script>");
-// }
-
-// 아래는 구현해야할 기능들!
-// Auth Check :: isLogedIn?
-
-// 세션
-if (session_id() == '') {
-    session_start();
-}
+// 접근 제한 컨트롤러 :: 공통
+include_once(__DIR__ .  "/controller_block.php");
 ?>
+
+<!-- head 태그에 각 컨트롤러가 직접 추가할 수 있도록 head를 따로 독립 -->
 
 <head>
     <?php
-    // <head>
-    include_once "./view/head.php";
+    include_once(__DIR__ .  "/view/head.php");
     ?>
 </head>
 
+<!-- body 태그에 각 컨트롤러가 직접 추가할 수 있도록 body 따로 독립 -->
+
 <body>
     <?php
-    // <body>
-    include_once "./view/view_schedule.php";
+    include_once(__DIR__ .  "/view/view_schedule.php");
     ?>
 </body>
 
