@@ -12,6 +12,40 @@ $result_array = getResultByState($id);
 <div class="limiter">
   <div class="container-table100">
     <div class="wrap-table100">
+      <!-- 경기 관련 내용 View 테이블 -->
+      <div class="table-wrap">
+        <table>
+          <colgroup>
+            <col style="width: auto" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>종목명</th>
+              <th>경기명</th>
+              <th>경기 성별</th>
+              <th>날짜</th>
+              <th>시작시간</th>
+              <th>라운드</th>
+              <th>심판명</th>
+              <th>역할</th>
+              <th>비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>트랙경기</td>
+              <td>400m 달리기</td>
+              <td>혼성</td>
+              <td>MM.DD</td>
+              <td>hh:mm:ss</td>
+              <td>결승</td>
+              <td>ITO</td>
+              <td>국제기술임원</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="table-wrap">
         <table>
           <colgroup>
