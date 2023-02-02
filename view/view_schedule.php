@@ -1,6 +1,6 @@
 <?php
 // header
-include_once 'header.php';
+include_once(__DIR__ .  '/header.php');
 // 경기 스케줄 가져오기
 include_once(__DIR__ . "/../model/model_schedule.php");
 ?>

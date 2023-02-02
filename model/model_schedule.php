@@ -7,7 +7,6 @@ include_once(__DIR__ . "/../database/dbconnect.php");
 // require_once(__DIR__ . "input_filtering.php");
 // // 로그 기능
 // require_once(__DIR__ . "log.php");
-
 $sql = "SELECT *
         FROM list_schedule
         WHERE schedule_sports IN (
