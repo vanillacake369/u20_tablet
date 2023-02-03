@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__ . "/model_schedule.php");
+include_once(__DIR__ . "/dictionary.php");
 /**
  * @uses model_schedule::function getSchedule
  * 원하는 상태에 따라 결과값을 변경하는 함수
@@ -10,7 +11,6 @@ include_once(__DIR__ . "/model_schedule.php");
 function getScheduleByState($id)
 {
     // get schedule
-    include_once(__DIR__ . "/model_schedule.php");
     $schedule = getSchedule($id);
     // change value by state
     $rows = [];
