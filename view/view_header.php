@@ -11,25 +11,18 @@ $schedule_array = getScheduleByState($judge_account);
     <div>
         <ul class="navbar">
             <li class="logo">
-                <a href="../controller_schedule.php"><img src="../img/logo.png
+                <a href="view_schedule.php"><img src="../img/logo.png
                 " alt="Logo" class="logo_img" /></a>
             </li>
         </ul>
         <ul class="navbar">
             <li class="logo">
-                <a href="../controller_schedule.php">경기 스케줄</a>
+                <a href="view_schedule.php">경기 스케줄</a>
             </li>
             <?php
-            /**
-             * for loop(result_id in result_id_array){
-             *      result_id에 따른 a href 출력
-             * }
-             */
-
-
             // 경기 결과 입력
             foreach ($schedule_array as $schedule) {
-                // 100m 남자 결승 1조 결과
+                // Ex) 100m 남자 결승 1조 결과
                 $sports = trim($schedule["schedule_name"]);
                 $gender = trim($schedule["schedule_gender"]);
                 if ($gender == 'm') {
@@ -40,10 +33,10 @@ $schedule_array = getScheduleByState($judge_account);
                     $gender = '혼성';
                 }
                 $round = trim($schedule["schedule_round"]);
-                $group = trim($schedule["schedule_group"]);
-                $link_name = $sports . $gender . $round . $group . "결과";
+                $group = trim($schedule["schedule_group"]) . "조";
+                $link_name = $sports . $gender . $round . $group . " " .  "결과";
                 echo '<li class="logo">';
-                echo "<a href='/../controller_result.php?id=" . trim($schedule["schedule_id"]) . "'>$link_name</a>";
+                echo "<a href='view_result.php?id=" . trim($schedule["schedule_id"]) . "'>$link_name</a>";
                 echo '</li>';
                 echo "<td></td>";
             }

@@ -31,7 +31,7 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
         $_SESSION['Id'] = $id;
         $_SESSION['schedule'] = $judgedata['judge_schedule'];
         $_SESSION['Session'] = $session;
-        echo "<script>alert('로그인되었습니다.'); location.href='../controller_schedule.php';</script>";
+        echo "<script>alert('로그인되었습니다.'); location.href='../view/view_schedule.php';</script>";
         exit;
     } else {
         mysqli_close($db);

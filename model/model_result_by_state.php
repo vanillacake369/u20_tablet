@@ -9,11 +9,7 @@
  * => SRP,DIP,OCP 한 방에 해결
  */
 /**
- * 잉...다만 getResultByState가 넘겨받은 id를 getResult에 id를 연달아 넘기기에
- * 결합도가 너무 큼
- * :: 이걸 어떻게 해결할 방법이 없을까??
- */
-/**
+ * 
  * @uses model_result::function getResult
  * 원하는 상태에 따라 결과값을 변경하는 함수
  *
