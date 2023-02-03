@@ -205,6 +205,29 @@ header > div ul.navbar > li {
 }
 
 /*//////////////////////////////////////////////////////////////////
+[ 테이블 공통 CSS ]*/
+
+.btn_view {
+  text-align: center;
+  padding: 0.4em;
+  font-size: 0.85em;
+  text-decoration: none;
+  background: #024274;
+  color: #fff;
+  font-family: "NotoSansKR-Regular";
+  border-radius: 3px;
+}
+
+.btn_view span.btn_txt {
+  position: relative;
+  top: -1px;
+}
+
+.btn_view:hover {
+  background: #002c4f;
+}
+
+/*//////////////////////////////////////////////////////////////////
 [ 경기 안내 테이블 ]*/
 .wrap-table100 .table-wrap {
   margin-bottom: 3.5714285714rem;
@@ -437,6 +460,11 @@ header > div ul.navbar > li {
 
 .btn_login:hover {
   background: var(--color-grey);
+}
+
+/* 왜 안 먹냐ㅏㅏㅏ;;; */
+.table > tbody > tr:nth-of-type(even) {
+  background-color: #e0dfdf;
 }
 
 /* account/login.php */

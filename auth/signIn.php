@@ -20,18 +20,17 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
     $judgesql = " SELECT * FROM list_judge WHERE judge_account = '" . $id . "';";
     $judgerow = $db->query($judgesql);
 
-    // if (($judgedata = mysqli_fetch_array($judgerow)) && (hash('sha256', $pw) == $judgedata['judge_password'])) {
-    if (($judgedata = mysqli_fetch_array($judgerow)) && ($pw == $judgedata['judge_password'])) {
-
+    if (($judgedata = mysqli_fetch_array($judgerow)) && (hash('sha256', $pw) == $judgedata['judge_password'])) {
         $sql = "UPDATE list_judge SET judge_latest_datetime = ?, judge_latest_ip= ?, judge_latest_session = ? WHERE judge_account = ?";
         $stmt = $db->prepare($sql);
         $stmt->bind_param("ssss", $currentDate, $ip_add, $session, $id);
         $stmt->execute();
 
         mysqli_close($db);
+        session_start();
         $_SESSION['Id'] = $id;
+        $_SESSION['schedule'] = $judgedata['judge_schedule'];
         $_SESSION['Session'] = $session;
-
         echo "<script>alert('로그인되었습니다.'); location.href='../controller_schedule.php';</script>";
         exit;
     } else {
