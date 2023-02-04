@@ -17,75 +17,57 @@ while ($row = mysqli_fetch_array($result)) {
     $country_code_dic[$row["country_code"]] = $row["country_name_kr"];
 }
 
+$gender_dic = [];
+$gender_dic["m"] = "남성";
+$gender_dic["f"] = "여성";
+$gender_dic["c"] = "혼성";
 
-$gender = [];
-$gender["m"] = "남성";
-$gender["f"] = "여성";
-$gender["c"] = "혼성";
+$pass_dic = [];
+$pass_dic["p"] = "통과";
+$pass_dic["l"] = "탈락";
+$pass_dic["d"] = "실격";
+$pass_dic["w"] = "기권";
+$pass_dic["n"] = "시작안함";
+$pass_dic["m"] = "남성";
 
-$pass = [];
-$pass["p"] = "통과";
-$pass["l"] = "탈락";
-$pass["d"] = "실격";
-$pass["w"] = "기권";
-$pass["n"] = "시작안함";
+$division_dic = [];
+$division_dic["b"] = "대분류";
+$division_dic["s"] = "소분류";
 
-$division = [];
-$division["b"] = "대분류";
-$division["b"] = "소분류";
-
-$status = [];
-$status["o"] = "공식 결과";
-$status["ㅣ"] = "실시간 결과";
-$status["n"] = "시작안함";
-
-function translateScheduleDivision($division)
+$status_dic = [];
+$status_dic["o"] = "공식 결과";
+$status_dic["l"] = "실시간 결과";
+$status_dic["n"] = "시작안함";
+/**
+ * DB데이터를 입력받아 원하는 값(한글)로 번역 
+ *
+ * @param [type] $division
+ * @return void
+ */
+function translateScheduleDivision($d)
 {
-    if ($division == "b") {
-        return "대분류";
-    } else {
-        return "소분류";
-    }
+    global $division_dic;
+    $hasKey = array_key_exists($d, $division_dic);
+    return $hasKey ? $division_dic[$d] : "";
 }
-function translateStatus($status)
+function translateStatus($s)
 {
-    // official state
-    if ($status == "o") {
-        return "공식 결과";
-    }
-    // live state
-    else if ($status == "l") {
-        return "실시간 결과";
-    }
-    // not started state
-    else {
-        return "시작안함";
-    }
+    global $status_dic;
+    $hasKey = array_key_exists($s, $status_dic);
+    return $hasKey ? $status_dic[$s] : "";
 }
-function translatePass($pass)
+function translatePass($p)
 {
-    if ($pass == "p") {
-        return "통과";
-    } else if ($pass == "l") {
-        return "탈락";
-    } else if ($pass == "d") {
-        return "실격";
-    } else if ($pass == "w") {
-        return "기권";
-    } else {
-        return "시작안함";
-    }
+    global $pass_dic;
+    $hasKey = array_key_exists($p, $pass_dic);
+    return $hasKey ? $pass_dic[$p] : "";
 }
-function translateGender($gender)
+function translateGender($g)
 {
-
-    if ($gender == "m") {
-        return "남성";
-    } else if ($gender == "f") {
-        return "여성";
-    } else {
-        return "혼성";
-    }
+    global $gender_dic;
+    $hasKey = array_key_exists($g, $gender_dic);
+    return $hasKey ? $gender_dic[$g] : "";
+    return $gender_dic[$g];
 }
 
 function changeRecordByStatus($status, $live, $official)
@@ -99,7 +81,7 @@ function changeRecordByStatus($status, $live, $official)
         return $live;
     }
     // not started state
-    else {  
+    else {
         return "";
     }
 }

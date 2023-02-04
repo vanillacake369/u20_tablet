@@ -55,7 +55,6 @@ include_once(__DIR__ .  "/view_block.php");
                             $num = 0;
                             foreach ($schedule_array as $schedule) {
                                 echo "<tr>";
-
                                 // 번호
                                 echo "<td>" . ++$num . "</td>";
                                 // 경기 이름

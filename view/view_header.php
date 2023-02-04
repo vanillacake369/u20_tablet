@@ -36,7 +36,7 @@ $schedule_array = getScheduleByState($judge_account);
                 $group = trim($schedule["schedule_group"]) . "조";
                 $link_name = $sports . $gender . $round . $group . " " .  "결과";
                 echo '<li class="logo">';
-                echo "<a href='view_result.php?id=" . trim($schedule["schedule_id"]) . "'>$link_name</a>";
+                echo "<a href='view_result.php?schedule_id=" . trim($schedule["schedule_id"]) . "'>$link_name</a>";
                 echo '</li>';
                 echo "<td></td>";
             }
