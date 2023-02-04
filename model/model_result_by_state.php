@@ -24,11 +24,13 @@ function getResultByState($id)
     while ($row = mysqli_fetch_array($result)) {
         $row["record_order"] = $row["record_order"];
         $row["athlete_name"] = $row["athlete_name"];
+        $row["athlete_gender"] = translateGender($row["athlete_gender"]);
         $row["athlete_country"] = $row["athlete_country"];
-        $row["athlete_division"] = translateDivision($row["athlete_division"]);
+        $row["athlete_division"] = $row["athlete_division"];
         $row["record_record"] = changeRecordByStatus($row["record_status"], $row["record_live_record"], $row["record_official_record"]);
         $row["record_result"] = changeResultByStatus($row["record_status"], $row["record_live_result"], $row["record_official_result"]);
-        $row["schedule_id"] = changeIdByStatus($row["record_status"], $row["schedule_id"]);
+        $row["record_pass"] = translatePass($row["record_pass"]);
+        $row["record_id"] = changeIdByStatus($row["record_status"], $row["record_id"]);
         $row["record_status"] = translateStatus($row["record_status"]);
         $rows[] = $row;
     }

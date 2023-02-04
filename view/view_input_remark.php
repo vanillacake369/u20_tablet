@@ -25,7 +25,7 @@ include_once(__DIR__ .  "/view_block.php");
      * 
      * (+a. 여기서는 DIP,OCP를 어떻게 지켜야 하나!?! 
      * **모델을 쓰지 못 하니까 못 지킨다??
-     * 그러면 모델을 쓰지 못 하게 되면 아예 5원칙은 어길 수 밖에 없게되나? 
+     * 그러면 모델을 쓰지 못 하게 되면 아예 5원칙은 어길 수 밖에 없게되 나? 
      * 그건 아닐 거 같은데...방법이 있을 거 같은데...*)
      */
     ?>
@@ -34,13 +34,7 @@ include_once(__DIR__ .  "/view_block.php");
             <div class="mypage">
                 <h3>선수 정보 등록</h3>
                 <hr />
-                <form action="./module/athlete_Insert.php" method="post" class="form" enctype="multipart/form-data">
-                    <div class="input_row">
-                        <div class="text-center">
-                            <h6>새로운 이미지를 선택해주세요</h6>
-                            <input type="file" name="athlete_imgFile" class="form-control" />
-                        </div>
-                    </div>
+                <form action="model_record.php" method="post" class="form" enctype="multipart/form-data">
                     <div class="input_row">
                         <span class="input_guide">이름</span>
                         <input type="text" name="athlete_second_name" id="athlete_name" value="" class="input_text_row" placeholder="이름을 입력해 주세요" required />

@@ -7,6 +7,17 @@
  * 2. enum에 따른 function composition(array_reduce)사용하기
  * *제약사항:enum은 8.1부터 지원됨..*
  */
+
+
+// 국가코드(key) => 국가한글명(value)
+include_once(__DIR__ . "/../database/dbconnect.php");
+$sql = "SELECT DISTINCT country_code,country_name_kr FROM list_country";
+$result = $db->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+    $country_code_dic[$row["country_code"]] = $row["country_name_kr"];
+}
+
+
 $gender = [];
 $gender["m"] = "남성";
 $gender["f"] = "여성";
@@ -28,9 +39,9 @@ $status["o"] = "공식 결과";
 $status["ㅣ"] = "실시간 결과";
 $status["n"] = "시작안함";
 
-function translateDivision($division)
+function translateScheduleDivision($division)
 {
-    if ($division == 'b') {
+    if ($division == "b") {
         return "대분류";
     } else {
         return "소분류";
@@ -39,11 +50,11 @@ function translateDivision($division)
 function translateStatus($status)
 {
     // official state
-    if ($status == 'o') {
+    if ($status == "o") {
         return "공식 결과";
     }
     // live state
-    else if ($status == 'l') {
+    else if ($status == "l") {
         return "실시간 결과";
     }
     // not started state
@@ -53,13 +64,13 @@ function translateStatus($status)
 }
 function translatePass($pass)
 {
-    if ($pass == 'p') {
+    if ($pass == "p") {
         return "통과";
-    } else if ($pass == 'l') {
+    } else if ($pass == "l") {
         return "탈락";
-    } else if ($pass == 'd') {
+    } else if ($pass == "d") {
         return "실격";
-    } else if ($pass == 'w') {
+    } else if ($pass == "w") {
         return "기권";
     } else {
         return "시작안함";
@@ -68,9 +79,9 @@ function translatePass($pass)
 function translateGender($gender)
 {
 
-    if ($gender == 'm') {
+    if ($gender == "m") {
         return "남성";
-    } else if ($gender == 'f') {
+    } else if ($gender == "f") {
         return "여성";
     } else {
         return "혼성";
@@ -80,26 +91,26 @@ function translateGender($gender)
 function changeRecordByStatus($status, $live, $official)
 {
     // official state
-    if ($status == 'o') {
+    if ($status == "o") {
         return $official;
     }
     // live state
-    else if ($status == 'l') {
+    else if ($status == "l") {
         return $live;
     }
     // not started state
-    else {
+    else {  
         return "";
     }
 }
 function changeResultByStatus($status, $live, $official)
 {
     // official state
-    if ($status == 'o') {
+    if ($status == "o") {
         return $official;
     }
     // live state
-    else if ($status == 'l') {
+    else if ($status == "l") {
         return $live;
     }
     // not started state
@@ -107,15 +118,15 @@ function changeResultByStatus($status, $live, $official)
         return "";
     }
 }
-function changeIdByStatus($status, $schedule_id)
+function changeIdByStatus($status, $id)
 {
     // official state
-    if ($status == 'o') {
+    if ($status == "o") {
         return "";
     }
     // live state
-    else if ($status == 'l') {
-        return $schedule_id;
+    else if ($status == "l") {
+        return $id;
     }
     // not started state
     else {

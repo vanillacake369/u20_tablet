@@ -20,7 +20,7 @@ include_once(__DIR__ .  "/view_block.php");
   include_once(__DIR__ . "/../model/model_match_info_by_state.php");
 
   // $id : 스케줄 id
-  $id = trim($_GET["id"]);
+  $id = trim($_GET["schedule_id"]);
   $result_array = getResultByState($id);
   $match_info_array = getMatchInfoByState($id);
   ?>
@@ -48,6 +48,10 @@ include_once(__DIR__ .  "/view_block.php");
             </thead>
             <tbody>
               <?php
+              /**
+               * 
+               * @var object $match_info_array
+               */
               foreach ($match_info_array as $match_info) {
                 echo "<tr>";
                 echo "<td>" . $match_info["sports_category"] . "</td>";
@@ -93,24 +97,27 @@ include_once(__DIR__ .  "/view_block.php");
                 // 선수명(팀명)
                 echo "<td>" . $result["athlete_name"] . "</td>";
                 // 선수 성별
-                echo "<td>" . $result["schedule_gender"] . "</td>";
+                echo "<td>" . $result["athlete_gender"] . "</td>";
                 // 국가
                 echo "<td>" . $result["athlete_country"] . "</td>";
                 // 소속
                 echo "<td>" . $result["athlete_division"] . "</td>";
                 // 기록
-                echo "<td>" . $result["record_live_record"] . "</td>";
+                echo "<td>" . $result["record_record"] . "</td>";
                 // 순위
-                echo "<td>" . $result["record_live_result"] . "</td>";
+                echo "<td>" . $result["record_result"] . "</td>";
                 // 통과
                 echo "<td>" . $result["record_pass"] . "</td>";
                 // 경기 상태(Official, Result..)
                 echo "<td>" . $result["record_status"] . "</td>";
-                if (trim($result["schedule_id"]) != "") {
+                if (trim($result["record_id"]) != "") {
                   // 경기 결과 입력
-                  echo "<td><a href='/view_input_result.php?id=" . trim($result["schedule_id"]) . "'>결과 입력</a></td>";
+                  echo "<td><a href='view_input_result.php?result_id=" . trim($result["record_id"]) . "'>결과 입력</a></td>";
                   // 경기 비고
-                  echo "<td><a href='/view_input_remark.php?remark_category=result&id=" . trim($result["schedule_id"]) . "'>비고 입력</a></td>";
+                  echo "<td><a href='view_input_remark.php?remark_category=result&result_id=" . trim($result["record_id"]) . "'>비고 입력</a></td>";
+                } else {
+                  echo "<td></td>";
+                  echo "<td></td>";
                 }
                 echo "</tr>";
               }
