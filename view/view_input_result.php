@@ -1,6 +1,6 @@
 <?php
 // 접근 제한 컨트롤러 :: 공통
-include_once(__DIR__ .  "/controller_block.php");
+include_once(__DIR__ .  "/view_block.php");
 ?>
 
 
@@ -9,7 +9,7 @@ include_once(__DIR__ .  "/controller_block.php");
 
 <head>
     <?php
-    include_once(__DIR__ .  "/view/head.php");
+    include_once(__DIR__ .  "/head.php");
     ?>
 </head>
 

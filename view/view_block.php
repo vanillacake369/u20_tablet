@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . "/auth/authCheck.php");
+include_once(__DIR__ . "/../auth/authCheck.php");
 
 // 에러 메세지 출력 제한 :: 배포 시 무조건 기능 풀어줄 것
 // ini_set('display_errors', '0');
