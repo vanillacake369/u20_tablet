@@ -38,7 +38,7 @@ include_once(__DIR__ .  "/view_block.php");
     <div class="container">
         <!-- class="contents something" -->
         <div class="something" style="padding: 100px 15px 60px 15px">
-            <form action="sendResult2.php" method="post" class="form">
+            <form action="sendResult2.php" id="sendForm" method="post" class="form">
                 <h3 style="width:45%; display:inline-block; margin-right: 4.6%;">경기 이름</h3>
                 <h3 style="width:48%; display:inline-block;">라운드</h3>
                 <div class="input_row" style="width:45%; margin-right: 4.6%;">
@@ -140,7 +140,9 @@ include_once(__DIR__ .  "/view_block.php");
                                     style="float: left; width: 80px; padding-right: 5px" readonly/>
                                 </div>
                                 </div></td>';
-                                echo '<td><input placeholder="비고" type="text" name="bigo[]" class="input_text" value="" maxlength="100" /></td>';
+                                // echo '<td><input placeholder="비고" type="text" name="bigo[]" class="input_text" value="" maxlength="100" /></td>';
+                                echo '<td><textarea rows="4" cols="15" name="comment" form="sendForm">비고를 입력해주세요</textarea></td>';
+
                                 if ($row['record_new'] == 'y') {
                                     $newrecord = $db->query("SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='" . $row['athlete_name'] . "' AND worldrecord_sports='" . $rows['schedule_sports'] . "'");
                                     //추후에 태블릿용 페이지를 만든 후 일정과 연결 시 스포츠이름 받아와야함
