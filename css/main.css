@@ -508,3 +508,193 @@ header > div ul.navbar > li {
 .login_pannel .btn_login {
   margin-top: 20px;
 }
+
+/* 권산꺼 임시*/
+.input_row {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  border: 1px solid var(--color-dark-white);
+  border-radius: 5px;
+  padding: 12px;
+  margin: 10px 0 20px 0;
+}
+.btn_base a,
+.btn_base input,
+.btn_base button,
+.btn_base input > label {
+  display: block;
+  text-align: center;
+  width: 80px;
+  padding: 9px 0;
+  font-size: 1em;
+  text-decoration: none;
+  border-radius: 6px;
+  font-family: "NotoSansKR-Medium";
+}
+
+.btn_base .btn_add,
+.btn_base a.btn_footer {
+  /* background:#024274; */
+  background: #e9eaed;
+  color: #444444;
+}
+
+.btn_base .btn_add:hover,
+.btn_base a.btn_footer {
+  /* background:#002c4f;  */
+  background: #bdbdbd;
+}
+
+.btn_base a.btn_footer {
+  border-radius: 0;
+}
+
+.btn_base .btn_add i {
+  position: relative;
+  left: -6px;
+}
+.base_mar {
+  margin-bottom: 8px;
+}
+.col_left {
+  float: left;
+  margin-right: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+.btn_excel span.btn_txt {
+  position: relative;
+  top: -1px;
+}
+
+.btn_excel:hover {
+  background: #0a572b;
+}
+
+.label_for_excel_import {
+  display: inline-block;
+  background-color: #147e47;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  width: 80px;
+  padding: 9px 0;
+  font-size: 1em;
+  text-decoration: none;
+  border-radius: 6px;
+  font-family: "NotoSansKR-Medium";
+  cursor: pointer;
+  margin-right: 0.3rem;
+}
+table.team_table {
+  /*border: 1px solid #ccc;*/
+  border-collapse: collapse;
+  margin-top: 10px;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  border-top: 2px solid #024274;
+}
+
+table.team_table caption,
+table.modal_table caption {
+  display: none;
+}
+
+table.team_table tr {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table.team_table th,
+table.team_table td {
+  /* padding: 0.825em; */
+  padding: 13px 10px 13px 10px;
+  text-align: center;
+}
+
+table.team_table tbody tr.border_bg,
+table.modal_table tr.border_bg {
+  background: #fff;
+}
+
+table.team_table th {
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  background: #f3f6f9;
+  color: #2f2f2f;
+  white-space: nowrap;
+}
+
+table.team_table td {
+  font-size: 1em;
+  position: relative;
+  /* white-space: nowrap; */
+}
+
+table.team_table > tbody > tr:hover {
+  background-color: #f9d8e6;
+  /*#bbdefd;*/
+  color: #333;
+}
+
+/*Modified by KJLEE at 2018.03.27*/
+table.team_table td[data-th]::before {
+  display: none;
+  text-transform: uppercase;
+  content: attr(data-th);
+}
+
+table.team_table tr.tb_title_top01 th,
+table.team_table tr.tb_title_top02 td {
+  text-align: left;
+  padding-left: 18px;
+  background: #1565c0;
+  color: #fff;
+}
+
+table.team_table tbody tr.tb_title_top02 td.sm_td_title {
+  display: none;
+}
+
+table.team_table.center {
+  width: 70%;
+  border: 1px solid #ddd;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.table > tbody > tr:nth-of-type(even) {
+  background-color: #e0dfdf;
+}
+.input_text {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: var(--font-small);
+  font-weight: var(--weight-bold);
+}
+.signup_submit {
+  padding-top: 40px;
+  margin-bottom: 40px;
+}
+.btn_login {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border-radius: 5px;
+  background-color: var(--color-light-grey);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-white);
+}
+
+.btn_login:hover {
+  background: var(--color-grey);
+}
