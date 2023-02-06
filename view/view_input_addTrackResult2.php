@@ -27,7 +27,7 @@ include_once(__DIR__ .  "/view_block.php");
     ?>
 
     <?php
-    $id = $_GET['id'];
+    $id = $_GET['schedule_id'];
     include_once "../database/dbconnect.php"; //B:데이터베이스 연결
     $sql = "SELECT DISTINCT judge_name,schedule_round,schedule_status,record_wind,schedule_sports FROM list_judge JOIN list_record ON judge_id = record_judge INNER JOIN list_schedule ON schedule_id= record_schedule_id AND schedule_id = '" . $id . "'";
     $result = $db->query($sql);
