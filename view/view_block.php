@@ -10,10 +10,10 @@ if (session_id() == '') {
 }
 
 // 접근 제한 :: 배포 시 무조건 기능 풀어줄 것
-$session = $_SESSION["Session"];
-block($_SERVER['HTTP_REFERER'] == '');
-block(!isSetSession($session));
-block(!isLatestSession($db, $session));
+// $session = $_SESSION["Session"];
+// block($_SERVER['HTTP_REFERER'] == '');
+// block(!isSetSession($session));
+// block(!isLatestSession($db, $session));
 
 /**
  * URL 입력 접근 제어
@@ -26,6 +26,6 @@ function block($isNotAuthorized)
     if ($isNotAuthorized == true) {
         exit("<script>
             alert('잘못된 접근입니다.');
-            window.location.href = '/index.php';</script>");
+            window.location.href = '../index.php';</script>");
     }
 }

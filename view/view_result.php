@@ -16,6 +16,7 @@ include_once(__DIR__ .  "/view_block.php");
   // header
   include_once(__DIR__ . "/view_header.php");
 
+  // use match result model
   include_once(__DIR__ . "/../model/model_result_by_state.php");
   include_once(__DIR__ . "/../model/model_match_info_by_state.php");
 
@@ -30,6 +31,7 @@ include_once(__DIR__ .  "/view_block.php");
       <div class="wrap-table100">
         <!-- 경기 관련 내용 View 테이블 -->
         <div class="table-wrap">
+          <h3>100m남성결승조</h3>
           <table>
             <colgroup>
               <col style="width: auto" />
