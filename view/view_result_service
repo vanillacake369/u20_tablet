@@ -1,0 +1,12 @@
+<?php
+$sports_category_dic = [];
+/**
+ * schedule_sports(key) => view_**(value)
+ */
+
+function getResultLink($schedule_sports)
+{
+    global $sports_category_dic;
+    $page = $sports_category_dic[$schedule_sports];
+    return "<td><a href='" . $page . ".php?&schedule_id=";
+}
