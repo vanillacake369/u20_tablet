@@ -30,6 +30,7 @@ include_once(__DIR__ .  "/view_block.php");
       <div class="wrap-table100">
         <!-- 경기 관련 내용 View 테이블 -->
         <div class="table-wrap">
+          <h3>100m남성결승조</h3>
           <table>
             <colgroup>
               <col style="width: auto" />
