@@ -1,111 +1,31 @@
-<!DOCTYPE html>
-<html lang="ko">
+<?php
+// 접근 제한 컨트롤러 :: 공통
+include_once(__DIR__ .  "/view_block.php");
+?>
+
+<!-- head 태그에 각 컨트롤러가 직접 추가할 수 있도록 head를 따로 독립 -->
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../fontawesome/css/all.min.css" />
-    <script src="..//fontawesome/js/all.min.js"></script>
-    <!--Data Tables-->
-    <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css" />
-    <script type="text/javascript" src="../js/onlynumber.js"></script>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script>
-        function openTextFile() {
-            var input = document.createElement("input");
-            input.type = "file";
-            input.accept = "text/plain"; // 확장자가 xxx, yyy 일때, ".xxx, .yyy"
-            input.onchange = function(event) {
-                processFile(event.target.files[0]);
-            };
-            input.click();
-        }
-
-        function processFile(file) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                let ddd = reader.result.split("\r\n");
-                let wind = document.querySelector('[name=\"wind\"]')
-                let val = ddd[0].split(" ")[1];
-                wind.value = val;
-                let count = -1;
-                for (i = 1; i < ddd.length; i++) {
-                    let k = ddd[i].split(" ")
-                    if (k[0].indexOf('rane') != 0) {
-                        count++
-
-                    } else {
-                        let on = document.querySelector("#" + k[0]).children
-                        let total = on[5].firstElementChild
-                        if (k[1]) {
-                            on[4].firstElementChild.value = 'p'
-                        } else if (k[0] == 'DNS') {
-                            on[4].firstElementChild.value = 'n'
-                            total.value = 0
-                            on[6].firstElementChild.value = k[0]
-                        } else if (k[0] == 'DNF') {
-                            on[4].firstElementChild.value = 'n'
-                            total.value = 0
-                            on[6].firstElementChild.value = k[0]
-                        } else {
-                            on[4].firstElementChild.value = 'd'
-                            total.value = 0
-                            on[6].firstElementChild.value = 'DQ'
-                        }
-                        let temp = k[1].split(":")
-                        if (temp.length == 2) {
-                            total.value = parseFloat(total.value) + parseFloat(temp[0] * 60) + parseFloat(temp[1])
-                        } else {
-                            total.value = parseFloat(total.value) + parseFloat(temp[0])
-                        }
-                        if (count == 3) {
-                            if (parseInt(parseInt(total.value) / 60) >= 1) {
-                                if (parseInt(total.value % 60) == "0") {
-                                    total.value = parseInt(parseInt(total.value) / 60) + ":0" + (total.value % 60)
-                                        .toFixed(2)
-                                } else {
-                                    total.value = parseInt(parseInt(total.value) / 60) + ":" + (total.value % 60)
-                                        .toFixed(2)
-                                }
-                            }
-                        }
-                    }
-                }
-                rankcal1()
-            };
-            reader.readAsText(file, /* optional */ "utf-8");
-        }
-
-        $(document).on("click", "input[name='newrecord[]']", function() {
-            console.log("click")
-            const form = document.createElement("form");
-            var url = "change_record_category.php";
-            form.setAttribute("method", "post");
-            form.setAttribute("action", url);
-            form.setAttribute("target", "popup test");
-            var name = "popup test";
-            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
-            window.open('', name, option);
-            const hidden_name = document.createElement("input");
-            hidden_name.setAttribute("type", "hidden");
-            hidden_name.setAttribute("name", "athlete_name");
-            hidden_name.setAttribute("value", $(this).attr('ath'));
-            form.appendChild(hidden_name);
-            const hidden_sports = document.createElement("input");
-            hidden_sports.setAttribute("type", "hidden");
-            hidden_sports.setAttribute("name", "schedule_sports");
-            hidden_sports.setAttribute("value", $(this).attr('sports'));
-            form.appendChild(hidden_sports);
-            document.body.appendChild(form);
-            form.submit();
-        })
-    </script>
-    <title>U20</title>
+    <?php
+    include_once(__DIR__ .  "/head.php");
+    ?>
 </head>
 
 <body>
+    <?php
+    // header
+    include_once(__DIR__ . "/view_header.php");
+
+    // use match result model
+    include_once(__DIR__ . "/../model/model_result_by_state.php");
+    include_once(__DIR__ . "/../model/model_match_info_by_state.php");
+
+    // $id : 스케줄 id
+    // $id = trim($_GET["schedule_id"]);
+    // $result_array = getResultByState($id);
+    // $match_info_array = getMatchInfoByState($id);
+    ?>
+
     <?php
     $id = $_GET['id'];
     include_once "../database/dbconnect.php"; //B:데이터베이스 연결

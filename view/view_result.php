@@ -16,6 +16,7 @@ include_once(__DIR__ .  "/view_block.php");
   // header
   include_once(__DIR__ . "/view_header.php");
 
+  // use match result model
   include_once(__DIR__ . "/../model/model_result_by_state.php");
   include_once(__DIR__ . "/../model/model_match_info_by_state.php");
 
