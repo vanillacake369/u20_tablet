@@ -20,6 +20,8 @@ include_once(__DIR__ .  "/view_block.php");
 
     // 경기 스케줄 가져오기
     include_once(__DIR__ . "/../model/model_schedule_by_state.php");
+    // 경기 종목에 따른 결과 보기 페이지 지정
+    include_once(__DIR__ . "/view_result_config.php");
 
     // model_schedule_by_state에서 결과 가져오기
     $judge_account = trim($_SESSION["Id"]);
@@ -76,12 +78,9 @@ include_once(__DIR__ .  "/view_block.php");
                                 // 경기 상태(Official, Result..)
                                 echo "<td>" . $schedule["schedule_result"] . "</td>";
                                 // 경기 결과 입력
-                                // echo "<td><a href='view_result.php?schedule_id=" . trim($schedule["schedule_id"]) . "'>결과 보기</a></td>";
-                                //  산이가 만든 페이지로 임시
-                                echo "<td><a href='view_input_addTrackResult2.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>결과 보기</a></td>";
+                                echo getResultLink($schedule["schedule_sports"], $schedule["schedule_id"]);
                                 // 경기 비고
                                 echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>비고 보기</a></td>";
-
                                 echo "</tr>";
                             }
 
