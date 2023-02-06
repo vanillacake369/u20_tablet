@@ -3,7 +3,9 @@
 U20 아시아 세계선수권 운영 시, 심판진분들께서 입력하실 때 쓰는 시스템입니다.
 
 ## 시스템 시퀀스 다이어그램
-https://user-images.githubusercontent.com/75259783/216961152-dff1a093-ec73-4765-a70d-2047a57a1057.png
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/75259783/216961152-dff1a093-ec73-4765-a70d-2047a57a1057.png">
+</p>
 
 ## 기능요구사항
 - [ ] ㅁㄴㅇ
