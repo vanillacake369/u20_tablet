@@ -25,13 +25,6 @@ $schedule_array = getScheduleByState($judge_account);
                 // Ex) 100m 남자 결승 1조 결과
                 $sports = trim($schedule["schedule_name"]);
                 $gender = trim($schedule["schedule_gender"]);
-                if ($gender == 'm') {
-                    $gender = '남성';
-                } else if ($gender == 'f') {
-                    $gender = '여성';
-                } else {
-                    $gender = '혼성';
-                }
                 $round = trim($schedule["schedule_round"]);
                 $group = trim($schedule["schedule_group"]) . "조";
                 $link_name = $sports . $gender . $round . $group . " " .  "결과";

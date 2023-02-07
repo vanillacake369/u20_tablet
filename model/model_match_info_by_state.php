@@ -1,6 +1,6 @@
 <?php
 include_once(__DIR__ . "/model_match_info.php");
-include_once(__DIR__ . "/dictionary.php");
+include_once(__DIR__ . "/filter.php");
 /**
  * 경기 관련 모든 정보 가져오는 함수
  *

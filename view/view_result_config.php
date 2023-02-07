@@ -24,6 +24,7 @@ $sports_category_dic["400mh"] = "track";
 $sports_category_dic["5000m"] = "track";
 $sports_category_dic["800m"] = "track";
 $sports_category_dic["racewalk"] = "track";
+// 종합 : 종합 > 라운드 == 100m,멀리뛰기...등등
 // $sports_category_dic["decathlon"] = "track";
 // $sports_category_dic["heptathlon"] = "track";
 // relay
