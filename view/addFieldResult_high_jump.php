@@ -29,7 +29,7 @@
 
   <?php
   $id = $_GET['id'];
-  include_once "../database/dbconnect.php"; //B:데이터베이스 연결
+  include_once(__DIR__ . "/../database/dbconnect.php"); //B:데이터베이스 연결
   $sql =
     "SELECT DISTINCT judge_name,schedule_round,schedule_status,schedule_sports FROM list_judge JOIN list_record ON judge_id = record_judge INNER JOIN list_schedule ON schedule_id= record_schedule_id AND schedule_id = '$id'";
   $result = $db->query($sql);
