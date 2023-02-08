@@ -34,9 +34,24 @@ include_once(__DIR__ .  "/view_block.php");
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table-wrap">
+                    <h2 class="intro">경기 일정</h2>
                     <table>
-                        <colgroup>
+                        <!-- <colgroup>
                             <col style="width: auto" />
+                        </colgroup> -->
+                        <colgroup>
+                            <col class="col_number">
+                            <col class="col_match_name">
+                            <col class="col_match_gender">
+                            <col class="col_match_round">
+                            <col class="col_match_group">
+                            <col class="col_match_division">
+                            <col class="col_match_place">
+                            <col class="col_match_date">
+                            <col class="col_match_time">
+                            <col class="col_match_state">
+                            <col class="col_match_view">
+                            <col class="col_match_memo">
                         </colgroup>
                         <thead>
                             <tr>
@@ -73,10 +88,14 @@ include_once(__DIR__ .  "/view_block.php");
                                 echo "<td>" . $schedule["schedule_division"] . "</td>";
                                 // 경기 장소
                                 echo "<td>" . $schedule["schedule_location"] . "</td>";
+                                // 시작날짜 & 시작 시간 구하기
+                                $date_time = explode(" ", $schedule["schedule_start"]);
+                                $time = $date_time[1];
+                                $date = $date_time[0];
                                 // 경기 시작일
-                                echo "<td>" . $schedule["schedule_date"] . "</td>";
+                                echo "<td>" . $date . "</td>";
                                 // 경기 시작시간
-                                echo "<td>" . $schedule["schedule_start"] . "</td>";
+                                echo "<td>" . $time . "</td>";
                                 // 경기 상태(Official, Result..)
                                 echo "<td>" . $schedule["schedule_result"] . "</td>";
                                 // 경기 결과 입력
@@ -93,7 +112,6 @@ include_once(__DIR__ .  "/view_block.php");
                                 // echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>비고 보기</a></td>";
                                 echo "</tr>";
                             }
-
                             ?>
                         </tbody>
                     </table>
