@@ -34,6 +34,13 @@ $division_dic = [];
 $division_dic["b"] = "MAIN";
 $division_dic["s"] = "SUB";
 
+// 장소
+$location_dic = [];
+$location_dic["A필드"] = "FIELD-A";
+$location_dic["B필드"] = "FIELD-B";
+$location_dic["중앙트랙"] = "CENTER-TRACK";
+$location_dic["예천 공설운동장"] = "YECHEON-STADIUM ";
+
 // 경기 상태
 $status_dic = [];
 $status_dic["o"] = "OFFICIAL";
@@ -46,11 +53,17 @@ $status_dic["n"] = "NOT STARTED";
  * @param [type] $division
  * @return void
  */
-function translateScheduleDivision($d)
+function translateDivision($d)
 {
     global $division_dic;
     $hasKey = array_key_exists($d, $division_dic);
     return $hasKey ? $division_dic[$d] : "";
+}
+function translateLocation($l)
+{
+    global $location_dic;
+    $hasKey = array_key_exists($l, $location_dic);
+    return $hasKey ? $location_dic[$l] : "";
 }
 /**
  * Undocumented function

@@ -207,13 +207,13 @@ header > div ul.navbar > li {
 [ 테이블 공통 CSS ]*/
 /* table col 넓이 */
 .col_number {
-  width: 4%;
+  width: 3%;
 }
 .col_match_name {
   width: auto;
 }
 .col_match_gender {
-  width: auto;
+  width: 7%;
 }
 .col_match_round {
   width: 8%;
@@ -222,25 +222,25 @@ header > div ul.navbar > li {
   width: 8%;
 }
 .col_match_division {
-  width: 10%;
+  width: 5%;
 }
 .col_match_place {
-  width: auto;
+  width: 12%;
 }
 .col_match_date {
-  width: auto;
+  width: 8%;
 }
 .col_match_time {
-  width: auto;
+  width: 8%;
 }
 .col_match_state {
-  width: auto;
+  width: 8%;
 }
 .col_match_view {
-  width: auto;
+  width: 8%;
 }
 .col_match_memo {
-  width: auto;
+  width: 8%;
 }
 
 /* 경기 소개 h1 */
@@ -270,7 +270,8 @@ header > div ul.navbar > li {
 /*//////////////////////////////////////////////////////////////////
 [ 경기 안내 테이블 ]*/
 .wrap-table100 .table-wrap {
-  margin-bottom: 3.5714285714rem;
+  margin-bottom: 2rem;
+  /* margin-bottom: 3.5714285714rem; */
 }
 
 .wrap-table100 table {
@@ -287,17 +288,16 @@ header > div ul.navbar > li {
   border: 0;
   border-bottom: 0.14rem solid #ddd;
   /* border-bottom: 0.14rem solid #15a93c; */
+  font-size: 18px;
   padding: 1.0714285714rem 0 1rem;
   vertical-align: middle;
   text-align: center;
-  font-size: 1em;
-  font-weight: bold;
   white-space: nowrap;
 }
 .wrap-table100 td {
   padding: 20px 0;
   color: #222;
-  font-size: 16px;
+  font-size: 18px;
   background: #fff;
   vertical-align: middle;
   border-color: #f2f3f6;
@@ -329,7 +329,7 @@ header > div ul.navbar > li {
 }
 
 .wrap-table100 {
-  width: 960px;
+  width: 100%;
   /* border-radius: 10px; */
   overflow: hidden;
 }
@@ -482,10 +482,6 @@ header > div ul.navbar > li {
   }
 }
 
-.table > tbody > .row:nth-of-type(even) {
-  background-color: #e0dfdf;
-}
-
 .btn_login {
   display: block;
   width: 100%;
@@ -583,9 +579,31 @@ header > div ul.navbar > li {
 }
 .btn_memo {
   display: inline-block;
+  text-align: center;
+  border: 1px solid var(--color-dark-white);
+  border-radius: 10px;
+  width: 70rem;
+  height: 3rem;
+  margin-bottom: 10px;
+}
+.btn_update {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid var(--color-dark-white);
+  border-radius: 10px;
+  width: 70rem;
+  height: 3rem;
 }
 .div_block {
   display: inline-block;
+}
+/*버튼 가운데 정렬 CSS*/
+.container_postbtn {
+  text-align: center;
+}
+.container_postbtn .postbtn_like {
+  display: inline-block;
+  float: none !important;
 }
 
 .btn_base .btn_add,

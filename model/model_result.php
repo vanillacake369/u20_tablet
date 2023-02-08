@@ -16,3 +16,12 @@ function getResult($schedule_id)
 function insertResult($id)
 {
 }
+function getRecordByRecordId($record_id)
+{
+        global $db;
+        $sql = "SELECT *
+                FROM list_record AS r
+                WHERE r.record_id = $record_id";
+        $result = $db->query($sql);
+        return $result;
+}

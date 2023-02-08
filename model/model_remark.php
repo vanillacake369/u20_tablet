@@ -23,5 +23,5 @@ $stmt->execute();
 
 echo "<script>
 alert('비고 입력 완료');
-window.location.href='../view/view_schedule.php';
+history.go(-2);
 </script>";
