@@ -282,7 +282,7 @@ header > div ul.navbar > li {
 
 .container-table100 {
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   /* background: #dbdcdf; */
   display: -webkit-box;
   display: -webkit-flex;
@@ -540,6 +540,21 @@ header > div ul.navbar > li {
   font-family: "NotoSansKR-Medium";
 }
 
+.btn_grey {
+  background: #909092;
+  color: #ffffff;
+}
+.btn_navy {
+  background: #092475;
+  color: #ffffff;
+}
+.btn_memo {
+  display: inline-block;
+}
+.div_block {
+  display: inline-block;
+}
+
 .btn_base .btn_add,
 .btn_base a.btn_footer {
   /* background:#024274; */
@@ -679,6 +694,8 @@ table.team_table.center {
 .table > tbody > tr:nth-of-type(even) {
   background-color: #e0dfdf;
 }
+/*//////////////////////////////////////////////////////////////////
+[ 로그인 CSS ]*/
 .input_text {
   position: relative;
   display: block;
@@ -704,4 +721,17 @@ table.team_table.center {
 
 .btn_login:hover {
   background: var(--color-grey);
+}
+/*//////////////////////////////////////////////////////////////////
+[ 비고 CSS ]*/
+.memo_form {
+  justify-content: center;
+  align-items: center;
+}
+.memo {
+  margin-bottom: 1rem;
+  padding-left: 0.2rem;
+  width: 99.8%;
+  height: 200px;
+  font-size: 20px;
 }
