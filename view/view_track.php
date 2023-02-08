@@ -95,17 +95,17 @@ $rows = mysqli_fetch_assoc($result);
             $result = $db->query($sql);
             while ($row = mysqli_fetch_array($result)) {
                 echo '<tr id="rane' . $row['record_order'] . '">';
-                echo '<td><input type="number" name="rank[]" id="rank" class="input_text" value="' . $row['record_live_result'] . '" min="1" max="12" required="" /></td>';
-                echo '<td><input type="number" name="rain[]" class="input_text" value="' . $row['record_order'] . '" min="1" max="12" required="" readonly /></td>';
+                echo '<td><input type="number" name="rank[]" id="rank" class="input_text" value="' . trim($row['record_live_result']) . '" min="1" max="12" required="" /></td>';
+                echo '<td><input type="number" name="rain[]" class="input_text" value="' . trim($row['record_order']) . '" min="1" max="12" required="" readonly /></td>';
                 echo '<td><input placeholder="선수 이름" type="text" name="playername[]" 
-                                class="input_text" value="' . $row['athlete_name'] . '" maxlength="30" required="" readonly /></td>';
-                echo '<td><input placeholder="경기 통과 여부" type="text" name="gamepass[]" class="input_text" value="' . $row['record_pass'] . '" maxlength="50" required="" /></td>';
-                echo '<td><input placeholder="경기 결과를 입력해주세요" type="text" name="gameresult[]" id="result" class="input_text" value="' . $row['record_live_record'] . '" maxlength="8"
+                                class="input_text" value="' . trim($row['athlete_name']) . '" maxlength="30" required="" readonly /></td>';
+                echo '<td><input placeholder="경기 통과 여부" type="text" name="gamepass[]" class="input_text" value="' . trim($row['record_pass']) . '" maxlength="50" required="" /></td>';
+                echo '<td><input placeholder="경기 결과를 입력해주세요" type="text" name="gameresult[]" id="result" class="input_text" value="' . trim($row['record_live_record']) . '" maxlength="8"
                                  required="" onkeyup="trackFinal(this)" style="float: left; width: auto; padding-right: 5px" /></td>';
-                echo '<td><input placeholder="비고를 입력해주세요" type="text" name="bigo[]" class="input_text" value="' . ($row['record_memo'] ? $row['record_memo'] : '&nbsp') . '" maxlength="100" /></td>';
+                echo '<td><input placeholder="비고를 입력해주세요" type="text" name="bigo[]" class="input_text" value="' . (trim($row['record_memo']) ? trim($row['record_memo']) : '&nbsp') . '" maxlength="100" /></td>';
 
                 if ($row['record_new'] == 'y') {
-                    $newrecord = $db->query("SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='" . $row['athlete_name'] . "' AND worldrecord_sports='" . $rows['schedule_sports'] . "'");
+                    $newrecord = $db->query("SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='" . trim($row['athlete_name']) . "' AND worldrecord_sports='" . trim($rows['schedule_sports']) . "'");
                     //추후에 태블릿용 페이지를 만든 후 일정과 연결 시 스포츠이름 받아와야함
                     $newathletics = array();
                     while ($athletics = mysqli_fetch_array($newrecord)) {
