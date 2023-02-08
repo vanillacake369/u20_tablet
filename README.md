@@ -87,37 +87,10 @@ U20 아시아 세계선수권 운영 시, 심판진분들께서 입력하실 때
 > - chore: 빌드 업무 수정, 패키지 매니저 수정 (Updating build tasks, package manager configs, etc; no production code change)
 
 ## 결과 입력 구조 & 네이밍 📋
-> sendResult (x)
-- 1 : 일반트랙 // track
-  - view*
-  - input*
-- 2 : 릴레이(트랙) // relay
-  - view*
-  - input*
-- 3 : 일반필드 // field
-  - view*
-  - input*
-- 4 : 멀리뛰기, 삼단뛰기 // long*jump
-  - view*
-  - input*
-- 5 : 높이뛰기, 장대 높이 뛰기 // high_jump
-  - view*
-  - input\_
+- track : 일반트랙
+- relay : 릴레이(트랙) 
+- field : 일반필드 
+- long*jump : 멀리뛰기, 삼단뛰기
+- high_jump : 높이뛰기, 장대 높이 뛰기 
 - three_try_after_reverse : 필드 경기 중에 높이뛰기, 장대높이뛰기를 제외한 경기에서 3차시기 와 5차시기 이후 순서 변경 로직
 
-### 로직 처리
-
-- 데이터베이스에 있는 데이터 가져오는 로직 :: model/
-- 입력로직 :: model/model_result/
-
-```php
-// live 이면
-if ($row["schedule_result"] === "l") {
-echo "<td>" . htmlspecialchars($row["record_live_record"]) . "</td>";
-echo "<td>Live Result</td>";
-// 카테고리 분류
-if ($row["sports_category"] === "트랙경기") {
-// 트랙 경기 > 100m, 400m 이면
-if ($row["schedule_sports"] === "4x100mR" || $row["schedule_sports"] === "4x400mR") {
-// 트랙경기 > 100m, 400m 핸들링 a 태그 출력
-```
