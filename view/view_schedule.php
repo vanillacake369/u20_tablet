@@ -77,27 +77,27 @@ include_once(__DIR__ .  "/view_block.php");
                                 // 번호
                                 echo "<td>" . ++$num . "</td>";
                                 // 경기 이름
-                                echo "<td>" . $schedule["schedule_name"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_name"]) . "</td>";
                                 // 선수 성별
-                                echo "<td>" . $schedule["schedule_gender"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_gender"]) . "</td>";
                                 // 라운드
-                                echo "<td>" . $schedule["schedule_round"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_round"]) . "</td>";
                                 // 경기 참가조
-                                echo "<td>" . $schedule["schedule_group"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_group"]) . "</td>";
                                 // 경기 분류
-                                echo "<td>" . $schedule["schedule_division"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_division"]) . "</td>";
                                 // 경기 장소
-                                echo "<td>" . $schedule["schedule_location"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_location"]) . "</td>";
                                 // 시작날짜 & 시작 시간 구하기
                                 $date_time = explode(" ", $schedule["schedule_start"]);
                                 $time = $date_time[1];
                                 $date = $date_time[0];
                                 // 경기 시작일
-                                echo "<td>" . $date . "</td>";
+                                echo "<td>" . trim($date) . "</td>";
                                 // 경기 시작시간
-                                echo "<td>" . $time . "</td>";
+                                echo "<td>" . trim($time) . "</td>";
                                 // 경기 상태(Official, Result..)
-                                echo "<td>" . $schedule["schedule_result"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_result"]) . "</td>";
                                 // 경기 결과 입력
                                 $schedule_sports = $schedule["schedule_sports"];
                                 $schedule_id = $schedule["schedule_id"];
@@ -108,8 +108,7 @@ include_once(__DIR__ .  "/view_block.php");
                                 }
                                 echo getResultLink($schedule_sports, $schedule_id);
                                 // 경기 비고
-                                echo "<td></td>";
-                                // echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>비고 보기</a></td>";
+                                echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>" . trim($schedule["schedule_memo"]) . "</a></td>";
                                 echo "</tr>";
                             }
                             ?>
