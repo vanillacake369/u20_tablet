@@ -26,6 +26,11 @@ include_once(__DIR__ .  "/view_block.php");
   $schedule_id = trim($_GET["schedule_id"]);
   $result_array = getResultByState($schedule_id);
   $match_info_array = getMatchInfoByState($schedule_id);
+  // 경기 소개 h1
+  $name = $match_info_array[0]["sports_name_kr"];
+  $gender = $match_info_array[0]["schedule_gender"];
+  $group = $match_info_array[0]["schedule_group"];
+  $match_intro_h1 = $name . " " . $gender . " " . $group . "조";
   ?>
 
   <div class="limiter">
@@ -33,7 +38,7 @@ include_once(__DIR__ .  "/view_block.php");
       <div class="wrap-table100">
         <!-- 경기 관련 내용 View 테이블 -->
         <div class="table-wrap">
-          <h3>100m남성결승조</h3>
+          <?php echo "<h2 class=\"intro\">$match_intro_h1</h2>" ?>
           <table>
             <colgroup>
               <col style="width: auto" />
@@ -46,6 +51,7 @@ include_once(__DIR__ .  "/view_block.php");
                 <th>날짜</th>
                 <th>시작시간</th>
                 <th>라운드</th>
+                <th>조</th>
                 <th>심판명</th>
                 <th>역할</th>
               </tr>
@@ -55,14 +61,15 @@ include_once(__DIR__ .  "/view_block.php");
               /** @var object $match_info_array */
               foreach ($match_info_array as $match_info) {
                 echo "<tr>";
-                echo "<td>" . $match_info["sports_category"] . "</td>";
-                echo "<td>" . $match_info["sports_name_kr"] . "</td>";
-                echo "<td>" . $match_info["schedule_gender"] . "</td>";
-                echo "<td>" . $match_info["schedule_date"] . "</td>";
-                echo "<td>" . $match_info["schedule_start"] . "</td>";
-                echo "<td>" . $match_info["schedule_round"] . "</td>";
-                echo "<td>" . $match_info["judge_name"] . "</td>";
-                echo "<td>" . $match_info["judge_duty"] . "</td>";
+                echo "<td>" . trim($match_info["sports_category"]) . "</td>";
+                echo "<td>" . trim($match_info["sports_name_kr"]) . "</td>";
+                echo "<td>" . trim($match_info["schedule_gender"]) . "</td>";
+                echo "<td>" . trim($match_info["schedule_date"]) . "</td>";
+                echo "<td>" . trim($match_info["schedule_start"]) . "</td>";
+                echo "<td>" . trim($match_info["schedule_round"]) . "</td>";
+                echo "<td>" . trim($match_info["schedule_group"]) . "</td>";
+                echo "<td>" . trim($match_info["judge_name"]) . "</td>";
+                echo "<td>" . trim($match_info["judge_duty"]) . "</td>";
                 echo "</tr>";
               }
               ?>
