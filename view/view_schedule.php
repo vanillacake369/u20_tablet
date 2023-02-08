@@ -20,6 +20,8 @@ include_once(__DIR__ .  "/view_block.php");
 
     // 경기 스케줄 가져오기
     include_once(__DIR__ . "/../model/model_schedule_by_state.php");
+    // 번역 딕셔너리 사용
+    include_once(__DIR__ . "/../model/dictionary.php");
     // 경기 종목에 따른 결과 보기 페이지 지정
     include_once(__DIR__ . "/view_result_config.php");
 
@@ -78,7 +80,14 @@ include_once(__DIR__ .  "/view_block.php");
                                 // 경기 상태(Official, Result..)
                                 echo "<td>" . $schedule["schedule_result"] . "</td>";
                                 // 경기 결과 입력
-                                echo getResultLink($schedule["schedule_sports"], $schedule["schedule_id"]);
+                                $schedule_sports = $schedule["schedule_sports"];
+                                $schedule_id = $schedule["schedule_id"];
+                                if ($schedule["schedule_sports"] == "decathlon" || $schedule["schedule_sports"] == "heptathlon") {
+                                    // 종합 경기는 라운드 ==> 경기한글명 =(치환)=> 경기코드
+                                    $schedule_sports = $schedule["schedule_round"];
+                                    $schedule_sports = array_search($schedule["schedule_round"], $sports_code_dic);
+                                }
+                                echo getResultLink($schedule_sports, $schedule_id);
                                 // 경기 비고
                                 echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>비고 보기</a></td>";
                                 echo "</tr>";

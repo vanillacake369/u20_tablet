@@ -1,7 +1,7 @@
 <?php
 
 include_once(__DIR__ . "/model_result.php");
-include_once(__DIR__ . "/dictionary.php");
+include_once(__DIR__ . "/filter.php");
 /**
  * - model_result는 결과만을 가져옴
  * - view_result는 받아온 값만을 출력
