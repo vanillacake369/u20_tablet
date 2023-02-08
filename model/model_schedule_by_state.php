@@ -18,7 +18,7 @@ function getScheduleByState($id)
         $row["schedule_name"] = $row["schedule_name"];
         // $row["schedule_gender"] = ($row["schedule_gender"]);
         $row["schedule_gender"] = translateGender(trim($row["schedule_gender"]));
-        $row["schedule_round"] = $row["schedule_round"];
+        $row["schedule_round"] = translateRound($row["schedule_round"]);
         $row["schedule_group"] = $row["schedule_group"];
         $row["schedule_division"] = translateScheduleDivision($row["schedule_division"]);
         $row["schedule_location"] = $row["schedule_location"];

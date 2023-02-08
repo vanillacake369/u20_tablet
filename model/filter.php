@@ -10,29 +10,35 @@
 
 // 성별
 $gender_dic = [];
-$gender_dic["m"] = "남성";
-$gender_dic["f"] = "여성";
-$gender_dic["c"] = "혼성";
+$gender_dic["m"] = "MALE";
+$gender_dic["f"] = "FEMALE";
+$gender_dic["c"] = "MIX";
+
+// 라운드
+$round_dic = [];
+$round_dic["예선"] = "TRYOUT";
+$round_dic["결승"] = "FINAL";
+$round_dic["준결승"] = "SEMI-FINAL";
+$round_dic["준준결승"] = "QUARTER-FINAL";
 
 // 통과 상태
 $pass_dic = [];
-$pass_dic["p"] = "통과";
-$pass_dic["l"] = "탈락";
-$pass_dic["d"] = "실격";
-$pass_dic["w"] = "기권";
-$pass_dic["n"] = "시작안함";
-$pass_dic["m"] = "남성";
+$pass_dic["p"] = "PASS";
+$pass_dic["l"] = "FAIL";
+$pass_dic["d"] = "DISQUALIFY";
+$pass_dic["w"] = "RESIGN";
+$pass_dic["n"] = "NOT STARTED";
 
 // 분류
 $division_dic = [];
-$division_dic["b"] = "대분류";
-$division_dic["s"] = "소분류";
+$division_dic["b"] = "MAIN";
+$division_dic["s"] = "SUB";
 
 // 경기 상태
 $status_dic = [];
-$status_dic["o"] = "공식 결과";
-$status_dic["l"] = "실시간 결과";
-$status_dic["n"] = "시작안함";
+$status_dic["o"] = "OFFICIAL";
+$status_dic["l"] = "LIVE";
+$status_dic["n"] = "NOT STARTED";
 
 /**
  * DB데이터를 입력받아 원하는 값(한글)로 번역
@@ -81,7 +87,12 @@ function translateGender($g)
     global $gender_dic;
     $hasKey = array_key_exists($g, $gender_dic);
     return $hasKey ? $gender_dic[$g] : "";
-    return $gender_dic[$g];
+}
+function translateRound($r)
+{
+    global $round_dic;
+    $hasKey = array_key_exists($r, $round_dic);
+    return $hasKey ? $round_dic[$r] : "";
 }
 /**
  * Undocumented function
