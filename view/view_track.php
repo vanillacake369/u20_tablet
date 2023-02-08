@@ -7,12 +7,29 @@ $sports_category = trim($_GET["sports_category"]);
 $schedule_id = trim($_GET["schedule_id"]);
 $result_array = getResultByState($schedule_id);
 $match_info_array = getMatchInfoByState($schedule_id);
+$wind = $result_array[0]["record_wind"];
 ?>
+
+<h3 class="intro">WIND</h3>
+<div class="input_row">
+    <span><?php echo $wind ?></span>
+</div>
 
 <div class="table-wrap">
     <table>
         <colgroup>
-            <col style="width: auto" />
+            <col class="col_view_lane">
+            <col class="col_view_name">
+            <col class="col_view_gender">
+            <col class="col_view_nation">
+            <col class="col_view_team">
+            <!-- <col class="col_view_wind"> -->
+            <col class="col_view_result">
+            <col class="col_view_rank">
+            <col class="col_view_pass">
+            <col class="col_view_new_record">
+            <col class="col_view_status">
+            <col class="col_view_remark">
         </colgroup>
         <thead>
             <tr>
@@ -21,7 +38,7 @@ $match_info_array = getMatchInfoByState($schedule_id);
                 <th>GENDER</th>
                 <th>NATION</th>
                 <th>TEAM</th>
-                <th>WIND</th>
+                <!-- <th>WIND</th> -->
                 <th>RESULT</th>
                 <th>RANK</th>
                 <th>PASS</th>
@@ -45,7 +62,7 @@ $match_info_array = getMatchInfoByState($schedule_id);
                 // 소속
                 echo "<td>" . $result["athlete_division"] . "</td>";
                 // 풍향
-                echo "<td>" . $result["record_wind"] . "</td>";
+                // echo "<td>" . $result["record_wind"] . "</td>";
                 // 기록
                 echo "<td>" . $result["record_record"] . "</td>";
                 // 순위

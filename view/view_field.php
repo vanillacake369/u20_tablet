@@ -9,24 +9,41 @@ $result_array = getResultByState($schedule_id);
 $match_info_array = getMatchInfoByState($schedule_id);
 ?>
 
+<h3 class="intro">WEIGHT</h3>
+<div class="input_row">
+    <span>용기구 KG</span>>
+</div>
+
 <div class="table-wrap">
     <table>
         <colgroup>
-            <col style="width: auto" />
+            <col class="col_view_lane">
+            <col class="col_view_name" style="width: 10%;">
+            <col class="col_view_result_th">
+            <col class="col_view_result_th">
+            <col class="col_view_result_th">
+            <col class="col_view_result_th">
+            <col class="col_view_result_th">
+            <col class="col_view_result_th">
+            <col class="col_view_pass">
+            <col class="col_view_rank">
+            <col class="col_view_new_record">
+            <col class="col_view_remark">
         </colgroup>
         <thead>
             <tr>
-                <th>레인번호</th>
-                <th>선수명(팀명)</th>
-                <th>성별</th>
-                <th>국가</th>
-                <th>소속</th>
-                <th>기록</th>
-                <th>순위</th>
-                <th>통과</th>
-                <th>상태</th>
-                <th>입력</th>
-                <th>비고</th>
+                <th>LANE</th>
+                <th>NAME</th>
+                <th>1th</th>
+                <th>2th</th>
+                <th>3th</th>
+                <th>4th</th>
+                <th>5th</th>
+                <th>6th</th>
+                <th>PASS</th>
+                <th>RANK</th>
+                <th>NEW RECORD</th>
+                <th>REMARK</th>
             </tr>
         </thead>
         <tbody>
@@ -71,8 +88,15 @@ $match_info_array = getMatchInfoByState($schedule_id);
 <div class="container_postbtn">
     <div class="postbtn_like">
         <div class="like_btn">
-            <button type="submit" class="btn_navy btn_update" name="done">
-                <span class="bold">확인</span>
+            <?php
+            if (trim($result["record_id"]) != "") {
+                echo
+                "<button type=\"button\" class=\"btn_navy btn_update\" 
+                    onclick=\"'view_input_result.php
+                    ?result_category=field
+                    &record_id=" . trim($result["record_id"]) . "'>";
+            } ?>
+            <span class=" bold">UPDATE</span>
             </button>
         </div>
     </div>

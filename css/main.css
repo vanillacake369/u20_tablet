@@ -97,6 +97,7 @@ h4,
 h5,
 h6 {
   margin: 0px;
+  font-weight: bolder;
 }
 
 p {
@@ -242,7 +243,45 @@ header > div ul.navbar > li {
 .col_match_memo {
   width: 8%;
 }
-
+.col_view_lane {
+  width: 5%;
+}
+.col_view_name {
+  width: auto;
+}
+.col_view_gender {
+  width: 10%;
+}
+.col_view_nation {
+  width: 8%;
+}
+.col_view_team {
+  width: 10%;
+}
+.col_view_wind {
+  width: 5%;
+}
+.col_view_result {
+  width: 10%;
+}
+.col_view_result_th {
+  width: 5%;
+}
+.col_view_rank {
+  width: 5%;
+}
+.col_view_pass {
+  width: 10%;
+}
+.col_view_new_record {
+  width: 10%;
+}
+.col_view_status {
+  width: 8%;
+}
+.col_view_remark {
+  width: 8%;
+}
 /* 경기 소개 h1 */
 .intro {
   padding-bottom: 1rem;
