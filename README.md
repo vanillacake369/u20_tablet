@@ -7,6 +7,15 @@ U20 아시아 세계선수권 운영 시, 심판진분들께서 입력하실 때
   <img src="https://user-images.githubusercontent.com/75259783/216961152-dff1a093-ec73-4765-a70d-2047a57a1057.png">
 </p>
 
+## 클래스 다이어그램
+### 결과 보기 클래스 다이어그램
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/75259783/217498463-b1fd4beb-9faa-4151-843e-efc80fab34c3.png">
+</p>
+### 결과 입력 클래스 다이어그램
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/75259783/217498484-c4abbcae-8fa4-441d-9bb2-7661339ca43f.png">
+</p>
 
 ## 기능요구사항
 ### 로그인 페이지
