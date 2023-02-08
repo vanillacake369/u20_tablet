@@ -55,18 +55,18 @@ include_once(__DIR__ .  "/view_block.php");
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>번호</th>
-                                <th>경기명</th>
-                                <th>선수 성별</th>
-                                <th>라운드</th>
-                                <th>조</th>
-                                <th>분류</th>
-                                <th>장소</th>
-                                <th>시작날짜</th>
-                                <th>시작시간</th>
-                                <th>상태</th>
-                                <th>보기</th>
-                                <th>비고</th>
+                                <th>NO</th>
+                                <th>MATCH</th>
+                                <th>GENDER</th>
+                                <th>ROUND</th>
+                                <th>GROUP</th>
+                                <th>DIVISION</th>
+                                <th>PLACE</th>
+                                <th>DATE</th>
+                                <th>TIME</th>
+                                <th>STATUS</th>
+                                <th>RESULT</th>
+                                <th>REMARK</th>
                             </tr>
                         </thead>
                         <tbody>
