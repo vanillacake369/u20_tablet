@@ -89,7 +89,8 @@ include_once(__DIR__ .  "/view_block.php");
                                 }
                                 echo getResultLink($schedule_sports, $schedule_id);
                                 // 경기 비고
-                                echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>비고 보기</a></td>";
+                                echo "<td></td>";
+                                // echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>비고 보기</a></td>";
                                 echo "</tr>";
                             }
 
