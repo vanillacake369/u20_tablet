@@ -12,6 +12,7 @@ U20 아시아 세계선수권 운영 시, 심판진분들께서 입력하실 때
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75259783/217498463-b1fd4beb-9faa-4151-843e-efc80fab34c3.png">
 </p>
+
 ### 결과 입력 클래스 다이어그램
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75259783/217498484-c4abbcae-8fa4-441d-9bb2-7661339ca43f.png">
