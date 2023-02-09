@@ -36,3 +36,19 @@ function getResultByState($id)
     }
     return $rows;
 }
+function getRecordByState($id)
+{
+    // get result
+    $result = getRecordByRecordId($id);
+    // change value by state
+    $rows = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $row["record_record"] = changeRecordByStatus($row["record_status"], $row["record_live_record"], $row["record_official_record"]);
+        $row["record_result"] = changeResultByStatus($row["record_status"], $row["record_live_result"], $row["record_official_result"]);
+        $row["record_pass"] = translatePass($row["record_pass"]);
+        $row["record_id"] = changeIdByStatus($row["record_status"], $row["record_id"]);
+        $row["record_status"] = translateStatus($row["record_status"]);
+        $rows[] = $row;
+    }
+    return $rows;
+}

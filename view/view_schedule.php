@@ -34,7 +34,11 @@ include_once(__DIR__ .  "/view_block.php");
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table-wrap">
+<<<<<<< HEAD
                     <h2 class="intro">경기 일정</h2>
+=======
+                    <h1 class="intro">MATCHES</h1>
+>>>>>>> 40b877c28ec6980c980b0272fcbe6fd00ea2d6f1
                     <table>
                         <!-- <colgroup>
                             <col style="width: auto" />
@@ -77,7 +81,11 @@ include_once(__DIR__ .  "/view_block.php");
                                 // 번호
                                 echo "<td>" . ++$num . "</td>";
                                 // 경기 이름
+<<<<<<< HEAD
                                 echo "<td>" . trim($schedule["schedule_name"]) . "</td>";
+=======
+                                echo "<td>" . trim(strtoupper($schedule["schedule_sports"])) . "</td>";
+>>>>>>> 40b877c28ec6980c980b0272fcbe6fd00ea2d6f1
                                 // 선수 성별
                                 echo "<td>" . trim($schedule["schedule_gender"]) . "</td>";
                                 // 라운드
@@ -98,7 +106,11 @@ include_once(__DIR__ .  "/view_block.php");
                                 echo "<td>" . trim($time) . "</td>";
                                 // 경기 상태(Official, Result..)
                                 echo "<td>" . trim($schedule["schedule_result"]) . "</td>";
+<<<<<<< HEAD
                                 // 경기 결과 입력
+=======
+                                // 경기 결과 보기
+>>>>>>> 40b877c28ec6980c980b0272fcbe6fd00ea2d6f1
                                 $schedule_sports = $schedule["schedule_sports"];
                                 $schedule_id = $schedule["schedule_id"];
                                 if ($schedule["schedule_sports"] == "decathlon" || $schedule["schedule_sports"] == "heptathlon") {

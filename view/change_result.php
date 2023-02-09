@@ -1,7 +1,7 @@
 <?php
 include "../database/dbconnect.php";
-// include_once "auth/config.php";
-include_once "../security/security.php";
+// include_once(__DIR__ . "auth/config.php");
+include_once(__DIR__ . "/../security/security.php");
 $name=$_POST['name'];
 $sports=$_POST['sports'];
 $gizone=$_POST['gizone'];
@@ -32,5 +32,4 @@ echo $sql;
     echo "<script>
     opener.parent.location.reload();
 window.close();
-    </script>";  
-?>
+    </script>";

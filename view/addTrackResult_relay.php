@@ -26,7 +26,6 @@
     // $match_info_array = getMatchInfoByState($id);
     ?>
 
-
     <?php
     $id = $_GET['id'];
     include_once "../database/dbconnect.php"; //B:데이터베이스 연결

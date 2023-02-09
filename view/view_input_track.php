@@ -7,42 +7,43 @@ $sports_category = trim($_GET["sports_category"]);
 $schedule_id = trim($_GET["schedule_id"]);
 $result_array = getResultByState($schedule_id);
 $match_info_array = getMatchInfoByState($schedule_id);
+$wind = $result_array[0]["record_wind"];
 ?>
 
-<h3 class="intro">WEIGHT</h3>
+<h3 class="intro">WIND</h3>
 <div class="input_row">
-    <span>용기구 KG</span>
+    <span><?php echo $wind ?></span>
 </div>
 
 <div class="table-wrap">
     <table>
         <colgroup>
             <col class="col_view_lane">
-            <col class="col_view_name" style="width: 10%;">
-            <col class="col_view_result_th">
-            <col class="col_view_result_th">
-            <col class="col_view_result_th">
-            <col class="col_view_result_th">
-            <col class="col_view_result_th">
-            <col class="col_view_result_th">
-            <col class="col_view_pass">
+            <col class="col_view_name">
+            <col class="col_view_gender">
+            <col class="col_view_nation">
+            <col class="col_view_team">
+            <!-- <col class="col_view_wind"> -->
+            <col class="col_view_result">
             <col class="col_view_rank">
+            <col class="col_view_pass">
             <col class="col_view_new_record">
+            <col class="col_view_status">
             <col class="col_view_remark">
         </colgroup>
         <thead>
             <tr>
                 <th>LANE</th>
                 <th>NAME</th>
-                <th>1th</th>
-                <th>2th</th>
-                <th>3th</th>
-                <th>4th</th>
-                <th>5th</th>
-                <th>6th</th>
-                <th>PASS</th>
+                <th>GENDER</th>
+                <th>NATION</th>
+                <th>TEAM</th>
+                <!-- <th>WIND</th> -->
+                <th>RESULT</th>
                 <th>RANK</th>
+                <th>PASS</th>
                 <th>NEW RECORD</th>
+                <th>STATUS</th>
                 <th>REMARK</th>
             </tr>
         </thead>
@@ -90,8 +91,9 @@ $match_info_array = getMatchInfoByState($schedule_id);
     <div class="postbtn_like">
         <div class="like_btn">
             <?php
-            echo "<a href='view_input_result.php?sports_category=field&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+            echo "<a href='view_input_result.php?sports_category=track&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
             ?>
+            <span class=" bold">UPDATE</span>
             </button>
         </div>
     </div>

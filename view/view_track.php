@@ -1,85 +1,55 @@
 <?php
 // 경기 상태에 따른 경기 결과 처리 모델
-require(__DIR__ . "/../database/dbconnect.php"); //B:데이터베이스 연결
 include_once(__DIR__ . "/../model/model_result_by_state.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
-$id = trim($_GET["schedule_id"]);
-// $result_array = getResultByState($id);
-// $match_info_array = getMatchInfoByState($id);
-
-$sql = "SELECT DISTINCT judge_name,schedule_round,schedule_status,record_wind,schedule_sports FROM list_judge JOIN list_record ON judge_id = record_judge INNER JOIN list_schedule ON schedule_id= record_schedule_id AND schedule_id = '$id'";
-$result = $db->query($sql);
-$rows = mysqli_fetch_assoc($result);
+$schedule_id = trim($_GET["schedule_id"]);
+$result_array = getResultByState($schedule_id);
+$match_info_array = getMatchInfoByState($schedule_id);
+$wind = $result_array[0]["record_wind"];
 ?>
 
-<form action="sendresult1.php" method="post" class="form">
+<h3 class="intro">WIND</h3>
+<div class="input_row">
+    <span><?php echo $wind ?></span>
+</div>
 
-    <h3 style="width:45%; display:inline-block; margin-right: 4.6%;">경기 이름</h3>
-    <h3 style="width:48%; display:inline-block;">라운드</h3>
-    <div class="input_row" style="width:45%; margin-right: 4.6%;">
-        <input placeholder="경기 이름" type="text" name="gamename" class="input_text" value="100m" maxlength="16" required="" readonly />
-    </div>
-    <div class="input_row" style="width:48%;">
-        <?php
-        echo '<input placeholder="라운드" type="text" name="round" class="input_text" value="' . $rows['schedule_round'] . '"
-                    maxlength="16" required="" readonly />';
-        ?>
-    </div>
-    <h3 style="width:45%; display:inline-block; margin-right: 4.6%;">심판 이름</h3>
-    <h3 style="width:48%; display:inline-block;">풍속</h3>
-    <div class="input_row" style="width:45%; margin-right: 4.6%;">
-        <?php
-        echo '<input placeholder="심판 이름" type="text" name="refereename" class="input_text" value="' . $rows['judge_name'] . '"
-                    maxlength="30" required="" readonly />';
-        ?>
-    </div>
-    <div class="input_row" style="width:48%;">
-
-        <?php
-        if ($rows['schedule_status'] === 'y') {
-            echo '<input placeholder="풍속을 입력해주세요." type="text" name="wind" class="input_text" value="' . $rows['record_wind'] . '" maxlength="16"
-                            required="" />';
-        } else {
-
-            echo '<input placeholder="풍속을 입력해주세요." type="text" name="wind" class="input_text" value="" maxlength="16"
-                            required="" />';
-        }
-        ?>
-    </div>
-    <div class="btn_base base_mar" style="display:inline-flex; align-items: baseline;">
-        <h2 style="margin-bottom: 10px; float:left; margin-right: 30px;">결과</h2>
-        <?php
-        if ($rows['schedule_status'] != 'y') {
-            echo '<input type="button" onclick="openTextFile()" class="btn_add bold" value="자동 입력"
-                        style="margin-right:15px;">';
-        }
-        ?>
-    </div>
-    <table cellspacing="0" cellpadding="0" class="team_table" style="border-top: 0px">
+<div class="table-wrap">
+    <table>
+        <colgroup>
+            <col class="col_view_lane">
+            <col class="col_view_name">
+            <col class="col_view_gender">
+            <col class="col_view_nation">
+            <col class="col_view_team">
+            <!-- <col class="col_view_wind"> -->
+            <col class="col_view_result">
+            <col class="col_view_rank">
+            <col class="col_view_pass">
+            <col class="col_view_new_record">
+            <col class="col_view_status">
+            <col class="col_view_remark">
+        </colgroup>
         <thead>
-            <colgroup>
-                <col style="width: 7%" />
-                <col style="width: 7%" />
-                <col style="width: 25%" />
-                <col style="width: 10%" />
-                <col style="width: 15%" />
-                <col style="width: 10%" />
-                <col style="width: 26%" />
-            </colgroup>
             <tr>
-                <th style="background: none">등수</th>
-                <th style="background: none">레인</th>
-                <th style="background: none">이름</th>
-                <th style="background: none">통과 여부</th>
-                <th style="background: none">경기 결과</th>
-                <th style="background: none">비고</th>
-                <th style="background: none">신기록</th>
+                <th>LANE</th>
+                <th>NAME</th>
+                <th>GENDER</th>
+                <th>NATION</th>
+                <th>TEAM</th>
+                <!-- <th>WIND</th> -->
+                <th>RESULT</th>
+                <th>RANK</th>
+                <th>PASS</th>
+                <th>NEW RECORD</th>
+                <th>STATUS</th>
+                <th>REMARK</th>
             </tr>
         </thead>
         <tbody>
             <?php
+<<<<<<< HEAD
             $relm = 'record_live_result,record_live_record,record_pass,record_memo,record_new,athlete_name, record_order';
             if ($rows['schedule_status'] == 'y') {
                 $order = 'record_live_result';
@@ -151,23 +121,54 @@ $rows = mysqli_fetch_assoc($result);
                             echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_text" value="" maxlength="100" ath="' . $row['athlete_name'] . '" sports=' . $rows['schedule_sports'] . ' readonly/></td>';
                             break;
                     }
+=======
+            foreach ($result_array as $result) {
+                echo "<tr>";
+                // 레인번호
+                echo "<td>" . $result["record_order"] . "</td>";
+                // 선수명(팀명)
+                echo "<td>" . $result["athlete_name"] . "</td>";
+                // 선수 성별
+                echo "<td>" . $result["athlete_gender"] . "</td>";
+                // 국가
+                echo "<td>" . $result["athlete_country"] . "</td>";
+                // 소속
+                echo "<td>" . $result["athlete_division"] . "</td>";
+                // 풍향
+                // echo "<td>" . $result["record_wind"] . "</td>";
+                // 기록
+                echo "<td>" . $result["record_record"] . "</td>";
+                // 순위
+                echo "<td>" . $result["record_result"] . "</td>";
+                // 통과
+                echo "<td>" . $result["record_pass"] . "</td>";
+                // 신기록
+                echo "<td>" . $result["record_new"] . "</td>";
+                // 경기 상태(Official, Result..)
+                echo "<td>" . $result["record_status"] . "</td>";
+                if (trim($result["record_id"]) != "") {
+                    // 경기 비고
+                    echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . trim($result["record_memo"]) . "</a></td>";
+>>>>>>> 40b877c28ec6980c980b0272fcbe6fd00ea2d6f1
                 } else {
-                    echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_text" value="" maxlength="100" readonly/></td>';
+                    echo "<td></td>";
                 }
-                $count++;
+                echo "</tr>";
             }
-            ?>
-            </tr>
 
+            ?>
         </tbody>
     </table>
-    <h3>경기 비고</h3>
-    <div class="input_row">
-        <input placeholder="비고를 입력해주세요." type="text" name="bibigo" class="input_text" value="" maxlength="100" />
+</div>
+
+<div class="container_postbtn">
+    <div class="postbtn_like">
+        <div class="like_btn">
+            <?php
+            echo "<a href='view_input_result.php?sports_category=track&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+            ?>
+            <span class=" bold">UPDATE</span>
+            </button>
+        </div>
     </div>
-    <div class="signup_submit">
-        <button type="submit" class="btn_login" name="addresult">
-            <span>확인</span>
-        </button>
-    </div>
-</form>
+</div>

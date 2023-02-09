@@ -15,13 +15,11 @@ function getScheduleByState($id)
     // change value by state
     $rows = [];
     while ($row = mysqli_fetch_array($schedule)) {
-        $row["schedule_name"] = $row["schedule_name"];
-        // $row["schedule_gender"] = ($row["schedule_gender"]);
         $row["schedule_gender"] = translateGender(trim($row["schedule_gender"]));
         $row["schedule_round"] = translateRound($row["schedule_round"]);
         $row["schedule_group"] = $row["schedule_group"];
-        $row["schedule_division"] = translateScheduleDivision($row["schedule_division"]);
-        $row["schedule_location"] = $row["schedule_location"];
+        $row["schedule_division"] = translateDivision($row["schedule_division"]);
+        $row["schedule_location"] = translateLocation($row["schedule_location"]);
         $row["schedule_date"] = $row["schedule_date"];
         $row["schedule_start"] = $row["schedule_start"];
         $row["schedule_result"] = translateStatus($row["schedule_result"]);
