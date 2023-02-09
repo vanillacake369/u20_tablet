@@ -85,3 +85,27 @@ function getResultViewService($sports_category)
         include(__DIR__ . "/view_high_jump.php");
     }
 }
+function getInputResultViewService($sports_category)
+{
+
+    /**
+     * $sports_category
+     *  ==(toss)==> view_result_config 
+     *    ==(call suitable service)==> view_result_service
+     * 
+     * **WHY NOT USE eval()?**
+     * > do not use eval() since it's speed issue, 
+     * > and most of all, eval() run any php code it is given
+     */
+    if ($sports_category == "track") {
+        include(__DIR__ . "/view_input_track.php");
+    } else if ($sports_category == "relay") {
+        include(__DIR__ . "/view_input_relay.php");
+    } else if ($sports_category == "field") {
+        include(__DIR__ . "/view_input_field.php");
+    } else if ($sports_category == "long_jump") {
+        include(__DIR__ . "/view_input_long_jump.php");
+    } else {
+        include(__DIR__ . "/view_input_high_jump.php");
+    }
+}
