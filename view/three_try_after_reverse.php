@@ -1,7 +1,7 @@
 <?php
 // TODO 구현은 완료했는데 엄청난 복잡도로 인해 많은 버그 예상, 테스트 케이스 많이 돌려보기
-include_once "../auth/config.php";
-include_once "./save.php";
+include_once(__DIR__ . "/auth/config.php");
+include_once(__DIR__ . "/save.php");
 global $schedule_id;
 global $judge_id;
 global $db;
@@ -22,12 +22,12 @@ global $trial_count;
 if ($trial_count === "3") {
     $QUERY = "SELECT *
               FROM list_record
-              WHERE record_schedule_id = '".$schedule_id."' AND record_trial BETWEEN 1 AND 3
+              WHERE record_schedule_id = '" . $schedule_id . "' AND record_trial BETWEEN 1 AND 3
               ORDER BY record_live_record DESC";
-} else if($trial_count === "5") {
-     $QUERY = " SELECT *
+} else if ($trial_count === "5") {
+    $QUERY = " SELECT *
               FROM list_record
-              WHERE record_schedule_id = '".$schedule_id."' AND record_trial BETWEEN 4 AND 5
+              WHERE record_schedule_id = '" . $schedule_id . "' AND record_trial BETWEEN 4 AND 5
               ORDER BY record_live_record DESC";
 }
 $result = $db->query($QUERY);
@@ -151,20 +151,20 @@ if ($trial_count === '3') { # 3회차 후 버튼을 눌렀을 때 실행
     for ($record_trial = 4; $record_trial <= 6; $record_trial++) {
         $record_order = 1;
         foreach ($ID_check as $value) {
-        $stmt = $db->prepare($update_sql);
-        $stmt->bind_param("iiii", $record_order, $value['record_athlete_id'], $value['record_schedule_id'],$record_trial);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $stmt->close();
-        $record_order++;
-    }
+            $stmt = $db->prepare($update_sql);
+            $stmt->bind_param("iiii", $record_order, $value['record_athlete_id'], $value['record_schedule_id'], $record_trial);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+            $record_order++;
+        }
     }
 } elseif ($trial_count === '5') { # 5회차 후 실행했을 때
     $record_order = 1;
-    $six=6;
+    $six = 6;
     foreach ($ID_check as $value) {
         $stmt = $db->prepare($update_sql);
-        $stmt->bind_param("iiii", $record_order, $value['record_athlete_id'], $value['record_schedule_id'],$six);
+        $stmt->bind_param("iiii", $record_order, $value['record_athlete_id'], $value['record_schedule_id'], $six);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
@@ -186,7 +186,7 @@ echo '<script>
                const hidden_count = document.createElement("input");
                hidden_count.setAttribute("type", "hidden");
                hidden_count.setAttribute("name", "check");
-               hidden_count.setAttribute("value","'.$trial_count.'");
+               hidden_count.setAttribute("value","' . $trial_count . '");
                form.appendChild(hidden_count);
                form.appendChild(hidden_field);
                document.body.appendChild(form);

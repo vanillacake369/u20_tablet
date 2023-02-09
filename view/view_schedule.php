@@ -34,24 +34,39 @@ include_once(__DIR__ .  "/view_block.php");
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table-wrap">
+                    <h1 class="intro">MATCHES</h1>
                     <table>
-                        <colgroup>
+                        <!-- <colgroup>
                             <col style="width: auto" />
+                        </colgroup> -->
+                        <colgroup>
+                            <col class="col_number">
+                            <col class="col_match_name">
+                            <col class="col_match_gender">
+                            <col class="col_match_round">
+                            <col class="col_match_group">
+                            <col class="col_match_division">
+                            <col class="col_match_place">
+                            <col class="col_match_date">
+                            <col class="col_match_time">
+                            <col class="col_match_state">
+                            <col class="col_match_view">
+                            <col class="col_match_memo">
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>번호</th>
-                                <th>경기명</th>
-                                <th>선수 성별</th>
-                                <th>라운드</th>
-                                <th>조</th>
-                                <th>분류</th>
-                                <th>장소</th>
-                                <th>시작날짜</th>
-                                <th>시작시간</th>
-                                <th>상태</th>
-                                <th>보기</th>
-                                <th>비고</th>
+                                <th>NO</th>
+                                <th>MATCH</th>
+                                <th>GENDER</th>
+                                <th>ROUND</th>
+                                <th>GROUP</th>
+                                <th>DIVISION</th>
+                                <th>PLACE</th>
+                                <th>DATE</th>
+                                <th>TIME</th>
+                                <th>STATUS</th>
+                                <th>RESULT</th>
+                                <th>REMARK</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,24 +77,28 @@ include_once(__DIR__ .  "/view_block.php");
                                 // 번호
                                 echo "<td>" . ++$num . "</td>";
                                 // 경기 이름
-                                echo "<td>" . $schedule["schedule_name"] . "</td>";
+                                echo "<td>" . trim(strtoupper($schedule["schedule_sports"])) . "</td>";
                                 // 선수 성별
-                                echo "<td>" . $schedule["schedule_gender"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_gender"]) . "</td>";
                                 // 라운드
-                                echo "<td>" . $schedule["schedule_round"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_round"]) . "</td>";
                                 // 경기 참가조
-                                echo "<td>" . $schedule["schedule_group"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_group"]) . "</td>";
                                 // 경기 분류
-                                echo "<td>" . $schedule["schedule_division"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_division"]) . "</td>";
                                 // 경기 장소
-                                echo "<td>" . $schedule["schedule_location"] . "</td>";
+                                echo "<td>" . trim($schedule["schedule_location"]) . "</td>";
+                                // 시작날짜 & 시작 시간 구하기
+                                $date_time = explode(" ", $schedule["schedule_start"]);
+                                $time = $date_time[1];
+                                $date = $date_time[0];
                                 // 경기 시작일
-                                echo "<td>" . $schedule["schedule_date"] . "</td>";
+                                echo "<td>" . trim($date) . "</td>";
                                 // 경기 시작시간
-                                echo "<td>" . $schedule["schedule_start"] . "</td>";
+                                echo "<td>" . trim($time) . "</td>";
                                 // 경기 상태(Official, Result..)
-                                echo "<td>" . $schedule["schedule_result"] . "</td>";
-                                // 경기 결과 입력
+                                echo "<td>" . trim($schedule["schedule_result"]) . "</td>";
+                                // 경기 결과 보기
                                 $schedule_sports = $schedule["schedule_sports"];
                                 $schedule_id = $schedule["schedule_id"];
                                 if ($schedule["schedule_sports"] == "decathlon" || $schedule["schedule_sports"] == "heptathlon") {
@@ -89,10 +108,9 @@ include_once(__DIR__ .  "/view_block.php");
                                 }
                                 echo getResultLink($schedule_sports, $schedule_id);
                                 // 경기 비고
-                                echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>비고 보기</a></td>";
+                                echo "<td><a href='view_input_remark.php?remark_category=schedule&schedule_id=" . trim($schedule["schedule_id"]) . "'>" . trim($schedule["schedule_memo"]) . "</a></td>";
                                 echo "</tr>";
                             }
-
                             ?>
                         </tbody>
                     </table>
