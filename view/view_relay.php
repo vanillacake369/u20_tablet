@@ -93,7 +93,6 @@ $wind = $result_array[0]["record_wind"];
             <?php
             echo "<a href='view_input_result.php?sports_category=relay&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
             ?>
-            <span class=" bold">UPDATE</span>
             </button>
         </div>
     </div>
