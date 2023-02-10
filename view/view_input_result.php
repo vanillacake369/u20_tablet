@@ -9,6 +9,9 @@ include_once(__DIR__ .  "/view_block.php");
     <?php
     include_once(__DIR__ .  "/head.php");
     ?>
+    <script type="text/javascript" src="../js/onlynumber.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/change_athletics.js"></script>
 </head>
 
 <body>

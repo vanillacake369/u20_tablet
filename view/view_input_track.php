@@ -2,27 +2,47 @@
 // 경기 상태에 따른 경기 결과 처리 모델
 include(__DIR__ . "/../database/dbconnect.php");
 include_once(__DIR__ . "/../model/model_result_by_state.php");
+include_once(__DIR__ . "/../model/model_result.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
 $id = trim($_GET["schedule_id"]);
 $result_array = getResultByState($id);
-// $schedule_id = trim($_GET["schedule_id"]);
-// $result_array = getResultByState($schedule_id);
-// $match_info_array = getMatchInfoByState($schedule_id);
 $wind = $result_array[0]["record_wind"];
-
+$judge_id = trim($_SESSION['Id']);
 $sql = "SELECT DISTINCT schedule_name,schedule_round,schedule_status,record_wind,schedule_sports FROM list_record  INNER JOIN list_schedule ON schedule_id= record_schedule_id AND schedule_id = '$id'";
 $result = $db->query($sql);
 $rows = mysqli_fetch_assoc($result);
-$judgesql = "select distinct judge_name from list_judge  join list_record ON  record_judge = judge_id INNER JOIN list_schedule ON schedule_id= record_schedule_id AND schedule_id = '$id'";
+$judgesql = "SELECT DISTINCT judge_name from list_judge WHERE judge_account = '" . $judge_id . "'";
 $judgeresult = $db->query($judgesql);
 $judgerow = mysqli_fetch_array($judgeresult);
 
 ?>
 
 <div class="table-wrap">
-    <form action="../model/model_result.php" method="post" class="form">
+    <form action="../model/model_result_track.php" method="post" class="form">
+        <!-- 라운드 -->
+        <div class="input_row">
+            <input type="text" class="input_text" name="round" value="<?= $rows['schedule_round'] ?>" required="" readonly>
+            <!-- <input type="hidden" name="round" value="<? //= $rows['schedule_round'] 
+                                                            ?>"> -->
+        </div>
+
+        <!-- 경기 이름 -->
+        <div class="input_row">
+            <input type="text" class="input_text" name="gamename" value="<?= $rows['schedule_name']  ?>" required="" readonly>
+            <!-- <input type="hidden" name="gamename" value="<?= $rows['schedule_name'] ?>"> -->
+        </div>
+        <!-- 스케줄 id -->
+        <div class="input_row">
+            <input type="text" class="input_text" name="schedule_id" value="<?= $id  ?>" required="" readonly>
+            <!-- <input type="hidden" name="schedule_id" value="<?= $id ?>"> -->
+        </div>
+        <!-- 심판 이름 -->
+        <div class="input_row">
+            <input type="text" class="input_text" name="refereename" value="<?= $judgerow['judge_name'] ?>" required="" readonly>
+            <!-- <input type="hidden" name="refereename" class="input_text" value="<?= $judgerow['judge_name'] ?>" maxlength="30" required="" readonly />; -->
+        </div> <!-- 풍속 입력 -->
         <h3 class="intro">WIND</h3>
         <div class="input_row">
             <?php
@@ -114,7 +134,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
                 //         INNER JOIN list_schedule ON list_schedule.schedule_id= list_record.record_schedule_id 
                 //         AND list_schedule.schedule_id = '$id'
                 //         ORDER BY " . $order . " ASC ";
-                echo $sql;
                 $count = 0;
                 $result = $db->query($sql);
                 while ($row = mysqli_fetch_array($result)) {

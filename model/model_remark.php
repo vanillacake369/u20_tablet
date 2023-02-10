@@ -22,6 +22,6 @@ $stmt->execute();
 // logInsert($db, $_SESSION['Id'], '', $athlete_name . "-" . $athlete_country . "-" . $athlete_schedule);
 
 echo "<script>
-alert('비고 입력 완료');
+alert('REMARK CONFIRMED');
 history.go(-2);
 </script>";

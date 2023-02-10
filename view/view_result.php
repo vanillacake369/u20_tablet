@@ -31,7 +31,7 @@ include_once(__DIR__ .  "/view_block.php");
   $gender = $match_info_array[0]["schedule_gender"];
   $group = $match_info_array[0]["schedule_group"];
   $round = $match_info_array[0]["schedule_round"];
-  $match_intro_h1 = $name . " " . $gender . " " . $round . " " .  $group . "GROUP";
+  $match_intro_h1 = $name . " " . $gender . " " . $round . " "  . "GROUP" .  $group;
   ?>
 
   <div class="limiter">
