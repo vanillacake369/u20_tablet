@@ -45,7 +45,6 @@ include_once(__DIR__ .  "/view_block.php");
                             <col class="col_match_gender">
                             <col class="col_match_round">
                             <col class="col_match_group">
-                            <col class="col_match_division">
                             <col class="col_match_place">
                             <col class="col_match_date">
                             <col class="col_match_time">
@@ -60,7 +59,6 @@ include_once(__DIR__ .  "/view_block.php");
                                 <th>GENDER</th>
                                 <th>ROUND</th>
                                 <th>GROUP</th>
-                                <th>DIVISION</th>
                                 <th>PLACE</th>
                                 <th>DATE</th>
                                 <th>TIME</th>
@@ -84,8 +82,6 @@ include_once(__DIR__ .  "/view_block.php");
                                 echo "<td>" . $schedule["schedule_round"] . "</td>";
                                 // 경기 참가조
                                 echo "<td>" . $schedule["schedule_group"] . "</td>";
-                                // 경기 분류
-                                echo "<td>" . $schedule["schedule_division"] . "</td>";
                                 // 경기 장소
                                 echo "<td>" . $schedule["schedule_location"] . "</td>";
                                 // 경기 시작일

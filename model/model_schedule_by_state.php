@@ -26,9 +26,9 @@ function getScheduleByState($id)
             global $sports_code_dic;
             $row["schedule_sports"] = array_search($row["schedule_round"], $sports_code_dic);
         }
-        $row["schedule_round"] = translateRound(trim($row["schedule_round"]));
+        $row["schedule_round"] = ($row["schedule_round"]);
+        $row["schedule_round"] = strtoupper(translateRound(trim($row["schedule_round"])));
         $row["schedule_group"] = trim($row["schedule_group"]);
-        $row["schedule_division"] = translateDivision(trim($row["schedule_division"]));
         $row["schedule_location"] = translateLocation(trim($row["schedule_location"]));
         $date_time = explode(" ", $row["schedule_start"]);
         $row["schedule_date"] = trim($date_time[0]);
