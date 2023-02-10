@@ -43,8 +43,8 @@ $sports_category_dic["highjump"] = "high_jump";
 function getResultLink($schedule_sports, $schedule_id)
 {
     global $sports_category_dic;
-    $sports_category = $sports_category_dic[$schedule_sports];
-
+    $hasKey = array_key_exists($schedule_sports, $sports_category_dic);
+    $sports_category = $hasKey ? $sports_category_dic[$schedule_sports] : "";
     $link = "<td><a href='view_result.php?sports_category=" . $sports_category . "&schedule_id=" . trim($schedule_id) . "'>VIEW RESULT</a></td>";
     // 일부러 view_result로 가게끔 했다! 뷰를 갈아끼우는 핸들러 역할 레이어가 view_result이다!
     /**
