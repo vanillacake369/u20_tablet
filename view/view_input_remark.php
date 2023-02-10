@@ -50,7 +50,7 @@ include_once(__DIR__ .  "/view_block.php");
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table-wrap">
-                    <h3>비고 입력</h3>
+                    <h3>INSERT REMARK</h3>
                     <hr />
                     <form action="../model/model_remark.php" method="post" class="memo_form">
                         <?php

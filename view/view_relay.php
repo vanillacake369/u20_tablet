@@ -7,7 +7,11 @@ $sports_category = trim($_GET["sports_category"]);
 $schedule_id = trim($_GET["schedule_id"]);
 $result_array = getResultByState($schedule_id);
 $match_info_array = getMatchInfoByState($schedule_id);
-$wind = $result_array[0]["record_wind"];
+$wind = "";
+if (isset($result_array[0])) {
+    $wind = $result_array[0]["record_wind"];
+}
+$is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o");
 ?>
 
 
@@ -76,9 +80,14 @@ $wind = $result_array[0]["record_wind"];
                     echo "<td>" . $result["record_new"] . "</td>";
                     // 경기 상태(Official, Result..)
                     echo "<td>" . $result["record_status"] . "</td>";
-                    if (trim($result["record_id"]) != "") {
+                    if ($is_not_official_status) {
+                        $placeholder = trim($result["record_memo"]);
+                        if (!(strlen($placeholder) > 0)) {
+                            $placeholder = "-";
+                        }
                         // 경기 비고
-                        echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . trim($result["record_memo"]) . "</a></td>";
+                        echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a></td>";
+                        // echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . trim($result["record_memo"]) . "</a></td>";
                     } else {
                         echo "<td></td>";
                     }
@@ -96,15 +105,16 @@ $wind = $result_array[0]["record_wind"];
             ?>
         </tbody>
     </table>
-</div>
-
-<div class="container_postbtn">
-    <div class="postbtn_like">
-        <div class="like_btn">
-            <?php
-            echo "<a href='view_input_result.php?sports_category=relay&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
-            ?>
-            </button>
-        </div>
-    </div>
+    <?php
+    if ($is_not_official_status) {
+        echo '<div class="container_postbtn">';
+        echo '<div class="postbtn_like">';
+        echo '<div class="like_btn">';
+        echo "<a href='view_input_result.php?sports_category=track&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+        echo '</button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+    ?>
 </div>

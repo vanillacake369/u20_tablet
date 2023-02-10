@@ -63,8 +63,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 echo "<td>" . $result["athlete_country"] . "</td>";
                 // 소속
                 echo "<td>" . $result["athlete_division"] . "</td>";
-                // 풍향
-                // echo "<td>" . $result["record_wind"] . "</td>";
                 // 기록
                 echo "<td>" . $result["record_record"] . "</td>";
                 // 순위
@@ -77,7 +75,12 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 echo "<td>" . $result["record_status"] . "</td>";
                 if ($is_not_official_status) {
                     // 경기 비고
-                    echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . trim($result["record_memo"]) . "</a></td>";
+                    $placeholder = trim($result["record_memo"]);
+                    if (!(strlen($placeholder) > 0)) {
+                        $placeholder = "-";
+                    }
+                    echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a></td>";
+                    // echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . trim($result["record_memo"]) . "</a></td>";
                 } else {
                     echo "<td>" . trim($result["record_memo"]) . "</td>";
                 }
@@ -97,11 +100,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        // var_dump($is_not_official_status);
-        // echo "<br>";
-        // var_dump($match_info_array[0]["schedule_status"]);
-        // echo "<br>";
-        // var_dump(($match_info_array[0]["schedule_status"] != "o"));
     }
     ?>
 </div>
