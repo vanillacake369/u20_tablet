@@ -7,16 +7,19 @@ $sports_category = trim($_GET["sports_category"]);
 $schedule_id = trim($_GET["schedule_id"]);
 $result_array = getResultByState($schedule_id);
 $match_info_array = getMatchInfoByState($schedule_id);
-$wind = $result_array[0]["record_wind"];
+$wind = "";
+if (isset($result_array[0])) {
+    $wind = $result_array[0]["record_wind"];
+}
 $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o");
 ?>
 
-<h3 class="intro">WIND</h3>
-<div class="input_row">
-    <span><?php echo $wind ?></span>
-</div>
-
 <div class="table-wrap">
+    <h3 class="intro">WIND</h3>
+    <div class="input_row">
+        <span><?php echo $wind ?></span>
+    </div>
+    <h3 class="intro">RESULT</h3>
     <table>
         <colgroup>
             <col class="col_view_lane">
@@ -24,7 +27,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
             <col class="col_view_gender">
             <col class="col_view_nation">
             <col class="col_view_team">
-            <!-- <col class="col_view_wind"> -->
             <col class="col_view_result">
             <col class="col_view_rank">
             <col class="col_view_pass">
@@ -39,7 +41,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 <th>GENDER</th>
                 <th>NATION</th>
                 <th>TEAM</th>
-                <!-- <th>WIND</th> -->
                 <th>RESULT</th>
                 <th>RANK</th>
                 <th>PASS</th>
@@ -86,21 +87,21 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
             ?>
         </tbody>
     </table>
+    <?php
+    if ($is_not_official_status) {
+        echo '<div class="container_postbtn">';
+        echo '<div class="postbtn_like">';
+        echo '<div class="like_btn">';
+        echo "<a href='view_input_result.php?sports_category=track&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+        echo '</button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        // var_dump($is_not_official_status);
+        // echo "<br>";
+        // var_dump($match_info_array[0]["schedule_status"]);
+        // echo "<br>";
+        // var_dump(($match_info_array[0]["schedule_status"] != "o"));
+    }
+    ?>
 </div>
-<?php
-if ($is_not_official_status) {
-    echo '<div class="container_postbtn">';
-    echo '<div class="postbtn_like">';
-    echo '<div class="like_btn">';
-    echo "<a href='view_input_result.php?sports_category=track&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
-    echo '</button>';
-    echo '</div>';
-    echo '</div>';
-    echo '</div>';
-    var_dump($is_not_official_status);
-    echo "<br>";
-    var_dump($match_info_array[0]["schedule_status"]);
-    echo "<br>";
-    var_dump(($match_info_array[0]["schedule_status"] != "o"));
-}
-?>

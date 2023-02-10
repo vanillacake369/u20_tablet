@@ -13,9 +13,6 @@ function getResult($schedule_id)
         $result = $db->query($sql);
         return $result;
 }
-function insertResult($id)
-{
-}
 function getRecordByRecordId($record_id)
 {
         global $db;
