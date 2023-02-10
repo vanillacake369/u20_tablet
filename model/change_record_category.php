@@ -12,11 +12,10 @@
     <script src="../js/restrict.js"></script>
     <?php
 
-    include "../database/dbconnect.php";
-    // include_once(__DIR__ . "auth/config.php");
-    include_once(__DIR__ . "/../security/security.php");
+    include __DIR__ . "/../database/dbconnect.php";
     $name = $_POST['athlete_name'];
     $sports = $_POST['schedule_sports'];
+    $schedule_id = $_POST['schedule_id'];
     $sql = "SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='$name' AND worldrecord_sports='$sports'";
     $result = $db->query($sql);
     // $row = mysqli_fetch_array($result);
@@ -36,6 +35,7 @@
                 <form action="./change_result.php" method="post" class="form" id="form_action">
                     <input type="hidden" name="name" value="<?= $name ?>">
                     <input type="hidden" name="sports" value="<?= $sports ?>">
+                    <input type="hidden" name="schedule_id" value="<?= $schedule_id ?>">
                     <div class="input_row">
                         <span class="input_guide">달성 신기록</span>
                         <?php
