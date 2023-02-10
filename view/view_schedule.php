@@ -57,7 +57,7 @@ include_once(__DIR__ .  "/view_block.php");
                                 <th>NO</th>
                                 <th>MATCH</th>
                                 <th>GENDER</th>
-                                <th>ROUND</th>
+                                <th>ROUND(MATCH)</th>
                                 <th>GROUP</th>
                                 <th>PLACE</th>
                                 <th>DATE</th>

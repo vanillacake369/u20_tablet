@@ -2,7 +2,6 @@
 // 경기 상태에 따른 경기 결과 처리 모델
 include(__DIR__ . "/../database/dbconnect.php");
 include_once(__DIR__ . "/../model/model_result_by_state.php");
-include_once(__DIR__ . "/../model/model_result.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
@@ -22,31 +21,17 @@ $judgerow = mysqli_fetch_array($judgeresult);
 <div class="table-wrap">
     <form action="../model/model_result_track.php" method="post" class="form">
         <!-- 라운드 -->
-        <div class="input_row">
-            <input type="text" class="input_text" name="round" value="<?= $rows['schedule_round'] ?>" required="" readonly>
-            <!-- <input type="hidden" name="round" value="<? //= $rows['schedule_round'] 
-                                                            ?>"> -->
-        </div>
-
+        <input type="hidden" name="round" value="<?= $rows['schedule_round'] ?>">
         <!-- 경기 이름 -->
-        <div class="input_row">
-            <input type="text" class="input_text" name="gamename" value="<?= $rows['schedule_name']  ?>" required="" readonly>
-            <!-- <input type="hidden" name="gamename" value="<?= $rows['schedule_name'] ?>"> -->
-        </div>
+        <input type="hidden" name="gamename" value="<?= $rows['schedule_name'] ?>">
         <!-- 스케줄 id -->
-        <div class="input_row">
-            <input type="text" class="input_text" name="schedule_id" value="<?= $id  ?>" required="" readonly>
-            <!-- <input type="hidden" name="schedule_id" value="<?= $id ?>"> -->
-        </div>
+        <input type="hidden" name="schedule_id" value="<?= $id ?>">
         <!-- 심판 이름 -->
-        <div class="input_row">
-            <input type="text" class="input_text" name="refereename" value="<?= $judgerow['judge_name'] ?>" required="" readonly>
-            <!-- <input type="hidden" name="refereename" class="input_text" value="<?= $judgerow['judge_name'] ?>" maxlength="30" required="" readonly />; -->
-        </div> <!-- 풍속 입력 -->
+        <input type="hidden" name="refereename" class="input_text" value="<?= $judgerow['judge_name'] ?>" maxlength="30" required="" readonly />
+        <!-- 풍속 입력 -->
         <h3 class="intro">WIND</h3>
         <div class="input_row">
             <?php
-            // echo '<input placeholder="심판 이름" type="text" name="refereename" class="input_text" value="' . $wind . '" maxlength="30" required=""> ';
             echo '<input placeholder="풍속을 입력해주세요." type="text" name="wind" class="input_text" value="' . $wind . '" maxlength="16" required="">';
             ?>
         </div>
@@ -82,43 +67,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
             </thead>
             <tbody>
                 <?php
-                /*
-                foreach ($result_array as $result) {
-                    echo "<tr>";
-                    // 레인번호
-                    echo "<td>" . $result["record_order"] . "</td>";
-                    // 선수명(팀명)
-                    echo "<td>" . $result["athlete_name"] . "</td>";
-                    // 선수 성별
-                    echo "<td>" . $result["athlete_gender"] . "</td>";
-                    // 국가
-                    echo "<td>" . $result["athlete_country"] . "</td>";
-                    // 소속
-                    echo "<td>" . $result["athlete_division"] . "</td>";
-                    // 풍향
-                    // echo "<td>" . $result["record_wind"] . "</td>";
-                    // 기록
-                    echo "<td>" . $result["record_record"] . "</td>";
-                    // 순위
-                    echo "<td>" . $result["record_result"] . "</td>";
-                    // 통과
-                    echo "<td>" . $result["record_pass"] . "</td>";
-                    // 신기록
-                    echo "<td>" . $result["record_new"] . "</td>";
-                    // 경기 상태(Official, Result..)
-                    echo "<td>" . $result["record_status"] . "</td>";
-                    if (isset($is_not_official_status)) {
-                        // 경기 비고
-                        echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . trim($result["record_memo"]) . "</a></td>";
-                    } else {
-                        echo "<td>" . trim($result["record_memo"]) . "</td>";
-                    }
-                    echo "</tr>";
-                }
-                */
-                ?>
-                <?php
-                // $relm = 'record_live_result,record_live_record,record_pass,record_memo,record_new,athlete_name, record_order';
                 if ($rows['schedule_status'] == 'y') {
                     $order = 'record_live_result';
                 } else {
