@@ -3,6 +3,8 @@
 include(__DIR__ . "/../database/dbconnect.php");
 include_once(__DIR__ . "/../model/model_result_by_state.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
+include_once(__DIR__ . "/../model/pagination.php");
+include_once(__DIR__ . "/../model/filter.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
 $id = trim($_GET["schedule_id"]);
@@ -103,7 +105,22 @@ $judgerow = mysqli_fetch_array($judgeresult);
                     // 순위
                     echo '<td><input type="number" name="rank[]" id="rank" class="input_result" value="' . $row['record_live_result'] . '" min="1" max="12" required="" /></td>';
                     // 통과 여부
-                    echo '<td><input placeholder="경기 통과 여부" type="text" name="gamepass[]" class="input_result" value="' . $row['record_pass'] . '" maxlength="50" required="" /></td>';
+                    $pass_array = ["p", "l", "d", "w", "n"]; //DB 저장값
+                    $pass_dic = []; //뷰 출력값
+                    $pass_dic["p"] = "PASS";
+                    $pass_dic["l"] = "FAIL";
+                    $pass_dic["d"] = "DISQUALIFY";
+                    $pass_dic["w"] = "RESIGN";
+                    $pass_dic["n"] = "NOT STARTED";
+                    $isPassSelected = maintainSelected($row['record_pass'] ?? NULL);
+                    echo '<td>';
+                    echo '<select class="d_select" name="gamepass[]">';
+                    foreach ($pass_array as $key) {
+                        $pass_str = $pass_dic[$key];
+                        echo "<option value=$key" . $isPassSelected[$key] . ">$pass_str</option>";
+                    }
+                    echo '</select>';
+                    echo '</td>';
                     // 신기록 여부
                     if ($row['record_new'] == 'y') {
                         $newrecord = $db->query("SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='" . $row['athlete_name'] . "' AND worldrecord_sports='" . $rows['schedule_sports'] . "'");
