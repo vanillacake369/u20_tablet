@@ -3,8 +3,7 @@
 include(__DIR__ . "/../database/dbconnect.php");
 include_once(__DIR__ . "/../model/model_result_by_state.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
-include_once(__DIR__ . "/../model/pagination.php");
-include_once(__DIR__ . "/../model/filter.php");
+include_once(__DIR__ . "/module_change_state.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
 $id = trim($_GET["schedule_id"]);
@@ -89,10 +88,11 @@ $judgerow = mysqli_fetch_array($judgeresult);
                 while ($row = mysqli_fetch_array($result)) {
                     echo '<tr id="rane' . $row['record_order'] . '">';
                     // 레인
-                    echo '<td><input type="number" name="rain[]" class="input_result" value="' . $row['record_order'] . '" min="1" max="12" required="" readonly /></td>';
+                    echo "<td>" . $row['record_order'] . "</td>";
+                    echo '<input type="hidden" name="rain[]" value="' . $row['record_order'] . '">';
                     // 이름
-                    echo '<td><input placeholder="선수 이름" type="text" name="playername[]" 
-                                class="input_result" value="' . $row['athlete_name'] . '" maxlength="30" required="" readonly /></td>';
+                    echo "<td>" . $row['athlete_name'] . "</td>";
+                    echo '<input type="hidden" name="playername[]" value="' . $row['athlete_name'] . '">';
                     // 성별
                     echo '<td>' . $row['schedule_gender'] . '</td>';
                     // 국가
@@ -100,10 +100,16 @@ $judgerow = mysqli_fetch_array($judgeresult);
                     // 팀
                     echo '<td>' . $row['athlete_division'] . '</td>';
                     // 기록
-                    echo '<td><input placeholder="경기 결과를 입력해주세요" type="text" name="gameresult[]" id="result" class="input_result" value="' . $row['record_live_record'] . '" maxlength="8"
-                                 required="" onkeyup="trackFinal(this)"/></td>';
+                    echo '<td>
+                            <input placeholder="경기 결과를 입력해주세요" type="text" name="gameresult[]" id="result" class="input_result" 
+                            value="' . $row['record_live_record'] . '" maxlength="8"
+                            required="" onkeyup="trackFinal(this)"/>
+                        </td>';
                     // 순위
-                    echo '<td><input type="number" name="rank[]" id="rank" class="input_result" value="' . $row['record_live_result'] . '" min="1" max="12" required="" /></td>';
+                    echo '<td>
+                            <input type="number" name="rank[]" id="rank" class="input_result" 
+                            value="' . $row['record_live_result'] . '" min="1" max="12" required="" />
+                        </td>';
                     // 통과 여부
                     $pass_array = ["p", "l", "d", "w", "n"]; //DB 저장값
                     $pass_dic = []; //뷰 출력값

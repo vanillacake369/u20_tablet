@@ -17,6 +17,7 @@ for ($i = 0; $i < count($newrecord); $i++) {
                             INNER JOIN list_athlete ON athlete_country = '$name'  AND record_athlete_id = athlete_id
                             WHERE schedule_id = '$id'");
             while ($row1 = mysqli_fetch_array($result)) {
+                $row1['record_wind'] = ($row1['record_wind'] == '') ? '0' : $row1['record_wind']; // DOUBLE 타입이기에 ''이 입력 시, 0으로 입력하게 해줘야함
                 $sql .= "update list_record set record_new='y' where record_id =" . $row1['record_id'] . ";";
                 if ($check === false) {
                     $sql .= "insert into list_worldrecord(worldrecord_sports, worldrecord_location, worldrecord_gender,worldrecord_athlete_name,
@@ -35,6 +36,7 @@ for ($i = 0; $i < count($newrecord); $i++) {
                             INNER JOIN list_athlete ON athlete_name = '$name'  AND record_athlete_id = athlete_id
                             WHERE schedule_id = '$id'");
             $row1 = mysqli_fetch_array($result);
+            $row1['record_wind'] = ($row1['record_wind'] == '') ? '0' : $row1['record_wind']; // DOUBLE 타입이기에 ''이 입력 시, 0으로 입력하게 해줘야함
             $sql .= "update list_record set record_new='y' where record_id =" . $row1['record_id'] . ";";
             $sql .= "insert into list_worldrecord(worldrecord_sports, worldrecord_location, worldrecord_gender,worldrecord_athlete_name,
                         worldrecord_athletics,worldrecord_wind,worldrecord_datetime,worldrecord_country_code,worldrecord_record) 
@@ -78,6 +80,8 @@ for ($i = 0; $i < count($newrecord); $i++) {
 echo $sql;
 //  execute multi quer
 $db->multi_query($sql);
+
+
 echo "<script>
     opener.parent.location.reload();
 window.close();

@@ -86,6 +86,12 @@ for ($i = 0; $i < count($athlete_name); $i++) {
 if ($row1['schedule_status'] === 'n') {
     $db->query("UPDATE list_schedule set schedule_end='" . date("Y-m-d H:i:s") . "',schedule_result='l',schedule_status='y' where schedule_id=" . $s_id . "");
 }
+
+echo $savequery;
 echo "<script>
-    location.replace('addTrackResult2.php?id=" . $_id . "') 
-    </script>";
+alert('RESULT UPDATED');
+history.go(-2);
+</script>";
+// echo "<script>
+//     location.replace('addTrackResult2.php?id=" . $_id . "') 
+//     </script>";

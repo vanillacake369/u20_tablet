@@ -3,6 +3,8 @@
 include(__DIR__ . "/../database/dbconnect.php");
 include_once(__DIR__ . "/../model/model_result_by_state.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
+include_once(__DIR__ . "/../model/filter.php");
+include_once(__DIR__ . "/module_change_state.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
 $id = trim($_GET["schedule_id"]);
@@ -86,19 +88,24 @@ $judgerow = mysqli_fetch_array($judgeresult);
                     if ($count % 4 == 0) {
                         echo '<tr id="rane' . $row['record_order'] . '">';
                         // 레인
-                        echo '<td><input type="number" name="rain[]" class="input_result" value="' . $row['record_order'] . '" min="1" max="12" required="" readonly /></td>';
+                        echo '<td>' . $row['record_order'] . '</td>';
+                        echo '<input type="hidden" name="rain[]" value="' . $row['record_order'] . '">';
+                        // echo '<td><input type="number" name="rain[]" class="input_text" value="' . $row['record_order'] . '" min="1" max="12" required="" readonly /></td>';
                         echo '<td>';
                     }
                     if ($count % 4 == 3) {
                         // 이름
-                        echo '<input placeholder="선수 이름" type="text" name="playername[]"
-                                class="input_result" value="' . $row['athlete_name'] . '" maxlength="30" required="" readonly/></td>';
+                        echo $row['athlete_name'] . '</td>';
+                        echo '<input type="hidden" name="playername[]" value="' . $row['athlete_name'] . '">';
+                        // echo '<input placeholder="선수 이름" type="text" name="playername[]"
+                        //         class="input_text" value="' . $row['athlete_name'] . '" maxlength="30" required="" readonly/></td>';
                         // 성별
                         echo '<td>' . $row['schedule_gender'] . '</td>';
                         // 국가
                         echo '<td>' . $row['athlete_country'] . '</td>';
                         // 소속
-                        echo '<td><input placeholder="소속" type="text" name="division" class="input_result" value="' . $row['athlete_country'] . '"maxlength="50" required="" readonly/></td>';
+                        echo '<td>' . $row['athlete_country'] . '</td>';
+                        echo '<input type="hidden" name="division" value="' . $row['athlete_country'] . '">';
                         // 기록
                         echo '<td>
                             <input placeholder="경기 결과" type="text" name="gameresult[]" id="result" class="input_result"
@@ -110,7 +117,23 @@ $judgerow = mysqli_fetch_array($judgeresult);
                         // 등수
                         echo '<td><input type="number" name="rank[]" id="rank" class="input_result" value="' . $row['record_live_result'] . '" min="1" max="12" required="" /></td>';
                         // 통과 여부
-                        echo '<td><input placeholder="경기 통과 여부" type="text" name="gamepass[]" class="input_result" value="' . $row['record_pass'] . '" maxlength="1" required="" /></td>';
+                        // 통과 여부
+                        $pass_array = ["p", "l", "d", "w", "n"]; //DB 저장값
+                        $pass_dic = []; //뷰 출력값
+                        $pass_dic["p"] = "PASS";
+                        $pass_dic["l"] = "FAIL";
+                        $pass_dic["d"] = "DISQUALIFY";
+                        $pass_dic["w"] = "RESIGN";
+                        $pass_dic["n"] = "NOT STARTED";
+                        $isPassSelected = maintainSelected($row['record_pass'] ?? NULL);
+                        echo '<td>';
+                        echo '<select class="d_select" name="gamepass[]">';
+                        foreach ($pass_array as $key) {
+                            $pass_str = $pass_dic[$key];
+                            echo "<option value=$key" . $isPassSelected[$key] . ">$pass_str</option>";
+                        }
+                        echo '</select>';
+                        echo '</td>';
                         // 신기록 여부 
                         //추후에 태블릿용 페이지를 만든 후 일정과 연결 시 스포츠이름 받아와야함
                         $newrecord = $db->query("SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='" . $row['athlete_country'] . "' AND worldrecord_sports='" . $rows['schedule_sports'] . "'");
@@ -153,14 +176,16 @@ $judgerow = mysqli_fetch_array($judgeresult);
                             echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="" maxlength="100" ath="' . $row['athlete_country'] . '" sports=' . $rows['schedule_sports'] . ' schedule_id="' . $id . '" readonly/></td>';
                         }
                         $cnt++;
-
                         // 상태
-                        echo '<td>' . $row['record_status'] . '</td>';
+                        global $status_dic;
+                        $status = $status_dic[$row['record_status']];
+                        echo '<td>' . $status . '</td>';
                         // 비고
                         echo '<td><input placeholder="비고" type="text" name="bigo[]" class="input_result" value="" maxlength="100" /></td>';
                     } else {
-                        echo '<input placeholder="선수 이름" type="text" name="playername[]"
-                                class="input_result" value="' . $row['athlete_name'] . '" maxlength="30" required="" readonly style="margin-bottom: 10px;"/>';
+                        // 이름
+                        echo $row['athlete_name'] . "<br>";
+                        echo '<input type="hidden" name="playername[]" value="' . $row['athlete_name'] . '">';
                     }
                     $count++;
                 }
