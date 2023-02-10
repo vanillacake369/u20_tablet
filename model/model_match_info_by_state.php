@@ -14,11 +14,11 @@ function getMatchInfoByState($id)
     // $id : 스케줄 id(<= view_result의 GET[id])
     $rows = [];
     while ($row = mysqli_fetch_array($matchInfo)) {
-        $row["sports_category"] = $row["sports_category"];
+        $row["sports_category"] = translateCategory($row["sports_category"]);
         $row["sports_name_kr"] = $row["sports_name_kr"];
         $row["schedule_date"] = $row["schedule_date"];
         $row["schedule_start"] = $row["schedule_start"];
-        $row["schedule_round"] = $row["schedule_round"];
+        $row["schedule_round"] = translateRound($row["schedule_round"]);
         $row["judge_name"] = $row["judge_name"];
         $row["judge_duty"] = $row["judge_duty"];
         $row["schedule_gender"] = translateGender($row["schedule_gender"]);

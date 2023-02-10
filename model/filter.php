@@ -47,12 +47,14 @@ $status_dic["o"] = "OFFICIAL";
 $status_dic["l"] = "LIVE";
 $status_dic["n"] = "NOT STARTED";
 
-/**
- * DB데이터를 입력받아 원하는 값(한글)로 번역
- *
- * @param [type] $division
- * @return void
- */
+// 경기 카테고리
+$category_dic = [];
+$category_dic["트랙경기"] = "TRACK";
+$category_dic["종합경기"] = "COMBINED";
+$category_dic["필드경기"] = "FIELD";
+
+
+
 function translateDivision($d)
 {
     global $division_dic;
@@ -65,36 +67,18 @@ function translateLocation($l)
     $hasKey = array_key_exists($l, $location_dic);
     return $hasKey ? $location_dic[$l] : "";
 }
-/**
- * Undocumented function
- *
- * @param [type] $s
- * @return void
- */
 function translateStatus($s)
 {
     global $status_dic;
     $hasKey = array_key_exists($s, $status_dic);
     return $hasKey ? $status_dic[$s] : "";
 }
-/**
- * Undocumented function
- *
- * @param [type] $p
- * @return void
- */
 function translatePass($p)
 {
     global $pass_dic;
     $hasKey = array_key_exists($p, $pass_dic);
     return $hasKey ? $pass_dic[$p] : "";
 }
-/**
- * Undocumented function
- *
- * @param [type] $g
- * @return void
- */
 function translateGender($g)
 {
     global $gender_dic;
@@ -107,14 +91,12 @@ function translateRound($r)
     $hasKey = array_key_exists($r, $round_dic);
     return $hasKey ? $round_dic[$r] : "";
 }
-/**
- * Undocumented function
- *
- * @param [type] $status
- * @param [type] $live
- * @param [type] $official
- * @return void
- */
+function translateCategory($c)
+{
+    global $category_dic;
+    $hasKey = array_key_exists($c, $category_dic);
+    return $hasKey ? $category_dic[$c] : "";
+}
 function changeRecordByStatus($status, $live, $official)
 {
     // official state
@@ -130,14 +112,6 @@ function changeRecordByStatus($status, $live, $official)
         return "";
     }
 }
-/**
- * Undocumented function
- *
- * @param [type] $status
- * @param [type] $live
- * @param [type] $official
- * @return void
- */
 function changeResultByStatus($status, $live, $official)
 {
     // official state
@@ -153,13 +127,6 @@ function changeResultByStatus($status, $live, $official)
         return "";
     }
 }
-/**
- * Undocumented function
- *
- * @param [type] $status
- * @param [type] $id
- * @return void
- */
 function changeIdByStatus($status, $id)
 {
     // official state

@@ -17,7 +17,8 @@ $schedule_array = getScheduleByState($judge_account);
         </ul>
         <ul class="navbar">
             <li class="logo">
-                <a href="view_schedule.php">ALL MATCHES</a>
+                <a href="view_schedule.php" style="font-size: x-large;font-weight: bold;">ALL MATCHES
+                </a>
             </li>
             <?php
             // 많아질 수 있으니 만약 구현할 예정이라면 토글 사이드바로 구현할 것

@@ -27,10 +27,11 @@ include_once(__DIR__ .  "/view_block.php");
     $result_array = getResultByState($schedule_id);
     $match_info_array = getMatchInfoByState($schedule_id);
     // 경기 소개 h1
-    $name = $match_info_array[0]["sports_name_kr"];
+    $name = strtoupper($match_info_array[0]["schedule_sports"]);
     $gender = $match_info_array[0]["schedule_gender"];
     $group = $match_info_array[0]["schedule_group"];
-    $match_intro_h1 = $name . " " . $gender . " " . $group . "조";
+    $round = $match_info_array[0]["schedule_round"];
+    $match_intro_h1 = $name . " " . $gender . " " . $round . " " .  $group . "GROUP";
     ?>
 
     <div class="limiter">
@@ -45,15 +46,15 @@ include_once(__DIR__ .  "/view_block.php");
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>종목명</th>
-                                <th>경기명</th>
-                                <th>경기 성별</th>
-                                <th>날짜</th>
-                                <th>시작시간</th>
-                                <th>라운드</th>
-                                <th>조</th>
-                                <th>심판명</th>
-                                <th>역할</th>
+                                <th>CATEGORY</th>
+                                <th>EVENTS</th>
+                                <th>GENDER</th>
+                                <th>DATE</th>
+                                <th>TIME</th>
+                                <th>ROUND</th>
+                                <th>GROUP</th>
+                                <th>REFEREE</th>
+                                <th>DUTY</th>
                             </tr>
                         </thead>
                         <tbody>

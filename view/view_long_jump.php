@@ -83,7 +83,6 @@ $match_info_array = getMatchInfoByState($schedule_id);
             <?php
             echo "<a href='view_input_result.php?sports_category=long_jump&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
             ?>
-            <span class=" bold">UPDATE</span>
             </button>
         </div>
     </div>
