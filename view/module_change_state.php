@@ -1,4 +1,7 @@
 <?php
+// DB 연결
+include_once(__DIR__ . "/../database/dbconnect.php");
+include_once(__DIR__ . "/../model/filter.php");
 //@vanillacake369
 /**
  * select box의 이전 선택값 유지하기 위한 함수
@@ -15,4 +18,33 @@ function maintainSelected($value)
     } else {
         return NULL;
     }
+}
+
+/**
+ * 선수이름과 이벤트명을 통해 모든 신기록을 가져오는 함수
+ * @depends translateNewRecord(:: /model/filter.php)
+ * 
+ * @param [type] $record_name
+ * @param [type] $schedule_sports
+ * @return void
+ */
+function getNewRecord($athlete_name, $schedule_sports)
+{
+    global $db;
+    $all_new_records_str = "";
+
+    $sql =
+        "SELECT * 
+        FROM list_worldrecord 
+        WHERE worldrecord_athlete_name = '" . trim($athlete_name) .
+        "' AND worldrecord_sports= '" . trim($schedule_sports) . "';";
+    $query_result = $db->query($sql);
+
+    $new_records = array();
+    while ($new_records = mysqli_fetch_array($query_result)) {
+        $new_record = translateNewRecord($new_records["worldrecord_athletics"]);
+        $all_new_records_str = $all_new_records_str . $new_record;
+    }
+
+    return $all_new_records_str;
 }

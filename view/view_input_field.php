@@ -64,7 +64,7 @@ $judgerow = mysqli_fetch_array($judgeresult);
                     <th>4th</th>
                     <th>5th</th>
                     <th>6th</th>
-                    <th>FINAL RESULT</th>
+                    <th>FINAL</th>
                     <th>RANK</th>
                     <th>NEW RECORD</th>
                     <th>REMARK</th>

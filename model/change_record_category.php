@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../fontawesome/css/all.min.css" />
     <script src="../fontawesome/js/all.min.js"></script>
     <script src="../js/jquery-3.2.1.min.js"></script>
@@ -30,14 +30,13 @@
         <!-- <div class="contents something">-->
         <div class="something">
             <div class="mypage">
-                <h3>신기록 유형 바꾸기</h3>
+                <h3>INSERT NEW RECORD</h3>
                 <hr />
                 <form action="./change_result.php" method="post" class="form" id="form_action">
                     <input type="hidden" name="name" value="<?= $name ?>">
                     <input type="hidden" name="sports" value="<?= $sports ?>">
                     <input type="hidden" name="schedule_id" value="<?= $schedule_id ?>">
                     <div class="input_row">
-                        <span class="input_guide">달성 신기록</span>
                         <?php
                         $count = 1;
                         while ($athletics = mysqli_fetch_array($result)) {
@@ -45,12 +44,12 @@
                             echo '<input type="hidden" name="gizone[]" value="' . $ch . '">';
                             echo '<div class="select_box" style="margin-right:10px;">
                             <select class="d_select" name="newrecord[]" style="width: 130px;">
-                                <option value="n">해당없음</option>
-                                <option value="c">대회신기록</option>
-                                <option value="a">아시아신기록</option>
-                                <option value="s">아시아U20신기록</option>
-                                <option value="u">세계U20신기록</option>
-                                <option value="w">세계신기록</option>
+                                <option value="n">NONE</option>
+                                <option value="c">CR</option>
+                                <option value="a">AR</option>
+                                <option value="s">U20 AR</option>
+                                <option value="u">U20 WR</option>
+                                <option value="w">WR</option>
                             </select>
                             </div>';
                             echo "<script>";
@@ -79,12 +78,12 @@
                             echo '<input type="hidden" name="gizone[]" value="n">';
                             echo '<div class="select_box" style="margin-right:10px;">
                             <select class="d_select" name="newrecord[]" style="width: 130px;">
-                                <option value="n">해당없음</option>
-                                <option value="c">대회신기록</option>
-                                <option value="a">아시아신기록</option>
-                                <option value="s">아시아U20신기록</option>
-                                <option value="u">세계U20신기록</option>
-                                <option value="w">세계신기록</option>
+                                <option value="n">NONE</option>
+                                <option value="c">CR</option>
+                                <option value="a">AR</option>
+                                <option value="s">U20 AR</option>
+                                <option value="u">U20 WR</option>
+                                <option value="w">WR</option>
                             </select>
                         </div>';
                         }

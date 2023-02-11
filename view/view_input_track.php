@@ -1,10 +1,13 @@
 <?php
-// 경기 상태에 따른 경기 결과 처리 모델
+// DB 연결
 include(__DIR__ . "/../database/dbconnect.php");
+// STATUS(공식/실시간)에 따른 값 변환 <= 경기기록 가져오기 <= DB
 include_once(__DIR__ . "/../model/model_result_by_state.php");
+// STATUS(공식/실시간)에 따른 값 변환 <= 경기관련내용 가져오기 <= DB
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
+// 값 변환 (PASS <= p)
 include_once(__DIR__ . "/module_change_state.php");
-// $id : 스케줄 id
+
 $sports_category = trim($_GET["sports_category"]);
 $id = trim($_GET["schedule_id"]);
 $result_array = getResultByState($id);
@@ -137,31 +140,31 @@ $judgerow = mysqli_fetch_array($judgeresult);
                             $newathletics[] = $athletics[0];
                         }
                         if (($newathletics[0] ?? null) === 'w') {
-                            echo '<td><input placeholder=""  type="text" name="newrecord[]" class="input_result" value="세계신기록';
+                            echo '<td><input placeholder=""  type="text" name="newrecord[]" class="input_result" value="WR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $row['athlete_name'] . '" sports=' . $rows['schedule_sports'] . ' schedule_id="' . $id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 'u') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="세계U20신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="WR U20';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $row['athlete_name'] . '" sports=' . $rows['schedule_sports'] . ' schedule_id="' . $id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 'a') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="아시아신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="AR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $row['athlete_name'] . '" sports=' . $rows['schedule_sports'] . ' schedule_id="' . $id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 's') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="아시아U20신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="AR U20';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $row['athlete_name'] . '" sports=' . $rows['schedule_sports'] . ' schedule_id="' . $id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 'c') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="대회신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="CR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
@@ -175,7 +178,7 @@ $judgerow = mysqli_fetch_array($judgeresult);
                     // 상태
                     echo '<td>' . $row['record_status'] . '</td>';
                     // 비고
-                    echo '<td><input placeholder="비고를 입력해주세요" type="text" name="bigo[]" class="input_result" value="' . ($row['record_memo'] ? $row['record_memo'] : '&nbsp') . '" maxlength="100" /></td>';
+                    echo '<td><input placeholder="INSERT REMARK" type="text" name="bigo[]" class="input_result" value="' . ($row['record_memo'] ? $row['record_memo'] : '&nbsp') . '" maxlength="100" /></td>';
                     $count++;
                 }
                 ?>
