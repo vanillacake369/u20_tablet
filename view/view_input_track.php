@@ -9,14 +9,15 @@ $sports_category = trim($_GET["sports_category"]);
 $id = trim($_GET["schedule_id"]);
 $result_array = getResultByState($id);
 $wind = $result_array[0]["record_wind"];
+// 경기 정보 가져오기
 $judge_id = trim($_SESSION['Id']);
 $sql = "SELECT DISTINCT schedule_name,schedule_round,schedule_status,record_wind,schedule_sports FROM list_record  INNER JOIN list_schedule ON schedule_id= record_schedule_id AND schedule_id = '$id'";
 $result = $db->query($sql);
 $rows = mysqli_fetch_assoc($result);
+// 심판 정보 가져오기
 $judgesql = "SELECT DISTINCT judge_name from list_judge WHERE judge_account = '" . $judge_id . "'";
 $judgeresult = $db->query($judgesql);
 $judgerow = mysqli_fetch_array($judgeresult);
-
 ?>
 
 <div class="table-wrap">

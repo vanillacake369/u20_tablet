@@ -18,7 +18,7 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
 <div class="table-wrap">
     <h3 class="intro">WEIGHT</h3>
     <div class="input_row">
-        <input placeholder="WEIGHT" type="text" name="wind" class="input_text" value="<?php echo $weight; ?>" maxlength="16" required="" readonly>
+        <span><?php echo $weight ?></span>
     </div>
     <h3 class="intro">RESULT</h3>
     <table>
@@ -59,8 +59,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
             $result = $db->query($sql);
             $rows = mysqli_fetch_assoc($result);
 
-            print_r($result);
-
             $i = 1;
             $count = 0; //신기록 위치 관련 변수
             $trial = 0;
@@ -88,7 +86,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                                     INNER JOIN list_schedule ON schedule_id= record_schedule_id 
                                     where $check AND schedule_id = '$s_id'
                                     ORDER BY $order ASC";
-            echo $sql2;
             $result2 = $db->query($sql2);
             while ($id = mysqli_fetch_array($result2)) {
                 echo '<tr>';
@@ -176,15 +173,15 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
         </tbody>
     </table>
     <?php
-    if ($is_not_official_status) {
-        echo '<div class="container_postbtn">';
-        echo '<div class="postbtn_like">';
-        echo '<div class="like_btn">';
-        echo "<a href='view_input_result.php?sports_category=field&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
-        echo '</button>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-    }
+    // if ($is_not_official_status) {
+    echo '<div class="container_postbtn">';
+    echo '<div class="postbtn_like">';
+    echo '<div class="like_btn">';
+    echo "<a href='view_input_result.php?sports_category=field&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+    echo '</button>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    // }
     ?>
 </div>
