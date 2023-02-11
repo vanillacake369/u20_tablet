@@ -199,24 +199,6 @@ function makeOrderBy($columnStartsWith, $categoryValue, $orderValue)
     return " ORDER BY $category $orderValue ";
 }
 
-//@vanillacake369
-/**
- * select box의 이전 선택값 유지하기 위한 함수
- *
- * @param [type] $value : get/post로 넘어온 값
- * @return array|NULL
- */
-function maintainSelected($value)
-{
-    $isSelected = [];
-    if (isset($value) && ($value != "non")) {;
-        $isSelected[$value] = ' selected';
-        return $isSelected;
-    } else {
-        return NULL;
-    }
-}
-
 // @vanillacake369
 /**
  * 어떤 페이지 내에 사용자가 검색값을 입력하였는지 체크하는 함수

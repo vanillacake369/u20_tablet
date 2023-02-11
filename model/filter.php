@@ -20,6 +20,36 @@ $round_dic["예선"] = "TRYOUT";
 $round_dic["결승"] = "FINAL";
 $round_dic["준결승"] = "SEMI-FINAL";
 $round_dic["준준결승"] = "QUARTER-FINAL";
+// 종합경기의 라운드 컬럼(key)에 경기분류(value)를 저장
+// track
+$round_dic["10000m"] = "10000m";
+$round_dic["100m"] = "100m";
+$round_dic["100m 허들"] = "100m hurdles";
+$round_dic["110m 허들"] = "110m hurdles";
+$round_dic["1500m"] = "1500m";
+$round_dic["200m"] = "200m";
+$round_dic["3000m"] = "3000m";
+$round_dic["3000m 장애물"] = "3000m";
+$round_dic["400m"] = "400m";
+$round_dic["400m 허들"] = "400m hurdles";
+$round_dic["5000m"] = "5000m";
+$round_dic["800m"] = "800m";
+$round_dic["경보"] = "race walk";
+// relay
+$round_dic["4x100 릴레이"] = "4x100 relay";
+$round_dic["4x400 릴레이"] = "4x400 relay";
+// field
+$round_dic["원반던지기"] = "discus throw";
+$round_dic["해머던지기"] = "hammer throw";
+$round_dic["창던지기"] = "javelin throw";
+$round_dic["장대 높이뛰기"] = "pole vault";
+$round_dic["투포환"] = "shot put";
+// high_jump
+$round_dic["높이뛰기"] = "high jump";
+// long_jump
+$round_dic["멀리뛰기"] = "long jump";
+$round_dic["세단뛰기"] = "long jump";
+
 
 // 통과 상태
 $pass_dic = [];
@@ -28,11 +58,6 @@ $pass_dic["l"] = "FAIL";
 $pass_dic["d"] = "DISQUALIFY";
 $pass_dic["w"] = "RESIGN";
 $pass_dic["n"] = "NOT STARTED";
-
-// 분류
-$division_dic = [];
-$division_dic["b"] = "MAIN";
-$division_dic["s"] = "SUB";
 
 // 장소
 $location_dic = [];
@@ -55,12 +80,6 @@ $category_dic["필드경기"] = "FIELD";
 
 
 
-function translateDivision($d)
-{
-    global $division_dic;
-    $hasKey = array_key_exists($d, $division_dic);
-    return $hasKey ? $division_dic[$d] : "";
-}
 function translateLocation($l)
 {
     global $location_dic;
