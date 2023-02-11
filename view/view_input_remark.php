@@ -55,7 +55,7 @@ include_once(__DIR__ .  "/view_block.php");
                     <form action="../model/model_remark.php" method="post" class="memo_form">
                         <?php
                         // 비고 입력란
-                        echo "<textarea type=\"text\" name=\"memo\"  value=\"\" class=\"memo\" placeholder=\"\" required />$memo</textarea>";
+                        echo "<textarea type=\"text\" name=\"memo\"  value=\"\" class=\"memo\" placeholder=\"\"/>$memo</textarea>";
                         echo "<input type=\"hidden\" name=\"remark_category\" value=\"$remark_category\">";
                         echo "<input type=\"hidden\" name=\"id\" value=\"$id\">";
                         ?>

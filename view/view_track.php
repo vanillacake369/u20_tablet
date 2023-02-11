@@ -73,8 +73,8 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 echo "<td>" . $result["record_new"] . "</td>";
                 // 경기 상태(Official, Result..)
                 echo "<td>" . $result["record_status"] . "</td>";
+                // 경기 비고
                 if ($is_not_official_status) {
-                    // 경기 비고
                     $placeholder = trim($result["record_memo"]);
                     if (!(strlen($placeholder) > 0)) {
                         $placeholder = "-";
