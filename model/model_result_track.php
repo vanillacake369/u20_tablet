@@ -129,4 +129,3 @@ echo "<script>
 alert('RESULT UPDATED');
 history.go(-3);
 </script>";
-        // location.replace('addTrackResult.php?id=".$row1['schedule_id']."') ;

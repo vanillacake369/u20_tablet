@@ -78,6 +78,14 @@ $category_dic["트랙경기"] = "TRACK";
 $category_dic["종합경기"] = "COMBINED";
 $category_dic["필드경기"] = "FIELD";
 
+// 신기록 종류
+$new_record_dic = [];
+$new_record_dic["a"] = "AR";        // Asia Record
+$new_record_dic["s"] = "U20 AR";    // U20 Asia Record
+$new_record_dic["w"] = "WR";        // World Record
+$new_record_dic["u"] = "U20 WR";    // U20 World Record
+$new_record_dic["c"] = "CR";        // Championship Record(해당 대회 신기록)
+
 
 
 function translateLocation($l)
@@ -115,6 +123,12 @@ function translateCategory($c)
     global $category_dic;
     $hasKey = array_key_exists($c, $category_dic);
     return $hasKey ? $category_dic[$c] : "";
+}
+function translateNewRecord($r)
+{
+    global $new_record_dic;
+    $hasKey = array_key_exists($r, $new_record_dic);
+    return $hasKey ? $new_record_dic[$r] : "";
 }
 function changeRecordByStatus($status, $live, $official)
 {

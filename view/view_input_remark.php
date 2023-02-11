@@ -55,7 +55,7 @@ include_once(__DIR__ .  "/view_block.php");
                     <form action="../model/model_remark.php" method="post" class="memo_form">
                         <?php
                         // 비고 입력란
-                        echo "<textarea type=\"text\" name=\"memo\"  value=\"\" class=\"memo\" placeholder=\"\" required />$memo</textarea>";
+                        echo "<textarea type=\"text\" name=\"memo\"  value=\"\" class=\"memo\" placeholder=\"\"/>$memo</textarea>";
                         echo "<input type=\"hidden\" name=\"remark_category\" value=\"$remark_category\">";
                         echo "<input type=\"hidden\" name=\"id\" value=\"$id\">";
                         ?>
@@ -63,7 +63,7 @@ include_once(__DIR__ .  "/view_block.php");
                             <div class="postbtn_like">
                                 <div class="like_btn">
                                     <button type="submit" class="btn_navy btn_memo" name="done">
-                                        <span class="btn_txt bold">확인</span>
+                                        <span class="btn_txt bold">CONFIRM</span>
                                     </button>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@ include_once(__DIR__ .  "/view_block.php");
                         <div class="postbtn_like">
                             <div class="like_btn">
                                 <button class="btn_grey btn_memo" name="back" onclick="history.back()">
-                                    <span class="btn_txt bold">뒤로 가기</span>
+                                    <span class="btn_txt bold">CANCEL</span>
                                 </button>
                             </div>
                         </div>

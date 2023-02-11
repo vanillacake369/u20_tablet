@@ -2,6 +2,7 @@
 // 경기 상태에 따른 경기 결과 처리 모델
 include_once(__DIR__ . "/../model/model_result_by_state.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
+include_once(__DIR__ . "/module_change_state.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
 $schedule_id = trim($_GET["schedule_id"]);
@@ -70,11 +71,15 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 // 통과
                 echo "<td>" . $result["record_pass"] . "</td>";
                 // 신기록
-                echo "<td>" . $result["record_new"] . "</td>";
+                if ($result['record_new'] == 'y') {
+                    echo '<td>' . getNewRecord($result['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';
+                } else {
+                    echo '<td>-</td>';
+                }
                 // 경기 상태(Official, Result..)
                 echo "<td>" . $result["record_status"] . "</td>";
+                // 경기 비고
                 if ($is_not_official_status) {
-                    // 경기 비고
                     $placeholder = trim($result["record_memo"]);
                     if (!(strlen($placeholder) > 0)) {
                         $placeholder = "-";

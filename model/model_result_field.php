@@ -126,8 +126,9 @@ if ($row1['schedule_status'] === 'n') {
     $db->query("UPDATE list_schedule set schedule_end='" . date("Y-m-d H:i:s") . "',schedule_result='l',schedule_status='y' where schedule_id=" . $row1['schedule_id'] . "");
 }
 echo "<script>
-    location.replace('addFieldResult.php?id=" . $_id . "') 
-    </script>";
+alert('RESULT UPDATED');
+history.go(-3);
+</script>";
 
 
 exit;

@@ -18,7 +18,7 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
 <div class="table-wrap">
     <h3 class="intro">WEIGHT</h3>
     <div class="input_row">
-        <input placeholder="WEIGHT" type="text" name="wind" class="input_text" value="<?php echo $weight; ?>" maxlength="16" required="" readonly>
+        <span><?php echo $weight ?></span>
     </div>
     <h3 class="intro">RESULT</h3>
     <table>
@@ -58,119 +58,83 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
             $sql = "SELECT DISTINCT record_weight,schedule_name,schedule_round,schedule_status FROM list_record INNER JOIN list_schedule ON schedule_id= record_schedule_id AND schedule_id = '$s_id'";
             $result = $db->query($sql);
             $rows = mysqli_fetch_assoc($result);
-
-            print_r($result);
-
-            $i = 1;
-            $count = 0; //신기록 위치 관련 변수
-            $trial = 0;
-            $order = "record_order";
-            $obj = "record_live_result,record_memo,athlete_id,record_live_record,record_wind,";
-            if ($rows["schedule_status"] === "y") {
-                $order = "record_live_result";
-                $check = 'record_live_result>0';
-            } elseif ($_POST["check"] ?? null === "5") {
-                $trial = 6;
-                $check = 'record_trial =' . $trial . '';
-            } elseif ($_POST["check"] ?? null === "3") {
-                $trial = 4;
-                $check = 'record_trial =' . $trial . '';
-            } else {
-                $trial = 1;
-                $obj = "";
-                $check = 'record_trial =' . $trial . '';
-            }
-            $sql2 =
-                "SELECT DISTINCT  " .
-                $obj .
-                "record_order,athlete_name,record_new,schedule_sports  FROM list_record
+            if (isset($rows)) {
+                $i = 1;
+                $count = 0; //신기록 위치 관련 변수
+                $trial = 0;
+                $order = "record_order";
+                $obj = "record_id,record_live_result,record_memo,athlete_id,record_live_record,record_wind,";
+                if ($rows["schedule_status"] === "y") {
+                    $order = "record_live_result";
+                    $check = 'record_live_result>0';
+                } elseif ($_POST["check"] ?? null === "5") {
+                    $trial = 6;
+                    $check = 'record_trial =' . $trial . '';
+                } elseif ($_POST["check"] ?? null === "3") {
+                    $trial = 4;
+                    $check = 'record_trial =' . $trial . '';
+                } else {
+                    $trial = 1;
+                    $obj = "";
+                    $check = 'record_trial =' . $trial . '';
+                }
+                $sql2 =
+                    "SELECT DISTINCT  " .
+                    $obj .
+                    "record_order,athlete_name,record_new,schedule_sports  FROM list_record
                                     INNER JOIN list_athlete ON athlete_id = record_athlete_id 
                                     INNER JOIN list_schedule ON schedule_id= record_schedule_id 
                                     where $check AND schedule_id = '$s_id'
                                     ORDER BY $order ASC";
-            echo $sql2;
-            $result2 = $db->query($sql2);
-            while ($id = mysqli_fetch_array($result2)) {
-                echo '<tr>';
-                // LANE
-                echo '<td><input type="number" name="rain[]" class="input_result" value="' . $id['record_order'] . '" min="1" max="12" required="" readonly /></td>';
-                echo '<td><input placeholder="선수 이름" type="text" name="playername[]" class="input_result"
-                                value="' . $id['athlete_name'] . '" maxlength="30" required="" readonly /></td>';
-                if ($_POST["check"] ?? null >= 3 || $rows["schedule_status"] === "y") {
-                    $answer = $db->query("SELECT record_live_record FROM list_record join list_athlete ON athlete_id = record_athlete_id where record_athlete_id = '" . $id['athlete_id'] . "' AND record_schedule_id = '$s_id' ORDER BY record_trial ASC");
-                    while ($row = mysqli_fetch_array($answer)) {
-                        echo '<td>';
-                        echo '<input placeholder="경기 결과" type="text" name="gameresult' . ($i) . '[]" class="input_result" value="' . ($row['record_live_record'] ?? null) . '"
-                                        maxlength="5" required="" onkeyup="field1Format(this)"/>';
-                        echo '</td>';
-                        $i++;
+                $result2 = $db->query($sql2);
+                while ($id = mysqli_fetch_array($result2)) {
+                    echo '<tr>';
+                    // LANE
+                    echo '<td>' . $id['record_order'] . '</td>';
+                    // NAME
+                    echo '<td>' . $id['athlete_name'] . '</td>';
+                    // 'n'th TRIAL
+                    if ($_POST["check"] ?? null >= 3 || $rows["schedule_status"] === "y") {
+                        $answer = $db->query("SELECT record_live_record FROM list_record join list_athlete ON athlete_id = record_athlete_id where record_athlete_id = '" . $id['athlete_id'] . "' AND record_schedule_id = '$s_id' ORDER BY record_trial ASC");
+                        while ($row = mysqli_fetch_array($answer)) {
+                            echo '<td>';
+                            echo ($row['record_live_record'] ?? null);
+                            echo '</td>';
+                            $i++;
+                        }
                     }
-                }
-                for ($j = $i; $j <= 6; $j++) {
-                    echo "<td>";
-                    echo '<input placeholder="경기 결과" type="text" name="gameresult' .
-                        $j .
-                        '[]" class="input_result" value=""
-                                                    maxlength="5" onkeyup="field1Format(this)"/>';
-                    echo "</td>";
-                }
-                echo '<td>';
-                echo '<input placeholder="경기 결과" id="result" type="text" name="gameresult[]" class="input_result"
-                                    value="' . ($id["record_live_record"] ?? null) . '" maxlength="5" required="" onkeyup="field1Format(this)"/>';
-                echo '</td>';
-                // RANK
-                echo '<td><input type="number" name="rank[]" class="input_result" id="rank" value="' . ($id['record_live_result'] ?? null) . '" min="1" max="12" required="" /></td>';
-                // NEW RECORD
-                if ($id['record_new'] == 'y') {
-                    $newrecord = $db->query("SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='" . $id['athlete_name'] . "' AND worldrecord_sports='" . $id['schedule_sports'] . "'");
-                    //추후에 태블릿용 페이지를 만든 후 일정과 연결 시 스포츠이름 받아와야함
-                    $newathletics = array();
-                    while ($athletics = mysqli_fetch_array($newrecord)) {
-                        $newathletics[] = $athletics[0];
+                    for ($j = $i; $j <= 6; $j++) {
+                        echo "<td>";
+                        echo $j;
+                        echo "</td>";
                     }
-                    if (($newathletics[0] ?? null) === 'w') {
-                        echo '<td><input placeholder=""  type="text" name="newrecord[]" class="input_result" value="세계신기록';
-                        if (count($newathletics) > 1) {
-                            echo ' 외 ' . (count($newathletics) - 1) . '개';
-                        }
-                        echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
-                    } else if (($newathletics[0] ?? null) === 'u') {
-                        echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="세계U20신기록';
-                        if (count($newathletics) > 1) {
-                            echo ' 외 ' . (count($newathletics) - 1) . '개';
-                        }
-                        echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
-                    } else if (($newathletics[0] ?? null) === 'a') {
-                        echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="아시아신기록';
-                        if (count($newathletics) > 1) {
-                            echo ' 외 ' . (count($newathletics) - 1) . '개';
-                        }
-                        echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
-                    } else if (($newathletics[0] ?? null) === 's') {
-                        echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="아시아U20신기록';
-                        if (count($newathletics) > 1) {
-                            echo ' 외 ' . (count($newathletics) - 1) . '개';
-                        }
-                        echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
-                    } else if (($newathletics[0] ?? null) === 'c') {
-                        echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="대회신기록';
-                        if (count($newathletics) > 1) {
-                            echo ' 외 ' . (count($newathletics) - 1) . '개';
-                        }
-                        echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
-                    } else {
-                        echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
-                    }
-                } else {
-                    echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
-                }
-                // REMARK
-                echo '<td><input type="text" placeholder ="비고"name="bigo[]" class="input_result" value="' .
-                    ($id["record_memo"] ?? null) .
-                    '" maxlength="100" /></td>';
+                    echo '<td>';
+                    echo ($id["record_live_record"] ?? null);
+                    echo '</td>';
+                    // RANK
+                    echo '<td>' . ($id['record_live_result'] ?? null) . '</td>';
 
-                $i = 1;
-                $count++;
+                    // NEW RECORD
+                    if ($id['record_new'] == 'y') {
+                        echo '<td>' . getNewRecord($id['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';
+                    } else {
+                        echo '<td>-</td>';
+                    }
+                    // 경기 비고
+                    if ($is_not_official_status) {
+                        $placeholder = trim($id["record_memo"]);
+                        if (!(strlen($placeholder) > 0)) {
+                            $placeholder = "-";
+                        }
+                        echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($id["record_id"]) . "'>" . $placeholder . "</a></td>";
+                    } else {
+                        echo "<td>" . trim($id["record_memo"]) . "</td>";
+                    }
+                    echo "</tr>";
+
+                    $i = 1;
+                    $count++;
+                }
             }
             ?>
         </tbody>

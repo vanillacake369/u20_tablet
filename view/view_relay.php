@@ -63,7 +63,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 if ($count % 4 == 3) {
                     // 선수명(팀명)
                     echo $result["athlete_name"] . "</td>";
-                    // echo "<td>" . $result["athlete_name"] . "</td>";
                     // 선수 성별
                     echo "<td>" . $result["athlete_gender"] . "</td>";
                     // 국가
@@ -80,14 +79,13 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     echo "<td>" . $result["record_new"] . "</td>";
                     // 경기 상태(Official, Result..)
                     echo "<td>" . $result["record_status"] . "</td>";
+                    // 경기 비고
                     if ($is_not_official_status) {
                         $placeholder = trim($result["record_memo"]);
                         if (!(strlen($placeholder) > 0)) {
                             $placeholder = "-";
                         }
-                        // 경기 비고
                         echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a></td>";
-                        // echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . trim($result["record_memo"]) . "</a></td>";
                     } else {
                         echo "<td></td>";
                     }
@@ -95,7 +93,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 } else {
                     // 선수명(팀명)
                     echo $result["athlete_name"] . "<br>";
-                    // echo "<td>" . $result["athlete_name"] . "</td>";
                 }
 
 
