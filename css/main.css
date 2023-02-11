@@ -270,6 +270,9 @@ header > div ul.navbar > li {
 .col_view_rank {
   width: 5%;
 }
+.col_view_final_result {
+  width: 10%;
+}
 .col_view_pass {
   width: 10%;
 }

@@ -1,6 +1,6 @@
 <?php
 //릴레이 경기 용
-include "../database/dbconnect.php";
+include_once __DIR__ . "/../database/dbconnect.php";
 date_default_timezone_set('Asia/Seoul'); //timezone 설정
 global $db;
 $athlete_name = $_POST['playername'];
