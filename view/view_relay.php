@@ -18,7 +18,7 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
 <div class="table-wrap">
     <h3 class="intro">WIND</h3>
     <div class="input_row">
-        <input placeholder="WIND" type="text" name="wind" class="input_text" value="<?php $wind ?>" maxlength="16" required="" readonly>
+        <input placeholder="WIND" type="text" name="wind" class="input_text" value="<?php echo $wind ?>" maxlength="16" required="" readonly>
     </div>
     <h3 class="intro">RESULT</h3>
     <table>
@@ -53,7 +53,13 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
         <tbody>
             <?php
             $count = 0;
+            $remark_link = "";
             foreach ($result_array as $result) {
+                $placeholder = trim($result["record_memo"]);
+                if (!(strlen($placeholder) > 0)) {
+                    $placeholder = "-";
+                }
+
                 if ($count % 4 == 0) {
                     echo "<tr>";
                     // 레인번호
@@ -81,12 +87,9 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     echo "<td>" . $result["record_status"] . "</td>";
                     // 경기 비고
                     if ($is_not_official_status) {
-                        $placeholder = trim($result["record_memo"]);
-                        if (!(strlen($placeholder) > 0)) {
-                            $placeholder = "-";
-                        }
-                        echo "<td>" . trim($result["record_id"]) . "</td>";
-                        // echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a></td>";
+                        $remark_link = $remark_link . "<a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a><br>";
+                        echo "<td>$remark_link</td>";
+                        $remark_link = "";
                     } else {
                         echo "<td></td>";
                     }
@@ -94,9 +97,8 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 } else {
                     // 선수명(팀명)
                     echo $result["athlete_name"] . "<br>";
+                    $remark_link = $remark_link . "<a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a><br>";
                 }
-
-
                 $count++;
             }
 
