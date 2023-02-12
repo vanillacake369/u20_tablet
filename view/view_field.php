@@ -105,15 +105,15 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     }
                     for ($j = $i; $j <= 6; $j++) {
                         echo "<td>";
-                        echo $j;
+                        // echo $j;
                         echo "</td>";
                     }
+                    // FINAL RESULT
                     echo '<td>';
                     echo ($id["record_live_record"] ?? null);
                     echo '</td>';
                     // RANK
                     echo '<td>' . ($id['record_live_result'] ?? null) . '</td>';
-
                     // NEW RECORD
                     if ($id['record_new'] == 'y') {
                         echo '<td>' . getNewRecord($id['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';

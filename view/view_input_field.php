@@ -143,31 +143,31 @@ $judgerow = mysqli_fetch_array($judgeresult);
                             $newathletics[] = $athletics[0];
                         }
                         if (($newathletics[0] ?? null) === 'w') {
-                            echo '<td><input placeholder=""  type="text" name="newrecord[]" class="input_result" value="세계신기록';
+                            echo '<td><input placeholder=""  type="text" name="newrecord[]" class="input_result" value="WR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 'u') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="세계U20신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="U20 WR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 'a') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="아시아신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="AR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 's') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="아시아U20신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="U20 AR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
                             echo '" maxlength="100" ath="' . $id['athlete_name'] . '" sports=' . $id['schedule_sports'] . ' schedule_id="' . $s_id . '" readonly/></td>';
                         } else if (($newathletics[0] ?? null) === 'c') {
-                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="대회신기록';
+                            echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="CR';
                             if (count($newathletics) > 1) {
                                 echo ' 외 ' . (count($newathletics) - 1) . '개';
                             }
