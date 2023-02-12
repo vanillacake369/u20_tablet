@@ -85,7 +85,8 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                         if (!(strlen($placeholder) > 0)) {
                             $placeholder = "-";
                         }
-                        echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a></td>";
+                        echo "<td>" . trim($result["record_id"]) . "</td>";
+                        // echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($result["record_id"]) . "'>" . $placeholder . "</a></td>";
                     } else {
                         echo "<td></td>";
                     }
@@ -107,7 +108,7 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
         echo '<div class="container_postbtn">';
         echo '<div class="postbtn_like">';
         echo '<div class="like_btn">';
-        echo "<a href='view_input_result.php?sports_category=track&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+        echo "<a href='view_input_result.php?sports_category=relay&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
         echo '</button>';
         echo '</div>';
         echo '</div>';

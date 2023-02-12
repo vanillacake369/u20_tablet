@@ -79,13 +79,18 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     $check = 'record_trial =' . $trial . '';
                 }
                 $sql2 =
-                    "SELECT DISTINCT  " .
-                    $obj .
-                    "record_order,athlete_name,record_new,schedule_sports  FROM list_record
+                    "SELECT * FROM list_record
                                     INNER JOIN list_athlete ON athlete_id = record_athlete_id 
                                     INNER JOIN list_schedule ON schedule_id= record_schedule_id 
                                     where $check AND schedule_id = '$s_id'
                                     ORDER BY $order ASC";
+                // "SELECT DISTINCT  " .
+                // $obj .
+                // "record_order,athlete_name,record_new,schedule_sports  FROM list_record
+                //                 INNER JOIN list_athlete ON athlete_id = record_athlete_id 
+                //                 INNER JOIN list_schedule ON schedule_id= record_schedule_id 
+                //                 where $check AND schedule_id = '$s_id'
+                //                 ORDER BY $order ASC";
                 $result2 = $db->query($sql2);
                 while ($id = mysqli_fetch_array($result2)) {
                     echo '<tr>';
@@ -105,15 +110,15 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     }
                     for ($j = $i; $j <= 6; $j++) {
                         echo "<td>";
-                        echo $j;
+                        // echo $j;
                         echo "</td>";
                     }
+                    // FINAL RESULT
                     echo '<td>';
                     echo ($id["record_live_record"] ?? null);
                     echo '</td>';
                     // RANK
                     echo '<td>' . ($id['record_live_result'] ?? null) . '</td>';
-
                     // NEW RECORD
                     if ($id['record_new'] == 'y') {
                         echo '<td>' . getNewRecord($id['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';

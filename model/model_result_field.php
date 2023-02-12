@@ -76,12 +76,10 @@ for ($i = 0; $i < count($athlete_name); $i++) {
             for ($k = 0; $k < count($worldrecord); $k++) {
                 if ($record[$i] > $worldrecord[$k]) {
                     $new = 'y';
+                    $date = date('Y-m-d');
                     $db->query("insert into list_worldrecord(worldrecord_sports, worldrecord_location, worldrecord_gender,worldrecord_athlete_name,
-                        worldrecord_athletics,worldrecord_wind,worldrecord_country_code,worldrecord_record) 
-                        values('$name','" . $row1['schedule_location'] . "','$row1[1]','" . $athlete_name[$i] . "','$athletics[$k]','$weight','$row[1]','$record[$i]')");
-                    // echo '신기록: '."insert into list_worldrecord(worldrecord_sports, worldrecord_location, worldrecord_gender,worldrecord_athlete_name,
-                    // worldrecord_athletics,worldrecord_wind,worldrecord_country_code,worldrecord_record) 
-                    // values('$name','".$row1['schedule_location']."','$row1[1]','".$athlete_name[$i]."','$athletics[$k]','$weight','$row[1]','$record[$i]')".'<br>';
+                        worldrecord_athletics,worldrecord_wind,worldrecord_datetime,worldrecord_country_code,worldrecord_record) 
+                        values('$name','" . $row1['schedule_location'] . "','$row1[1]','" . $athlete_name[$i] . "','$athletics[$k]','$weight', '$date' ,'$row[1]', '$record[$i]')");
                 }
             }
             if ($round === '원반던지기') {
@@ -129,6 +127,4 @@ echo "<script>
 alert('RESULT UPDATED');
 history.go(-3);
 </script>";
-
-
 exit;
