@@ -90,13 +90,14 @@ $judgerow = mysqli_fetch_array($judgeresult);
                         // 레인
                         echo '<td>' . $row['record_order'] . '</td>';
                         echo '<input type="hidden" name="rain[]" value="' . $row['record_order'] . '">';
-                        // echo '<td><input type="number" name="rain[]" class="input_text" value="' . $row['record_order'] . '" min="1" max="12" required="" readonly /></td>';
                         echo '<td>';
                     }
                     if ($count % 4 == 3) {
                         // 이름
-                        echo $row['athlete_name'] . '</td>';
-                        echo '<input type="hidden" name="playername[]" value="' . $row['athlete_name'] . '">';
+                        echo $row['athlete_name'];
+                        // echo $row['athlete_name'] . '</td>';
+                        echo '<input type="hidden" name="playername[]" value="' . $row['athlete_name'] . '">' . '</td>';
+                        // echo '<input type="hidden" name="playername[]" value="' . $row['athlete_name'] . '">';
                         // echo '<input placeholder="선수 이름" type="text" name="playername[]"
                         //         class="input_text" value="' . $row['athlete_name'] . '" maxlength="30" required="" readonly/></td>';
                         // 성별
@@ -116,7 +117,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
 
                         // 등수
                         echo '<td><input type="number" name="rank[]" id="rank" class="input_result" value="' . $row['record_live_result'] . '" min="1" max="12" required="" /></td>';
-                        // 통과 여부
                         // 통과 여부
                         $pass_array = ["p", "l", "d", "w", "n"]; //DB 저장값
                         $pass_dic = []; //뷰 출력값
