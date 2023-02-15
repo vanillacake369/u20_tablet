@@ -207,15 +207,15 @@ $judgerow = mysqli_fetch_array($judgeresult);
         </tbody>
     </table>
     <?php
-    // if ($is_not_official_status) {
-    echo '<div class="container_postbtn">';
-    echo '<div class="postbtn_like">';
-    echo '<div class="like_btn">';
-    echo "<a href='view_input_result.php?sports_category=long_jump&schedule_id=" . trim($s_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
-    echo '</button>';
-    echo '</div>';
-    echo '</div>';
-    echo '</div>';
-    // }
+    if ($is_not_official_status) {
+        echo '<div class="container_postbtn">';
+        echo '<div class="postbtn_like">';
+        echo '<div class="like_btn">';
+        echo "<a href='view_input_result.php?sports_category=long_jump&schedule_id=" . trim($s_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+        echo '</button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
     ?>
 </div>

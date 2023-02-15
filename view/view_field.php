@@ -116,11 +116,7 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     // RANK
                     echo '<td>' . ($id['record_live_result'] ?? null) . '</td>';
                     // NEW RECORD
-                    if ($id['record_new'] == 'y') {
-                        echo '<td>' . getNewRecord($id['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';
-                    } else {
-                        echo '<td>-</td>';
-                    }
+                    echo '<td>' . getNewRecord($id['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';
                     // 경기 비고
                     if ($is_not_official_status) {
                         $placeholder = trim($id["record_memo"]);

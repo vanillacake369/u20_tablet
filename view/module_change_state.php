@@ -44,7 +44,6 @@ function getNewRecord($athlete_name, $schedule_sports)
     $new_records = array();
     $cnt = 1;
     while ($new_records = mysqli_fetch_array($query_result)) {
-        $new_record = ($new_records["worldrecord_athletics"]);
         $new_record = translateNewRecord($new_records["worldrecord_athletics"]);
         if ($cnt == $query_result_cnt) {
             $all_new_records_str = $all_new_records_str . $new_record;
