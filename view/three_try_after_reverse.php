@@ -1,6 +1,6 @@
 <?php
 // TODO 구현은 완료했는데 엄청난 복잡도로 인해 많은 버그 예상, 테스트 케이스 많이 돌려보기
-include_once(__DIR__ . "/auth/config.php");
+include(__DIR__ . "/../database/dbconnect.php");
 include_once(__DIR__ . "/save.php");
 global $schedule_id;
 global $judge_id;

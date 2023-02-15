@@ -193,7 +193,7 @@ if ($row1['schedule_status'] != 'y') {
         }
     }
 }
-echo "<script>
-alert('RESULT UPDATED');
-history.go(-3);
-</script>";
+// echo "<script>
+// alert('RESULT UPDATED');
+// history.go(-3);
+// </script>";

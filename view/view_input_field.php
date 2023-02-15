@@ -38,7 +38,27 @@ $judgerow = mysqli_fetch_array($judgeresult);
         <div class="input_row">
             <input placeholder="WEIGHT" type="text" name="weight" class="input_text" value="<?php echo $weight; ?>" maxlength="16" required="">
         </div>
-        <h3 class="intro">RESULT</h3>
+        <div style="display:inline">
+            <h3 class="intro" style="margin-bottom: 10px; float:left; margin-right: 30px;">RESULT</h3>
+            <?php
+            if ($rows["schedule_status"] != "y") {
+                if ($rows['schedule_name'] != '10종경기(남)' || $rows['schedule_name'] != '7종경기(여)') {
+                    echo '<button type="submit" class="btn_resort btn_grey" formaction="three_try_after_reverse.php"
+                            style="width:auto; padding-left:5px; padding-right:5px;"><span>순서 재정렬</span></button>';
+                }
+            } else {
+                // echo ' <div class="btn_base base_mar col_left">
+                //             <input type="button" onclick="" class="btn_excel bold" value="엑셀 출력" />
+                //         </div>
+                //         <button type="submit" class="btn_add bold" formaction="pdfout3.php"><span>PDF 출력</span></button>';
+            }
+            if ($_POST['check'] ?? null === '3') {
+                echo '<input type="hidden" name="count" value= "5">';
+            } else {
+                echo '<input type="hidden" name="count" value= "3">';
+            }
+            ?>
+        </div>
         <table>
             <colgroup>
                 <col class="col_view_lane">
