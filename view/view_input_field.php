@@ -41,7 +41,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
         <h3 class="intro">RESULT</h3>
         <table>
             <colgroup>
-                <col class="col_view_lane">
                 <col class="col_view_name" style="width: 10%;">
                 <col class="col_view_result_th">
                 <col class="col_view_result_th">
@@ -56,7 +55,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
             </colgroup>
             <thead>
                 <tr>
-                    <th>LANE</th>
                     <th>NAME</th>
                     <th>1th</th>
                     <th>2th</th>
@@ -107,7 +105,8 @@ $judgerow = mysqli_fetch_array($judgeresult);
                 while ($id = mysqli_fetch_array($result2)) {
                     echo '<tr>';
                     // LANE
-                    echo '<td><input type="number" name="rain[]" class="input_result" value="' . $id['record_order'] . '" min="1" max="12" required="" readonly /></td>';
+                    echo '<input type="hidden" name="rain[]" value="' . $id['record_order'] . '">';
+                    // echo '<td><input type="number" name="rain[]" class="input_result" value="' . $id['record_order'] . '" min="1" max="12" required="" readonly /></td>';
                     echo '<td><input placeholder="선수 이름" type="text" name="playername[]" class="input_result"
                                 value="' . $id['athlete_name'] . '" maxlength="30" required="" readonly /></td>';
                     if ($_POST["check"] ?? null >= 3 || $rows["schedule_status"] === "y") {

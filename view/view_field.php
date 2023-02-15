@@ -23,7 +23,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
     <h3 class="intro">RESULT</h3>
     <table>
         <colgroup>
-            <col class="col_view_lane">
             <col class="col_view_name" style="width: 10%;">
             <col class="col_view_result_th">
             <col class="col_view_result_th">
@@ -38,11 +37,10 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
         </colgroup>
         <thead>
             <tr>
-                <th>LANE</th>
                 <th>NAME</th>
-                <th>1th</th>
-                <th>2th</th>
-                <th>3th</th>
+                <th>1st</th>
+                <th>2nd</th>
+                <th>3rd</th>
                 <th>4th</th>
                 <th>5th</th>
                 <th>6th</th>
@@ -94,8 +92,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 $result2 = $db->query($sql2);
                 while ($id = mysqli_fetch_array($result2)) {
                     echo '<tr>';
-                    // LANE
-                    echo '<td>' . $id['record_order'] . '</td>';
                     // NAME
                     echo '<td>' . $id['athlete_name'] . '</td>';
                     // 'n'th TRIAL

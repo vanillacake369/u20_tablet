@@ -36,6 +36,18 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
     } else {
         mysqli_close($db);
         echo "<script>alert('아이디 혹은 비밀번호를 확인하세요.'); history.back();</script>";
+        print_r($pw);
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        print_r(hash('sha256', $pw));
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        print_r($judgedata['judge_password']);
         exit;
     }
 }

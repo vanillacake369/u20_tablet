@@ -45,11 +45,11 @@ $judgerow = mysqli_fetch_array($judgeresult);
         <thead>
             <!-- 윗 부분 : 레인,이름,차수별기록,통과,등수 -->
             <tr id="col1">
-                <th rowspan="2">LANE</th>
+                <th rowspan="2">ORDER</th>
                 <th rowspan="2">NAME</th>
-                <th>1th</th>
-                <th>2th</th>
-                <th>3th</th>
+                <th>1st</th>
+                <th>2nd</th>
+                <th>3rd</th>
                 <th>4th</th>
                 <th>5th</th>
                 <th>6th</th>
@@ -96,7 +96,7 @@ $judgerow = mysqli_fetch_array($judgeresult);
                 $result2 = $db->query($sql2);
                 while ($id = mysqli_fetch_array($result2)) {
                     echo "<tr>";
-                    // LANE
+                    // ORDER
                     echo '<td rowspan="2">' . $id["record_order"] . '</td>';
                     // NAME
                     echo '<td rowspan="2">' . $id["athlete_name"] . '</td>';
@@ -130,9 +130,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
                         $placeholder = "-";
                     }
                     echo "<td><a href='view_input_remark.php?remark_category=result&record_id=" . trim($id["record_id"]) . "'>" . $placeholder . "</a></td>";
-                    // } else {
-                    // echo "<td></td>";
-                    // }
 
                     // WIND
                     echo "<tr>";

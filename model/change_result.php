@@ -82,7 +82,7 @@ echo $sql;
 $db->multi_query($sql);
 
 
-// echo "<script>
-//     opener.parent.location.reload();
-// window.close();
-//     </script>";
+echo "<script>
+    opener.parent.location.reload();
+window.close();
+    </script>";

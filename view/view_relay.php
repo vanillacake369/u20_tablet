@@ -2,6 +2,7 @@
 // 경기 상태에 따른 경기 결과 처리 모델
 include_once(__DIR__ . "/../model/model_result_by_state.php");
 include_once(__DIR__ . "/../model/model_match_info_by_state.php");
+include_once(__DIR__ . "/module_change_state.php");
 // $id : 스케줄 id
 $sports_category = trim($_GET["sports_category"]);
 $schedule_id = trim($_GET["schedule_id"]);
@@ -27,7 +28,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
             <col class="col_view_name">
             <col class="col_view_gender">
             <col class="col_view_nation">
-            <col class="col_view_team">
             <col class="col_view_result">
             <col class="col_view_rank">
             <col class="col_view_pass">
@@ -41,7 +41,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                 <th>NAME</th>
                 <th>GENDER</th>
                 <th>NATION</th>
-                <th>TEAM</th>
                 <th>RESULT</th>
                 <th>RANK</th>
                 <th>PASS</th>
@@ -73,8 +72,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     echo "<td>" . $result["athlete_gender"] . "</td>";
                     // 국가
                     echo "<td>" . $result["athlete_country"] . "</td>";
-                    // 소속
-                    echo "<td>" . $result["athlete_division"] . "</td>";
                     // 기록
                     echo "<td>" . $result["record_record"] . "</td>";
                     // 순위
@@ -82,7 +79,12 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     // 통과
                     echo "<td>" . $result["record_pass"] . "</td>";
                     // 신기록
-                    echo "<td>" . $result["record_new"] . "</td>";
+                    // echo "<td>" . $result["record_new"] . "</td>";
+                    if (trim($result['record_new']) == 'y') {
+                        echo '<td>' . getNewRecord($result['athlete_country'], $match_info_array[0]['schedule_sports']) . '</td>';
+                    } else {
+                        echo '<td>-</td>';
+                    }
                     // 경기 상태(Official, Result..)
                     echo "<td>" . $result["record_status"] . "</td>";
                     // 경기 비고

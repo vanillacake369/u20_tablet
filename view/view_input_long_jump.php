@@ -54,7 +54,7 @@ $judgerow = mysqli_fetch_array($judgeresult);
             <thead>
                 <!-- 윗 부분 : 레인,이름,차수별기록,통과,등수 -->
                 <tr id="col1">
-                    <th rowspan="2">LANE</th>
+                    <th rowspan="2">ORDER</th>
                     <th rowspan="2">NAME</th>
                     <th>1th</th>
                     <th>2th</th>
@@ -105,15 +105,19 @@ $judgerow = mysqli_fetch_array($judgeresult);
                     $result2 = $db->query($sql2);
                     while ($id = mysqli_fetch_array($result2)) {
                         echo "<tr>";
-                        // LANE
-                        echo '<td rowspan="2"><input type="number" name="rain[]" class="input_result" value="' .
-                            $id["record_order"] .
-                            '" min="1" max="12" required="" readonly /></td>';
+                        // ORDER
+                        echo '<td rowspan="2">' . $id["record_order"] . '</td>';
+                        echo '<input type="hidden" name="rain[]" value="' . $id["record_order"] . '"/>';
+                        // echo '<td rowspan="2"><input type="number" name="rain[]" class="input_result" value="' .
+                        //     $id["record_order"] .
+                        //     '" min="1" max="12" required="" readonly /></td>';
                         // NAME
-                        echo '<td rowspan="2"><input placeholder="선수 이름" type="text" name="playername[]" class="input_result"
-                                  value="' .
-                            $id["athlete_name"] .
-                            '" maxlength="30" required="" readonly /></td>';
+                        echo '<td rowspan="2">' . $id["athlete_name"] . '</td>';
+                        echo '<input type="hidden" name="playername[]" value="' . $id["athlete_name"]  . '"/>';
+                        // echo '<td rowspan="2"><input placeholder="선수 이름" type="text" name="playername[]" class="input_result"
+                        //           value="' .
+                        //     $id["athlete_name"] .
+                        //     '" maxlength="30" required="" readonly /></td>';
                         // RESULT
                         if ($_POST["check"] ?? null >= 3 || $rows["schedule_status"] === "y") {
                             $answer = $db->query(
@@ -146,7 +150,8 @@ $judgerow = mysqli_fetch_array($judgeresult);
                                             maxlength="5" onkeyup="field2Format(this)"
                                              />';
                             echo "</td>";
-                        } // 최종 결과
+                        }
+                        // 최종 결과
                         echo '<td rowspan="2">';
                         echo '<input placeholder="경기 결과" id="result" type="text" name="gameresult[]" class="input_result"
                                     value="' .
@@ -177,18 +182,15 @@ $judgerow = mysqli_fetch_array($judgeresult);
                             }
                             if ($j % 7 == 6) {
                                 echo "<td>";
-                                echo '<input placeholder="풍속" type="text" name="lastwind[]" class="input_result" value="' .
-                                    ($id["record_wind"] ?? null) .
-                                    '"
-                                            maxlength="5" required="" onkeyup="windFormat(this)"
-                                             />';
+                                echo '<input placeholder="풍속" type="text" name="lastwind[]" class="input_result" value="'
+                                    . ($id["record_wind"] ?? null) .
+                                    '"maxlength="5" required="" onkeyup="windFormat(this)"/>';
                                 echo "</td>";
                             } else {
                                 echo "<td>";
-                                echo '<input placeholder="풍속" type="text" name="wind' .
-                                    ($j + 1) .
-                                    '[]" class="input_result" value="' . ($windrow["record_wind"] ?? null) . '"
-                                                maxlength="5" onkeyup="windFormat(this)"
+                                echo '<input placeholder="풍속" type="text" name="wind'
+                                    . ($j + 1) .
+                                    '[]" class="input_result" value="' . ($windrow["record_wind"] ?? null) . '"maxlength="5" onkeyup="windFormat(this)"
                                                 ';
                                 if ($j < 3) {
                                     echo 'required=""';
