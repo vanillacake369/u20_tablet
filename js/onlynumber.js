@@ -75,7 +75,17 @@ function uncomma(str) {
 
 function tftf(str) {
   str = String(str);
-  return str.toUpperCase().replace(/[^-OX]+/g, "");
+  str = str.toUpperCase();
+  if (str.indexOf("-") >= 0) {
+    if (str.indexOf("-") > str.indexOf("O") && str.indexOf("O") >= 0) {
+      str = str.substring(0, str.indexOf("O") + 1);
+    } else {
+      str = str.substring(0, str.indexOf("-") + 1);
+    }
+  } else if (str.indexOf("O") >= 0) {
+    str = str.substring(0, str.indexOf("O") + 1);
+  }
+  return str.replace(/[^-OX]+/g, "");
 }
 
 //바람전용
@@ -114,7 +124,7 @@ function fieldFinal2(obj) {
   for (i = 3; i < 9; i++) {
     if (parseFloat(top) < parseFloat(a.children[i].firstElementChild.value)) {
       top = a.children[i].firstElementChild.value;
-      
+
       wind = a.nextElementSibling.children[i - 3].firstElementChild.value;
       console.log(a.nextElementSibling.children[i - 3].firstElementChild);
     }

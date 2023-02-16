@@ -369,7 +369,7 @@ header > div ul.navbar > li {
   border-color: #f2f3f6;
   box-sizing: border-box;
   height: 60px;
-  /* border: 0.0714285714rem solid #e8eaee; */
+  border: 0.0714285714rem solid #e8eaee;
 }
 /*//////////////////////////////////////////////////////////////////
 [ 기록 테이블 ]*/
