@@ -79,7 +79,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     // 통과
                     echo "<td>" . $result["record_pass"] . "</td>";
                     // 신기록
-                    // echo "<td>" . $result["record_new"] . "</td>";
                     if (trim($result['record_new']) == 'y') {
                         echo '<td>' . getNewRecord($result['athlete_country'], $match_info_array[0]['schedule_sports']) . '</td>';
                     } else {

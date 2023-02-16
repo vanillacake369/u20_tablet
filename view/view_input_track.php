@@ -82,11 +82,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
                         INNER JOIN list_schedule ON list_schedule.schedule_id= list_record.record_schedule_id 
                         AND list_schedule.schedule_id = '$id'
                         ORDER BY " . $order . " ASC ";
-                // $sql = "SELECT " . $relm . " FROM list_record 
-                //         INNER JOIN list_athlete ON list_athlete.athlete_id = list_record.record_athlete_id 
-                //         INNER JOIN list_schedule ON list_schedule.schedule_id= list_record.record_schedule_id 
-                //         AND list_schedule.schedule_id = '$id'
-                //         ORDER BY " . $order . " ASC ";
                 $count = 0;
                 $result = $db->query($sql);
                 while ($row = mysqli_fetch_array($result)) {

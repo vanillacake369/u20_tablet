@@ -175,7 +175,8 @@ if ($row1['schedule_status'] != 'y') {
             $db->query("UPDATE list_schedule set schedule_end='" . date("Y-m-d H:i:s") . "',schedule_result='l',schedule_status='y' where schedule_id=" . ((int)($row1['schedule_id']) - 1) . "");
         }
     }
-} 
-// echo "<script>
-//     location.replace('addFieldResult3.php?id=".$_id."') 
-//     </script>";
+}
+echo "<script>
+alert('RESULT UPDATED');
+history.go(-3);
+</script>";

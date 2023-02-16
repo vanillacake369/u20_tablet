@@ -172,6 +172,6 @@ if ($row1['schedule_status'] != 'y') {
     }
     $db->query("UPDATE list_schedule set schedule_end='" . date("Y-m-d H:i:s") . "',schedule_result='l',schedule_status='y' where schedule_id=" . $s_id . "");
 }
-// echo "<script>
-//     location.replace('addTrackResult2.php?id=".$s_id."') 
-//     </script>";
+echo "<script>
+    location.replace('addTrackResult2.php?id=" . $s_id . "') 
+    </script>";

@@ -32,18 +32,7 @@ $judgerow = mysqli_fetch_array($judgeresult);
                 <th rowspan="2">RANK</th>
                 <th rowspan="2">ORDER</th>
                 <th rowspan="2">NAME</th>
-                <!-- <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th> -->
+
                 <?php
                 // 높이 찾는 쿼리
                 $highresult = $db->query("SELECT DISTINCT record_live_record FROM list_record INNER JOIN list_schedule 
@@ -51,21 +40,11 @@ $judgerow = mysqli_fetch_array($judgeresult);
                 $cnt1 = 0;
                 while ($highrow = mysqli_fetch_array($highresult)) {
                     $highrow["record_live_record"] = is_null($highrow["record_live_record"]) ? "HEIGHT" : $highrow["record_live_record"];
-                    // $highrow["record_live_record"] = is_null($highrow["record_live_record"]) ? "높이" : ($highrow["record_live_record"] ?? null);
                     echo '<th>' . $highrow["record_live_record"] . '</th>';
                     $cnt1++;
-                    // echo '<th style="background: none"><input placeholder="높이" type="text" name="trial[]"
-                    // 	class="input_trial" id="trial" value="' .
-                    //     $highrow["record_live_record"] .
-                    //     '" maxlength="4" 
-                    // 	onkeyup="heightFormat(this)"></th>';
-                    // $cnt1++;
                 }
                 for ($j = 0; $j < 12 - $cnt1; $j++) {
                     echo '<th>HEIGHT</th>';
-                    // echo '<th style="background: none"><input placeholder="높이" type="text" name="trial[]"
-                    // 	class="input_trial" id="trial" value="" maxlength="4" 
-                    // 	onkeyup="heightFormat(this)"></th>';
                 }
                 ?>
                 <th rowspan="2">FINAL</th>
@@ -73,18 +52,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
             </tr>
             <!-- 아랫부분 :: 높이(기록),비고,신기록 -->
             <tr id="col2">
-                <!-- <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th>
-                <th>HEIGHT</th> -->
                 <?php if ($cnt1 == 12) {
                     $cnt2 = 0;
                     $highresult = $db->query("SELECT DISTINCT record_live_record FROM list_record INNER JOIN list_schedule 
@@ -93,18 +60,9 @@ $judgerow = mysqli_fetch_array($judgeresult);
                         $highrow["record_live_record"] = is_null($highrow["record_live_record"]) ? "HEIGHT" : $highrow["record_live_record"];
                         echo '<th>' . $highrow["record_live_record"] . '</th>';
                         $cnt2++;
-                        // echo '<th style="background: none"><input placeholder="높이" type="text" name="trial[]"
-                        // class="input_trial" id="trial" value="' .
-                        //     $highrow["record_live_record"] .
-                        //     '" maxlength="4" 
-                        // onkeyup="heightFormat(this)"></th>';
-                        // $cnt2++;
                     }
                     for ($j = 0; $j < 12 - $cnt2; $j++) {
                         echo '<th></th>';
-                        // echo '<th style="background: none"><input placeholder="높이" type="text" name="trial[]"
-                        // class="input_trial" id="trial" value="" maxlength="4" 
-                        // onkeyup="heightFormat(this)"></th>';
                     }
                 } else {
                     for ($j = 0; $j < 12; $j++) {
@@ -237,15 +195,16 @@ $judgerow = mysqli_fetch_array($judgeresult);
             ?>
         </tbody>
     </table>
-</div>
-
-<div class="container_postbtn">
-    <div class="postbtn_like">
-        <div class="like_btn">
-            <?php
-            echo "<a href='view_input_result.php?sports_category=high_jump&schedule_id=" . trim($s_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
-            ?>
-            </button>
-        </div>
-    </div>
+    <?php
+    if ($is_not_official_status) {
+        echo '<div class="container_postbtn">';
+        echo '<div class="postbtn_like">';
+        echo '<div class="like_btn">';
+        echo "<a href='view_input_result.php?sports_category=high_jump&schedule_id=" . trim($schedule_id) . "' class=\"btn_navy a_button\">UPDATE</a>";
+        echo '</button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+    ?>
 </div>

@@ -191,7 +191,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
                 }
                 if (($id['record_new'] ?? null) == 'y') {
                     $newrecord = $db->query("SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='" . $id['athlete_name'] . "' AND worldrecord_sports='" . $id['schedule_sports'] . "'");
-                    // echo "SELECT worldrecord_athletics FROM list_worldrecord WHERE worldrecord_athlete_name ='".$id['athlete_name']."' AND worldrecord_sports='".$id['schedule_sports']."'".'<br>';
                     //추후에 태블릿용 페이지를 만든 후 일정과 연결 시 스포츠이름 받아와야함
                     $newathletics = array();
                     while ($athletics = mysqli_fetch_array($newrecord)) {

@@ -47,10 +47,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
                             style="width:auto; padding-left:5px; padding-right:5px;"><span>순서 재정렬</span></button>';
                 }
             } else {
-                // echo ' <div class="btn_base base_mar col_left">
-                //             <input type="button" onclick="" class="btn_excel bold" value="엑셀 출력" />
-                //         </div>
-                //         <button type="submit" class="btn_add bold" formaction="pdfout3.php"><span>PDF 출력</span></button>';
             }
             if ($_POST['check'] ?? null === '3') {
                 echo '<input type="hidden" name="count" value= "5">';
