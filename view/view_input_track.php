@@ -82,11 +82,6 @@ $judgerow = mysqli_fetch_array($judgeresult);
                         INNER JOIN list_schedule ON list_schedule.schedule_id= list_record.record_schedule_id 
                         AND list_schedule.schedule_id = '$id'
                         ORDER BY " . $order . " ASC ";
-                // $sql = "SELECT " . $relm . " FROM list_record 
-                //         INNER JOIN list_athlete ON list_athlete.athlete_id = list_record.record_athlete_id 
-                //         INNER JOIN list_schedule ON list_schedule.schedule_id= list_record.record_schedule_id 
-                //         AND list_schedule.schedule_id = '$id'
-                //         ORDER BY " . $order . " ASC ";
                 $count = 0;
                 $result = $db->query($sql);
                 while ($row = mysqli_fetch_array($result)) {
@@ -176,6 +171,13 @@ $judgerow = mysqli_fetch_array($judgeresult);
                         echo '<td><input placeholder="" type="text" name="newrecord[]" class="input_result" value="" maxlength="100" ath="' . $row['athlete_name'] . '" sports=' . $rows['schedule_sports'] . ' schedule_id="' . $id . '" readonly/></td>';
                     }
                     // 상태
+                    if ($row['record_status'] == "l") {
+                        $row['record_status'] = "LIVE";
+                    } elseif ($row['record_status'] == "o") {
+                        $row['record_status'] = "OFFICIAL";
+                    } else {
+                        $row['record_status'] = "NOT STARTED";
+                    }
                     echo '<td>' . $row['record_status'] . '</td>';
                     // 비고
                     echo '<td><input placeholder="INSERT REMARK" type="text" name="bigo[]" class="input_result" value="' . ($row['record_memo'] ? $row['record_memo'] : '&nbsp') . '" maxlength="100" /></td>';

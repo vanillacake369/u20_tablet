@@ -23,7 +23,6 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
     <h3 class="intro">RESULT</h3>
     <table>
         <colgroup>
-            <col class="col_view_lane">
             <col class="col_view_name" style="width: 10%;">
             <col class="col_view_result_th">
             <col class="col_view_result_th">
@@ -38,11 +37,10 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
         </colgroup>
         <thead>
             <tr>
-                <th>LANE</th>
                 <th>NAME</th>
-                <th>1th</th>
-                <th>2th</th>
-                <th>3th</th>
+                <th>1st</th>
+                <th>2nd</th>
+                <th>3rd</th>
                 <th>4th</th>
                 <th>5th</th>
                 <th>6th</th>
@@ -84,18 +82,9 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                                     INNER JOIN list_schedule ON schedule_id= record_schedule_id 
                                     where $check AND schedule_id = '$s_id'
                                     ORDER BY $order ASC";
-                // "SELECT DISTINCT  " .
-                // $obj .
-                // "record_order,athlete_name,record_new,schedule_sports  FROM list_record
-                //                 INNER JOIN list_athlete ON athlete_id = record_athlete_id 
-                //                 INNER JOIN list_schedule ON schedule_id= record_schedule_id 
-                //                 where $check AND schedule_id = '$s_id'
-                //                 ORDER BY $order ASC";
                 $result2 = $db->query($sql2);
                 while ($id = mysqli_fetch_array($result2)) {
                     echo '<tr>';
-                    // LANE
-                    echo '<td>' . $id['record_order'] . '</td>';
                     // NAME
                     echo '<td>' . $id['athlete_name'] . '</td>';
                     // 'n'th TRIAL
@@ -120,11 +109,7 @@ $is_not_official_status = (trim($match_info_array[0]["schedule_result"]) != "o")
                     // RANK
                     echo '<td>' . ($id['record_live_result'] ?? null) . '</td>';
                     // NEW RECORD
-                    if ($id['record_new'] == 'y') {
-                        echo '<td>' . getNewRecord($id['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';
-                    } else {
-                        echo '<td>-</td>';
-                    }
+                    echo '<td>' . getNewRecord($id['athlete_name'], $match_info_array[0]['schedule_sports']) . '</td>';
                     // 경기 비고
                     if ($is_not_official_status) {
                         $placeholder = trim($id["record_memo"]);

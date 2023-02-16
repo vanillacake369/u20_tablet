@@ -39,11 +39,17 @@ function getNewRecord($athlete_name, $schedule_sports)
         WHERE worldrecord_athlete_name = '" . trim($athlete_name) .
         "' AND worldrecord_sports= '" . trim($schedule_sports) . "';";
     $query_result = $db->query($sql);
+    $query_result_cnt = $query_result->num_rows;
 
     $new_records = array();
+    $cnt = 1;
     while ($new_records = mysqli_fetch_array($query_result)) {
         $new_record = translateNewRecord($new_records["worldrecord_athletics"]);
-        $all_new_records_str = $all_new_records_str . $new_record;
+        if ($cnt == $query_result_cnt) {
+            $all_new_records_str = $all_new_records_str . $new_record;
+        } else {
+            $all_new_records_str = $all_new_records_str . $new_record . " / ";
+        }
     }
 
     return $all_new_records_str;

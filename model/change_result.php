@@ -81,8 +81,7 @@ echo $sql;
 //  execute multi quer
 $db->multi_query($sql);
 
-
-// echo "<script>
-//     opener.parent.location.reload();
-// window.close();
-//     </script>";
+echo "<script>
+    opener.parent.location.reload();
+window.close();
+    </script>";

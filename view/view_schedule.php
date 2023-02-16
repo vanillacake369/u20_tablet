@@ -36,9 +36,6 @@ include_once(__DIR__ .  "/view_block.php");
                 <div class="table-wrap">
                     <h1 class="intro">MATCHES</h1>
                     <table>
-                        <!-- <colgroup>
-                            <col style="width: auto" />
-                        </colgroup> -->
                         <colgroup>
                             <col class="col_number">
                             <col class="col_match_name">

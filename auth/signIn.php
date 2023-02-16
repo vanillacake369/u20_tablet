@@ -36,6 +36,5 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
     } else {
         mysqli_close($db);
         echo "<script>alert('아이디 혹은 비밀번호를 확인하세요.'); history.back();</script>";
-        exit;
     }
 }
